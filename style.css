@@ -1,0 +1,377 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #FAFAFA;
+}
+
+.header {
+  width: 100%;
+  max-width: 1200px;
+  padding-top: 24px;
+  padding-bottom: 32px;
+  margin: 0 auto;
+}
+.header_container {
+  max-width: 1136px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header_container--info {
+  width: 100%;
+  max-width: 735px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header_container--info--nav {
+  width: 100%;
+  max-width: 532px;
+  display: flex;
+  justify-content: space-between;
+}
+.header_container--info--nav--link {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -2%;
+  vertical-align: middle;
+  color: #111111;
+}
+.header_container--info--nav--link:hover {
+  color: #FD9222;
+  transition: 0.2s;
+}
+.header_container--info--icons {
+  width: 66px;
+  display: flex;
+  justify-content: space-between;
+}
+.header_container--info--icons svg:hover path {
+  stroke: #FD9222;
+  transition: 0.2s;
+}
+.header .burger {
+  display: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 290px;
+  height: 100vh;
+  background: linear-gradient(180deg, #1E1823);
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+.menu-overlay.open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.menu-overlay .close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+}
+.menu-overlay .close:hover {
+  color: #FD9222;
+}
+.menu-overlay .menu {
+  margin-top: 156px;
+  padding-left: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.menu-overlay .menu a {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  line-height: 16px;
+  letter-spacing: -2%;
+  vertical-align: middle;
+  color: #fff;
+}
+.menu-overlay .menu a:hover {
+  color: #FD9222;
+}
+.menu-overlay .socials {
+  position: absolute;
+  bottom: 24px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.menu-overlay .socials svg:hover path {
+  stroke: #FD9222;
+  transition: 0.2s;
+}
+
+main .start {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 72px;
+}
+main .start_container {
+  width: 100%;
+  padding-top: 208px;
+  max-width: 1136px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, 0.4) 100%);
+  background-image: url(./img/start-chocolate.png);
+  border-radius: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .start_container--grey {
+  width: 100%;
+  height: 119px;
+  background-color: #D9D9D9;
+}
+main .start_container--box {
+  padding: 40px;
+  padding-top: 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+main .start_container--box--info {
+  width: 100%;
+  max-width: 484px;
+}
+main .start_container--box--info--title {
+  width: 100%;
+  max-width: 484px;
+  text-align: left;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+  letter-spacing: -3%;
+  color: #FFFFFF;
+}
+main .start_container--box--info--buttons {
+  width: 100%;
+  max-width: 341px;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main .start_container--box--info--buttons--btn {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+  background-color: #FD9222;
+  border: none;
+  border-radius: 100px;
+  padding: 14px 40px;
+  cursor: pointer;
+}
+main .start_container--box--info--buttons--btn--2 {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+  border-radius: 100px;
+  padding: 14px 40px;
+  border: 1px solid #FFFFFF;
+  background: none;
+}
+main .start_container--box--info--buttons--btn:hover {
+  background-color: #FCF1E0;
+  transition-duration: 0.3s;
+  color: #FD9222;
+}
+main .start_container--box--info--buttons--btn--2:hover {
+  border: 1px solid #FD9222;
+  transition-duration: 0.3s;
+  color: #FD9222;
+}
+main .start_container--box--scroll {
+  width: 100%;
+  max-width: 134px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main .start_container--box--scroll--text {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -3%;
+  color: #FFFFFF;
+}
+main .benefits {
+  background-color: #1E1823;
+  padding: 50px;
+}
+main .benefits_container {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+main .benefits_container--line {
+  border: 1px solid rgba(255, 255, 255, 0.5019607843);
+  width: 1px;
+  height: 124px;
+  margin-top: 60px;
+}
+main .benefits_container--box {
+  width: 100%;
+  max-width: 308px;
+}
+main .benefits_container--box--title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+  margin-top: 22px;
+  margin-bottom: 18px;
+}
+main .benefits_container--box--text {
+  width: 100%;
+  max-width: 308px;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -2%;
+  color: rgba(255, 255, 255, 0.6980392157);
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .header_container {
+    max-width: 704px;
+  }
+  .header_container--info--nav {
+    display: none;
+  }
+  .header_container--info--icons svg {
+    display: none;
+  }
+  .header .burger {
+    display: block;
+  }
+  main .start_container {
+    max-width: 704px;
+    background-image: url(./img/chocolate-laptop.png);
+  }
+  main .start_container--grey {
+    display: none;
+  }
+  main .start_container--box {
+    padding-top: 671px;
+  }
+  main .benefits_container {
+    max-width: 704px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 50px;
+  }
+  main .benefits_container--line {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .header {
+    padding-bottom: 14px;
+  }
+  .header_container {
+    max-width: 335px;
+  }
+  .menu-overlay {
+    width: 220px;
+  }
+  .menu-overlay .menu {
+    padding-left: 50px;
+    margin-top: 136px;
+  }
+  .menu-overlay .menu a {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -2%;
+    vertical-align: middle;
+  }
+  main .start_container {
+    max-width: 335px;
+    padding: 20px;
+    background-image: url(./img/chocolate-phonr.png);
+    background-size: cover;
+    background-position: center;
+  }
+  main .start_container--box {
+    padding: 0;
+    padding-top: 375px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  main .start_container--box--info--title {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -3%;
+  }
+  main .start_container--box--info--buttons--btn {
+    padding: 12px 28px;
+  }
+  main .start_container--box--info--buttons--btn--2 {
+    padding: 12px 28px;
+  }
+  main .start_container--box--scroll {
+    max-width: 107px;
+  }
+  main .start_container--box--scroll--text {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -3%;
+  }
+  main .start_container--box--scroll svg {
+    width: 28px;
+    height: 28px;
+  }
+}/*# sourceMappingURL=style.css.map */

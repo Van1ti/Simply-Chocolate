@@ -1,0 +1,166 @@
+main {
+    .start {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-bottom: 72px;
+
+        &_container {
+            width: 100%;
+            padding-top: 208px;
+            max-width: 1136px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, rgba(17, 17, 17, 0) 0%, rgba(17, 17, 17, 0.4) 100%);
+            background-image: url(./img/start-chocolate.png);
+            border-radius: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            &--grey {
+                width: 100%;
+                height: 119px;
+                background-color: #D9D9D9;
+            }
+
+            &--box {
+                padding: 40px;
+                padding-top: 54px;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+
+                &--info {
+                    width: 100%;
+                    max-width: 484px;
+
+                    &--title {
+                        width: 100%;
+                        max-width: 484px;
+                        text-align: left;
+                        font-family: Montserrat;
+                        font-weight: 500;
+                        font-size: 28px;
+                        line-height: 34px;
+                        letter-spacing: -3%;
+                        color: #FFFFFF;
+                    }
+
+                    &--buttons {
+                        width: 100%;
+                        max-width: 341px;
+                        margin-top: 32px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        &--btn {
+                            font-family: Montserrat;
+                            font-weight: 600;
+                            font-size: 14px;
+                            line-height: 100%;
+                            letter-spacing: 0%;
+                            color: #FFFFFF;
+                            background-color: #FD9222;
+                            border: none;
+                            border-radius: 100px;
+                            padding: 14px 40px;
+                            cursor: pointer;
+
+                            &--2 {
+                                font-family: Montserrat;
+                                font-weight: 600;
+                                font-size: 14px;
+                                line-height: 100%;
+                                letter-spacing: 0%;
+                                color: #FFFFFF;
+                                border-radius: 100px;
+                                padding: 14px 40px;
+                                border: 1px solid #FFFFFF;
+                                background: none;
+                            }
+                        }
+
+                        &--btn:hover {
+                            background-color: #FCF1E0;
+                            transition-duration: 0.3s;
+                            color: #FD9222;
+                        }
+
+                        &--btn--2:hover {
+                            border: 1px solid #FD9222;
+                            transition-duration: 0.3s;
+                            color: #FD9222;
+                        }
+                    }
+                }
+
+                &--scroll {
+                    width: 100%;
+                    max-width: 134px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    &--text {
+                        font-family: Montserrat;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 18px;
+                        letter-spacing: -3%;
+                        color: #FFFFFF;
+                    }
+                }
+            }
+        }
+    }
+
+    .benefits {
+        background-color: #1E1823;
+        padding: 50px;
+
+        &_container {
+            width: 100%;
+            max-width: 1136px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+
+            &--line {
+                border: 1px solid #FFFFFF80;
+                width: 1px;
+                height: 124px;
+                margin-top: 60px;
+            }
+
+            &--box {
+                width: 100%;
+                max-width: 308px;
+
+                &--title {
+                    font-family: Montserrat;
+                    font-weight: 600;
+                    font-style: SemiBold;
+                    font-size: 18px;
+                    line-height: 100%;
+                    letter-spacing: 0%;
+                    color: #FFFFFF;
+                    margin-top: 22px;
+                    margin-bottom: 18px;
+                }
+
+                &--text {
+                    width: 100%;
+                    max-width: 308px;
+                    font-family: Montserrat;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 14px;
+                    line-height: 100%;
+                    letter-spacing: -2%;
+                    color: #FFFFFFB2;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
