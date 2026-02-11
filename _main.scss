@@ -163,4 +163,123 @@ main {
             }
         }
     }
+
+    .taste {
+        width: 100%;
+        max-width: 1136px;
+        margin: 0 auto;
+        padding: 128px 0;
+
+        &_title {
+            width: 100%;
+            max-width: 411px;
+            margin: 0 auto;
+            font-family: Montserrat;
+            font-weight: 600;
+            font-style: SemiBold;
+            font-size: 24px;
+            line-height: 28px;
+            letter-spacing: -3%;
+            text-align: center;
+            text-transform: uppercase;
+            color: #111111;
+
+            span {
+                color: #FD9222;
+            }
+        }
+
+        &_text {
+            width: 100%;
+            max-width: 505px;
+            margin: 0 auto;
+            margin-top: 28px;
+            margin-bottom: 50px;
+            font-family: Montserrat;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: -2%;
+            text-align: center;
+            color: #111111;
+        }
+
+        &_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &--box {
+                &--1 {
+                    position: relative;
+                    overflow: hidden;
+                    cursor: pointer;
+                    &--front {
+                        background-color: #FD9222;
+                        padding: 28px 36px 28px 28px;
+                        width: 270px;
+                        height: 270px;
+                        border-radius: 15px;
+
+                        &--text {
+                            font-family: Montserrat;
+                            font-weight: 600;
+                            font-style: SemiBold;
+                            font-size: 14px;
+                            line-height: 18px;
+                            letter-spacing: -2%;
+                            text-transform: uppercase;
+                            color: #FFFFFF;
+                            margin-top: 36px;
+                        }
+                    }
+
+                    &--back {
+                        display: none;
+                    }
+                }
+
+                &--3 {
+                    width: 270px;
+                    height: 270px;
+                    border-radius: 15px;
+                    background-color: #1E1823;
+                    padding: 28px 36px 28px 28px;
+
+                    &--text {
+                        font-family: Montserrat;
+                        font-weight: 600;
+                        font-style: SemiBold;
+                        font-size: 14px;
+                        line-height: 18px;
+                        letter-spacing: -2%;
+                        text-transform: uppercase;
+                        color: #FFFFFF;
+                        margin-top: 36px;
+                    }
+                }
+
+                &--2,
+                &--4 {
+                    width: 270px;
+                    height: 270px;
+                    border-radius: 15px;
+                    border: 1px solid #FD9222;
+                    padding: 28px 36px 28px 28px;
+
+                    &--text {
+                        font-family: Montserrat;
+                        font-weight: 600;
+                        font-style: SemiBold;
+                        font-size: 14px;
+                        line-height: 18px;
+                        letter-spacing: -2%;
+                        text-transform: uppercase;
+                        color: #111111;
+                        margin-top: 36px;
+                    }
+                }
+            }
+        }
+    }
 }
