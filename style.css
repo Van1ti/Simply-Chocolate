@@ -316,61 +316,145 @@ main .taste_text {
 }
 main .taste_container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 24px;
 }
-main .taste_container--box--1 {
+main .taste_container--card--1, main .taste_container--card--2, main .taste_container--card--3, main .taste_container--card--4 {
   position: relative;
+  width: 270px;
+  height: 270px;
+  border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
 }
-main .taste_container--box--1--front {
+main .taste_container--card--1--front, main .taste_container--card--2--front, main .taste_container--card--3--front, main .taste_container--card--4--front, main .taste_container--card--1--back, main .taste_container--card--2--back, main .taste_container--card--3--back, main .taste_container--card--4--back {
+  position: absolute;
+  inset: 0;
+  padding: 28px;
+  padding-right: 36px;
+  border-radius: 15px;
+  transition: all 0.4s ease;
+}
+main .taste_container--card--1--front, main .taste_container--card--2--front, main .taste_container--card--3--front, main .taste_container--card--4--front {
+  opacity: 1;
+  z-index: 2;
+}
+main .taste_container--card--1--back, main .taste_container--card--2--back, main .taste_container--card--3--back, main .taste_container--card--4--back {
+  background: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: 3;
+}
+main .taste_container--card--1--back--title, main .taste_container--card--2--back--title, main .taste_container--card--3--back--title, main .taste_container--card--4--back--title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: -3%;
+  text-transform: uppercase;
+  color: #111111;
+}
+main .taste_container--card--1--back--buttons, main .taste_container--card--2--back--buttons, main .taste_container--card--3--back--buttons, main .taste_container--card--4--back--buttons {
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+main .taste_container--card--1--back--buttons--fill, main .taste_container--card--2--back--buttons--fill, main .taste_container--card--3--back--buttons--fill, main .taste_container--card--4--back--buttons--fill {
+  padding: 6px 16px;
+  border-radius: 35px;
   background-color: #FD9222;
-  padding: 28px 36px 28px 28px;
-  width: 270px;
-  height: 270px;
-  border-radius: 15px;
-}
-main .taste_container--box--1--front--text {
+  border: none;
   font-family: Montserrat;
-  font-weight: 600;
-  font-style: SemiBold;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: -2%;
-  text-transform: uppercase;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0%;
+  vertical-align: middle;
   color: #FFFFFF;
-  margin-top: 36px;
 }
-main .taste_container--box--1--back {
-  display: none;
-}
-main .taste_container--box--3 {
-  width: 270px;
-  height: 270px;
-  border-radius: 15px;
-  background-color: #1E1823;
-  padding: 28px 36px 28px 28px;
-}
-main .taste_container--box--3--text {
+main .taste_container--card--1--back--buttons--outline, main .taste_container--card--2--back--buttons--outline, main .taste_container--card--3--back--buttons--outline, main .taste_container--card--4--back--buttons--outline {
+  padding: 6px 16px;
+  border-radius: 35px;
   font-family: Montserrat;
-  font-weight: 600;
-  font-style: SemiBold;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: -2%;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  margin-top: 36px;
-}
-main .taste_container--box--2, main .taste_container--box--4 {
-  width: 270px;
-  height: 270px;
-  border-radius: 15px;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  background-color: #FFFFFF;
+  color: #111111;
   border: 1px solid #FD9222;
-  padding: 28px 36px 28px 28px;
 }
-main .taste_container--box--2--text, main .taste_container--box--4--text {
+main .taste_container--card--1--back--text, main .taste_container--card--2--back--text, main .taste_container--card--3--back--text, main .taste_container--card--4--back--text {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -2%;
+  color: #111111;
+}
+main .taste_container--card--1:hover .taste_container--card--1--front {
+  opacity: 0;
+}
+main .taste_container--card--1:hover .taste_container--card--1--back {
+  opacity: 1;
+  transform: translateY(0);
+}
+main .taste_container--card--2:hover .taste_container--card--2--front {
+  opacity: 0;
+}
+main .taste_container--card--2:hover .taste_container--card--2--back {
+  opacity: 1;
+  transform: translateY(0);
+}
+main .taste_container--card--3:hover .taste_container--card--3--front {
+  opacity: 0;
+}
+main .taste_container--card--3:hover .taste_container--card--3--back {
+  opacity: 1;
+  transform: translateY(0);
+}
+main .taste_container--card--4:hover .taste_container--card--4--front {
+  opacity: 0;
+}
+main .taste_container--card--4:hover .taste_container--card--4--back {
+  opacity: 1;
+  transform: translateY(0);
+}
+main .taste_container--card--1--front {
+  background: #FD9222;
+}
+main .taste_container--card--1--front--title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -2%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-top: 36px;
+}
+main .taste_container--card--3--front {
+  background: #1E1823;
+}
+main .taste_container--card--3--front--title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -2%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-top: 36px;
+}
+main .taste_container--card--2--front, main .taste_container--card--4--front {
+  border: 1px solid #FD9222;
+  background: #fff;
+}
+main .taste_container--card--2--front--title, main .taste_container--card--4--front--title {
   font-family: Montserrat;
   font-weight: 600;
   font-style: SemiBold;

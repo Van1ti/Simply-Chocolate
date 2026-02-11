@@ -204,81 +204,211 @@ main {
             color: #111111;
         }
 
+
         &_container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 24px;
+        }
 
-            &--box {
-                &--1 {
-                    position: relative;
-                    overflow: hidden;
-                    cursor: pointer;
-                    &--front {
-                        background-color: #FD9222;
-                        padding: 28px 36px 28px 28px;
-                        width: 270px;
-                        height: 270px;
-                        border-radius: 15px;
+        // ===== ВСЕ КАРТОЧКИ =====
 
-                        &--text {
-                            font-family: Montserrat;
-                            font-weight: 600;
-                            font-style: SemiBold;
-                            font-size: 14px;
-                            line-height: 18px;
-                            letter-spacing: -2%;
-                            text-transform: uppercase;
-                            color: #FFFFFF;
-                            margin-top: 36px;
-                        }
-                    }
+        &_container--card--1,
+        &_container--card--2,
+        &_container--card--3,
+        &_container--card--4 {
+            position: relative;
+            width: 270px;
+            height: 270px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+        }
 
-                    &--back {
-                        display: none;
-                    }
+        // ===== FRONT & BACK ОБЩИЕ =====
+
+        &_container--card--1--front,
+        &_container--card--2--front,
+        &_container--card--3--front,
+        &_container--card--4--front,
+
+        &_container--card--1--back,
+        &_container--card--2--back,
+        &_container--card--3--back,
+        &_container--card--4--back {
+            position: absolute;
+            inset: 0;
+            padding: 28px;
+            padding-right: 36px;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+        }
+
+        // FRONT
+        &_container--card--1--front,
+        &_container--card--2--front,
+        &_container--card--3--front,
+        &_container--card--4--front {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        // BACK
+        &_container--card--1--back,
+        &_container--card--2--back,
+        &_container--card--3--back,
+        &_container--card--4--back {
+            background: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            z-index: 3;
+
+            &--title {
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 18px;
+                line-height: 100%;
+                letter-spacing: -3%;
+                text-transform: uppercase;
+                color: #111111;
+            }
+
+            &--buttons {
+                margin-top: 8px;
+                margin-bottom: 14px;
+
+                &--fill {
+                    padding: 6px 16px;
+                    border-radius: 35px;
+                    background-color: #FD9222;
+                    border: none;
+                    font-family: Montserrat;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 10px;
+                    line-height: 12px;
+                    letter-spacing: 0%;
+                    vertical-align: middle;
+                    color: #FFFFFF;
                 }
 
-                &--3 {
-                    width: 270px;
-                    height: 270px;
-                    border-radius: 15px;
-                    background-color: #1E1823;
-                    padding: 28px 36px 28px 28px;
-
-                    &--text {
-                        font-family: Montserrat;
-                        font-weight: 600;
-                        font-style: SemiBold;
-                        font-size: 14px;
-                        line-height: 18px;
-                        letter-spacing: -2%;
-                        text-transform: uppercase;
-                        color: #FFFFFF;
-                        margin-top: 36px;
-                    }
-                }
-
-                &--2,
-                &--4 {
-                    width: 270px;
-                    height: 270px;
-                    border-radius: 15px;
+                &--outline {
+                    padding: 6px 16px;
+                    border-radius: 35px;
+                    font-family: Montserrat;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 10px;
+                    line-height: 12px;
+                    letter-spacing: 0%;
+                    vertical-align: middle;
+                    background-color: #FFFFFF;
+                    color: #111111;
                     border: 1px solid #FD9222;
-                    padding: 28px 36px 28px 28px;
-
-                    &--text {
-                        font-family: Montserrat;
-                        font-weight: 600;
-                        font-style: SemiBold;
-                        font-size: 14px;
-                        line-height: 18px;
-                        letter-spacing: -2%;
-                        text-transform: uppercase;
-                        color: #111111;
-                        margin-top: 36px;
-                    }
                 }
+            }
+
+            &--text {
+                font-family: Montserrat;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 18px;
+                letter-spacing: -2%;
+                color: #111111;
+            }
+        }
+
+        &_container--card--1:hover {
+            .taste_container--card--1--front {
+                opacity: 0;
+            }
+
+            .taste_container--card--1--back {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        &_container--card--2:hover {
+            .taste_container--card--2--front {
+                opacity: 0;
+            }
+
+            .taste_container--card--2--back {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        &_container--card--3:hover {
+            .taste_container--card--3--front {
+                opacity: 0;
+            }
+
+            .taste_container--card--3--back {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        &_container--card--4:hover {
+            .taste_container--card--4--front {
+                opacity: 0;
+            }
+
+            .taste_container--card--4--back {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        &_container--card--1--front {
+            background: #FD9222;
+
+            &--title {
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 14px;
+                line-height: 18px;
+                letter-spacing: -2%;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                margin-top: 36px;
+            }
+        }
+
+        &_container--card--3--front {
+            background: #1E1823;
+
+            &--title {
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 14px;
+                line-height: 18px;
+                letter-spacing: -2%;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                margin-top: 36px;
+            }
+        }
+
+        &_container--card--2--front,
+        &_container--card--4--front {
+            border: 1px solid #FD9222;
+            background: #fff;
+
+            &--title {
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 14px;
+                line-height: 18px;
+                letter-spacing: -2%;
+                text-transform: uppercase;
+                color: #111111;
+                margin-top: 36px;
             }
         }
     }
