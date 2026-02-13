@@ -338,6 +338,16 @@ main .taste_container--card--1--front, main .taste_container--card--2--front, ma
   opacity: 1;
   z-index: 2;
 }
+main .taste_container--card--1--front--title, main .taste_container--card--2--front--title, main .taste_container--card--3--front--title, main .taste_container--card--4--front--title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: -3%;
+  text-transform: uppercase;
+  color: #111111;
+}
 main .taste_container--card--1--back, main .taste_container--card--2--back, main .taste_container--card--3--back, main .taste_container--card--4--back {
   background: #fff;
   opacity: 0;
@@ -372,6 +382,10 @@ main .taste_container--card--1--back--buttons--fill, main .taste_container--card
   vertical-align: middle;
   color: #FFFFFF;
 }
+main .taste_container--card--1--back--buttons--fill:hover, main .taste_container--card--2--back--buttons--fill:hover, main .taste_container--card--3--back--buttons--fill:hover, main .taste_container--card--4--back--buttons--fill:hover {
+  background-color: #FCF1E0;
+  color: #FD9222;
+}
 main .taste_container--card--1--back--buttons--outline, main .taste_container--card--2--back--buttons--outline, main .taste_container--card--3--back--buttons--outline, main .taste_container--card--4--back--buttons--outline {
   padding: 6px 16px;
   border-radius: 35px;
@@ -386,13 +400,23 @@ main .taste_container--card--1--back--buttons--outline, main .taste_container--c
   color: #111111;
   border: 1px solid #FD9222;
 }
+main .taste_container--card--1--back--buttons--outline:hover, main .taste_container--card--2--back--buttons--outline:hover, main .taste_container--card--3--back--buttons--outline:hover, main .taste_container--card--4--back--buttons--outline:hover {
+  background-color: #FD9222;
+  color: #FFFFFF;
+}
 main .taste_container--card--1--back--text, main .taste_container--card--2--back--text, main .taste_container--card--3--back--text, main .taste_container--card--4--back--text {
+  width: 100%;
+  max-width: 214px;
   font-family: Montserrat;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -2%;
   color: #111111;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  overflow: hidden;
 }
 main .taste_container--card--1:hover .taste_container--card--1--front {
   opacity: 0;
@@ -465,6 +489,106 @@ main .taste_container--card--2--front--title, main .taste_container--card--4--fr
   color: #111111;
   margin-top: 36px;
 }
+main .howItsMade {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-bottom: 41px;
+}
+main .howItsMade_title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -3%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #111111;
+  margin-bottom: 50px;
+}
+main .howItsMade_title--span {
+  color: #FD9222;
+}
+main .howItsMade_container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+main .howItsMade_container--video--laptop {
+  position: relative;
+}
+main .howItsMade_container--video--laptop img {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+}
+main .howItsMade_container--video--laptop svg {
+  position: absolute;
+  top: 178px;
+  left: 278px;
+  color: white;
+  transition: 0.3s;
+}
+main .howItsMade_container--video :hover svg {
+  color: #FD9222;
+}
+main .howItsMade_container--video--phone {
+  display: none;
+  position: relative;
+}
+main .howItsMade_container--video--phone img {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+}
+main .howItsMade_container--video--phone svg {
+  position: absolute;
+  top: 178px;
+  left: 278px;
+  color: white;
+  transition: 0.3s;
+}
+main .howItsMade_container--video :hover svg {
+  color: #FD9222;
+}
+main .howItsMade_container--box {
+  width: 100%;
+  max-width: 516px;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  padding: 32px;
+}
+main .howItsMade_container--box--title {
+  width: 100%;
+  max-width: 350px;
+  margin-bottom: 28px;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #111111;
+}
+main .howItsMade_container--box--list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  padding-left: 16px;
+}
+main .howItsMade_container--box--list--item {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -2%;
+  color: #111111;
+}
+main .howItsMade--grey {
+  width: 100%;
+  height: 51px;
+  background-color: #D9D9D9;
+  margin-top: 36px;
+}
 
 @media (max-width: 1024px) {
   .header_container {
@@ -496,6 +620,60 @@ main .taste_container--card--2--front--title, main .taste_container--card--4--fr
     row-gap: 50px;
   }
   main .benefits_container--line {
+    display: none;
+  }
+  main .taste_container {
+    width: 100%;
+    max-width: 706px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 32px;
+    row-gap: 32px;
+  }
+  main .taste_container--card--1, main .taste_container--card--2, main .taste_container--card--3, main .taste_container--card--4 {
+    width: 336px;
+    height: 270px;
+  }
+  main .taste_container--card--1--front, main .taste_container--card--2--front, main .taste_container--card--3--front, main .taste_container--card--4--front {
+    padding: 28px 56px 28px 28px;
+  }
+  main .taste_container--card--1--front img, main .taste_container--card--2--front img, main .taste_container--card--3--front img, main .taste_container--card--4--front img {
+    width: 224px;
+    height: 171px;
+    margin-left: 28px;
+  }
+  main .taste_container--card--1--front--title, main .taste_container--card--2--front--title, main .taste_container--card--3--front--title, main .taste_container--card--4--front--title {
+    margin-top: 25px;
+  }
+  main .taste_container--card--1--back, main .taste_container--card--2--back, main .taste_container--card--3--back, main .taste_container--card--4--back {
+    padding: 28px 56px 28px 28px;
+  }
+  main .taste_container--card--1--back--text, main .taste_container--card--2--back--text, main .taste_container--card--3--back--text, main .taste_container--card--4--back--text {
+    max-width: 280px;
+  }
+  main .taste_container--card--1, main .taste_container--card--4 {
+    order: 1;
+  }
+  main .taste_container--card--2, main .taste_container--card--3 {
+    order: 2;
+  }
+  main .howItsMade {
+    padding-bottom: 100px;
+  }
+  main .howItsMade_container {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  main .howItsMade_container--video img {
+    width: 614px;
+  }
+  main .howItsMade_container--video svg {
+    left: 285px;
+  }
+  main .howItsMade_container--box {
+    max-width: 614px;
+  }
+  main .howItsMade--grey {
     display: none;
   }
 }
@@ -561,5 +739,61 @@ main .taste_container--card--2--front--title, main .taste_container--card--4--fr
   main .start_container--box--scroll svg {
     width: 28px;
     height: 28px;
+  }
+  main .taste {
+    padding: 72px 0;
+  }
+  main .taste_title {
+    max-width: 283px;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -3%;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  main .taste_text {
+    max-width: 335px;
+    margin-top: 24px;
+    margin-bottom: 32px;
+  }
+  main .taste_container {
+    max-width: 335px;
+    row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  main .taste_container--card--3 {
+    order: 3;
+  }
+  main .taste_container--card--4 {
+    order: 4;
+  }
+  main .howItsMade_title {
+    margin-bottom: 32px;
+  }
+  main .howItsMade_container {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  main .howItsMade_container--video--laptop {
+    display: none;
+  }
+  main .howItsMade_container--video--phone {
+    display: block;
+  }
+  main .howItsMade_container--video--phone img {
+    width: 335px;
+  }
+  main .howItsMade_container--video--phone svg {
+    top: 233px;
+    left: 150px;
+  }
+  main .howItsMade_container--box {
+    max-width: 335px;
+    padding: 20px 14px;
   }
 }/*# sourceMappingURL=style.css.map */

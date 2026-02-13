@@ -49,6 +49,81 @@
                 }
             }
         }
+
+        .taste {
+            &_container {
+                width: 100%;
+                max-width: 706px;
+                margin: 0 auto;
+                flex-wrap: wrap;
+                gap: 32px;
+                row-gap: 32px;
+
+                &--card {
+
+                    &--1,
+                    &--2,
+                    &--3,
+                    &--4 {
+                        width: 336px;
+                        height: 270px;
+
+                        &--front {
+                            padding: 28px 56px 28px 28px;
+
+                            img {
+                                width: 224px;
+                                height: 171px;
+                                margin-left: 28px;
+                            }
+
+                            &--title {
+                                margin-top: 25px;
+                            }
+                        }
+
+                        &--back {
+                            padding: 28px 56px 28px 28px;
+
+                            &--text {
+                                max-width: 280px;
+                            }
+                        }
+                    }
+
+                    &--1,
+                    &--4 {
+                        order: 1;
+                    }
+
+                    &--2,
+                    &--3 {
+                        order: 2;
+                    }
+                }
+            }
+        }
+        .howItsMade{
+            padding-bottom: 100px;
+            &_container{
+                flex-direction: column;
+                row-gap: 20px;
+                &--video{
+                    img{
+                        width: 614px;
+                    }
+                    svg{
+                        left: 285px;
+                    }
+                }
+                &--box{
+                    max-width: 614px;
+                }
+            }
+            &--grey{
+                display: none;
+            }
+        }
     }
 }
 
@@ -137,7 +212,70 @@
                     }
                 }
             }
+        }
 
+        .taste {
+            padding: 72px 0;
+
+            &_title {
+                max-width: 283px;
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 20px;
+                line-height: 24px;
+                letter-spacing: -3%;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            &_text {
+                max-width: 335px;
+                margin-top: 24px;
+                margin-bottom: 32px;
+            }
+
+            &_container {
+                max-width: 335px;
+                row-gap: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                &--card--3{
+                    order: 3;
+                }
+                &--card--4{
+                    order: 4;
+                }
+            }
+        }
+        .howItsMade{
+            &_title{
+                margin-bottom: 32px;
+            }
+            &_container{
+                flex-direction: column;
+                row-gap: 20px;
+                &--video{
+                   &--laptop{
+                    display: none;
+                   }
+                   &--phone{
+                    display: block;
+                    img{
+                        width: 335px;
+                    }
+                    svg{
+                        top: 233px;
+                        left: 150px;
+                    }
+                   }
+                }
+                &--box{
+                    max-width: 335px;
+                    padding: 20px 14px;
+                }
+            }
         }
     }
 }
