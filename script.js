@@ -97,3 +97,12 @@ document.addEventListener('DOMContentLoaded', function () {
   startAutoplay();
 
 });
+
+
+/* =====плавная прокруткa===== */
+const button = document.getElementById('scrollButton');
+const target = document.getElementById('targetSection');
+
+button.addEventListener('click', () => {
+  target.scrollIntoView({ behavior: 'smooth' });
+});

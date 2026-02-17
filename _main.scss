@@ -100,14 +100,28 @@ main {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+                    cursor: pointer;
+                    color: #ffffff; // цвет по умолчанию
+                    transition: color 0.3s ease; // плавный переход цвета
 
                     &--text {
-                        font-family: Montserrat;
+                        font-family: Montserrat, sans-serif;
                         font-weight: 500;
                         font-size: 14px;
                         line-height: 18px;
                         letter-spacing: -3%;
-                        color: #FFFFFF;
+                        transition: color 0.3s ease; // плавный переход текста
+                    }
+
+                    svg {
+                        width: 38px;
+                        height: 38px;
+                        transition: fill 0.3s ease; // плавный переход для svg
+                        fill: currentColor; // наследует цвет родителя
+                    }
+
+                    &:hover {
+                        color: #FD9222; // при ховере весь текст и svg становятся оранжевыми
                     }
                 }
             }
@@ -683,6 +697,84 @@ main {
             line-height: 100%;
             letter-spacing: 0%;
             cursor: pointer;
+        }
+    }
+
+    .topSellers {
+        width: 100%;
+        max-width: 1136px;
+        margin: 0 auto;
+        padding-bottom: 128px;
+
+        &_title {
+            font-family: Montserrat;
+            font-weight: 600;
+            font-style: SemiBold;
+            font-size: 24px;
+            line-height: 28px;
+            letter-spacing: -3%;
+            text-align: center;
+            text-transform: uppercase;
+            color: #111111;
+            margin-bottom: 50px;
+
+            span {
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 24px;
+                line-height: 28px;
+                letter-spacing: -3%;
+                text-align: center;
+                text-transform: uppercase;
+                color: #FD9222;
+            }
+        }
+
+        &_container {
+            &--example {
+                display: flex;
+                gap: 16px;
+            }
+
+            &--info {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 32px;
+
+                &--text {
+                    width: 100%;
+                    max-width: 430px;
+                    font-family: Montserrat;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 14px;
+                    line-height: 18px;
+                    letter-spacing: -2%;
+                    color: #111111;
+                }
+
+                &--btn {
+                    font-family: Montserrat;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 100%;
+                    letter-spacing: 0%;
+                    color: #FFFFFF;
+                    padding: 14px 40px;
+                    border: none;
+                    border-radius: 100px;
+                    background-color: #FD9222;
+                    cursor: pointer;
+                    animation: infinite;
+                    transition-duration: 0.3s;
+                }
+
+                &--btn:hover {
+                    color: #FD9222;
+                    background-color: #FCF1E0;
+                }
+            }
         }
     }
 }
