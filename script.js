@@ -12,17 +12,48 @@ closeBtn.addEventListener('click', () => {
   document.body.style.overflow = '';
 });
 
+function nextSlide(btn) {
+  const container = btn.closest('.taste_text-slider-container');
+  const slidesWrapper = container.querySelector('.slides-wrapper');
+  const slides = container.querySelectorAll('.slide-text');
+  let currentSlide = container.dataset.current ? parseInt(container.dataset.current) : 0;
+
+  currentSlide = (currentSlide + 1) % slides.length;
+  container.dataset.current = currentSlide;
+  slidesWrapper.style.transform = `translateY(-${currentSlide * slides[0].offsetHeight}px)`;
+}
+
+function prevSlide(btn) {
+  const container = btn.closest('.taste_text-slider-container');
+  const slidesWrapper = container.querySelector('.slides-wrapper');
+  const slides = container.querySelectorAll('.slide-text');
+  let currentSlide = container.dataset.current ? parseInt(container.dataset.current) : 0;
+
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  container.dataset.current = currentSlide;
+  slidesWrapper.style.transform = `translateY(-${currentSlide * slides[0].offsetHeight}px)`;
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
   const track = document.querySelector('.products__track');
   const slider = document.querySelector('.products__slider');
+  const dotsContainer = document.querySelector('.products__dots');
 
   let cards = Array.from(document.querySelectorAll('.product-card'));
   const visibleCount = 4;
+  const originalCount = cards.length;
+
+  const cardWidth = 270;
+  const gap = 18;
+  const step = cardWidth + gap;
+
   let currentIndex = 0;
   let autoplay;
 
-  /* ===== CLONE FOR INFINITE ===== */
+  /* ===== INFINITE CLONE ===== */
   function setupInfinite() {
     const clonesBefore = cards.slice(-visibleCount).map(card => card.cloneNode(true));
     const clonesAfter = cards.slice(0, visibleCount).map(card => card.cloneNode(true));
@@ -36,12 +67,35 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSlider(false);
   }
 
-  /* ===== MOVE SLIDER ===== */
-  function updateSlider(animate = true) {
-    const cardWidth = cards[0].offsetWidth;
+  /* ===== CREATE DOTS ===== */
+  function createDots() {
+    for (let i = 0; i < originalCount; i++) {
+      const dot = document.createElement('button');
 
+      dot.addEventListener('click', function () {
+        currentIndex = i + visibleCount;
+        updateSlider();
+        resetAutoplay();
+      });
+
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  /* ===== UPDATE DOTS ===== */
+  function updateDots() {
+    const realIndex = (currentIndex - visibleCount + originalCount) % originalCount;
+    const dots = dotsContainer.querySelectorAll('button');
+
+    dots.forEach(dot => dot.classList.remove('active'));
+    if (dots[realIndex]) dots[realIndex].classList.add('active');
+  }
+
+  /* ===== MOVE ===== */
+  function updateSlider(animate = true) {
     track.style.transition = animate ? 'transform 0.5s ease' : 'none';
-    track.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
+    track.style.transform = `translateX(-${step * currentIndex}px)`;
+    updateDots();
   }
 
   function nextSlide() {
@@ -54,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSlider();
   }
 
-  /* ===== FIX INFINITE ===== */
+  /* ===== FIX LOOP ===== */
   track.addEventListener('transitionend', function () {
     if (currentIndex >= cards.length - visibleCount) {
       currentIndex = visibleCount;
@@ -70,21 +124,14 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ===== WHEEL ===== */
   slider.addEventListener('wheel', function (e) {
     e.preventDefault();
-
-    if (e.deltaY > 0) {
-      nextSlide();
-    } else {
-      prevSlide();
-    }
-
+    if (e.deltaY > 0) nextSlide();
+    else prevSlide();
     resetAutoplay();
   });
 
   /* ===== AUTOPLAY ===== */
   function startAutoplay() {
-    autoplay = setInterval(function () {
-      nextSlide();
-    }, 3000);
+    autoplay = setInterval(nextSlide, 3000);
   }
 
   function resetAutoplay() {
@@ -94,10 +141,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== INIT ===== */
   setupInfinite();
+  createDots();
   startAutoplay();
 
 });
-
 
 /* =====плавная прокруткa===== */
 const button = document.getElementById('scrollButton');

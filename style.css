@@ -225,25 +225,25 @@ main .start_container--box--scroll {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  color: #ffffff;
   transition: color 0.3s ease;
 }
-main .start_container--box--scroll--text {
+main .start_container--box--scroll .text {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -3%;
-  transition: color 0.3s ease;
+  transition: 0.3s ease;
+  color: #ffffff;
 }
-main .start_container--box--scroll svg {
-  width: 38px;
-  height: 38px;
-  transition: fill 0.3s ease;
-  fill: currentColor;
-}
-main .start_container--box--scroll:hover {
+main .start_container--box--scroll:hover .text {
   color: #FD9222;
+}
+main .start_container--box--scroll:hover .bg {
+  fill: #FD9222;
+}
+main .start_container--box--scroll:hover .arrow {
+  fill: #FFFFFF;
 }
 main .benefits {
   background-color: #1E1823;
@@ -604,11 +604,13 @@ main .howItsMade--grey {
 main .products {
   padding: 80px 0;
   background: #f8f8f8;
-  text-align: center;
 }
 main .products__container {
-  max-width: 1136px;
+  width: 1136px;
   margin: 0 auto;
+}
+main .products__slider {
+  width: 1136px;
   overflow: hidden;
 }
 main .products__title {
@@ -633,24 +635,20 @@ main .products__title span {
   text-transform: uppercase;
   color: #FD9222;
 }
-main .products__slider {
-  overflow: hidden;
-  position: relative;
-}
 main .products__track {
   display: flex;
-  align-items: center;
-  transition: transform 0.6s ease;
+  gap: 18px;
+  transition: transform 0.5s ease;
 }
 main .products__dots {
   margin-top: 30px;
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 main .products__dots button {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   border: none;
   background: #ccc;
@@ -658,26 +656,19 @@ main .products__dots button {
   transition: 0.3s;
 }
 main .products__dots button.active {
-  width: 24px;
+  width: 26px;
   border-radius: 20px;
   background: #f36f21;
 }
 main .product-card {
-  flex: 0 0 25%;
-  width: 100%;
-  max-width: px;
-  margin: 0 18;
-  padding: 32px 20px;
+  width: 270px;
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 32px;
+  box-sizing: border-box;
   text-align: center;
-  transition: 0.4s;
-  transform: scale(0.9);
-}
-main .product-card.active {
-  opacity: 1;
-  transform: scale(1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(17, 17, 17, 0.1019607843);
 }
 main .product-card h3 {
   font-family: Montserrat;
@@ -705,7 +696,7 @@ main .product-card button {
   background: #FAFAFA;
   border: 1px solid rgba(17, 17, 17, 0.1019607843);
   padding: 8px 20px;
-  border-radius: 20px;
+  border-radius: 100px;
   color: #111111;
   font-family: Montserrat;
   font-weight: 600;
@@ -853,6 +844,9 @@ main .topSellers_container--info--btn:hover {
   main .taste_container--card--2, main .taste_container--card--3 {
     order: 2;
   }
+  main .product-card {
+    width: calc((100% - 36px) / 3);
+  }
   main .howItsMade {
     padding-bottom: 100px;
   }
@@ -895,8 +889,11 @@ main .topSellers_container--info--btn:hover {
     letter-spacing: -2%;
     vertical-align: middle;
   }
+  main .benefits_container {
+    justify-content: center;
+  }
   main .product-card {
-    flex: 0 0 100%;
+    width: calc((100% - 18px) / 2);
   }
   main .start_container {
     max-width: 335px;

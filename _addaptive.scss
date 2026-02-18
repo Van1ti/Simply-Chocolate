@@ -108,6 +108,10 @@
             }
         }
 
+        .product-card {
+            width: calc((100% - 36px) / 3); // 3 карточки, 2 gap по 18
+        }
+
         .howItsMade {
             padding-bottom: 100px;
 
@@ -167,8 +171,12 @@
     }
 
     main {
+        .benefits_container {
+            justify-content: center;
+        }
+
         .product-card {
-            flex: 0 0 100%;
+            width: calc((100% - 18px) / 2); // 2 карточки
         }
 
         .start {
