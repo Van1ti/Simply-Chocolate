@@ -22,9 +22,6 @@
     }
 
     main {
-        .product-card {
-            flex: 0 0 50%;
-        }
 
         .start {
             &_container {
@@ -108,8 +105,21 @@
             }
         }
 
+        .product {
+            &__title {
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 20px;
+                line-height: 24px;
+                letter-spacing: -3%;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+
         .product-card {
-            width: calc((100% - 36px) / 3); // 3 карточки, 2 gap по 18
+            flex: 0 0 calc((100% - 36px) / 3);
         }
 
         .howItsMade {
@@ -176,7 +186,7 @@
         }
 
         .product-card {
-            width: calc((100% - 18px) / 2); // 2 карточки
+            flex: 0 0 calc((100% - 18px) / 2);
         }
 
         .start {

@@ -42,37 +42,92 @@ document.addEventListener('DOMContentLoaded', function () {
   const slider = document.querySelector('.products__slider');
   const dotsContainer = document.querySelector('.products__dots');
 
-  let cards = Array.from(document.querySelectorAll('.product-card'));
-  const visibleCount = 4;
-  const originalCount = cards.length;
-
-  const cardWidth = 270;
-  const gap = 18;
-  const step = cardWidth + gap;
+  const originalCards = Array.from(document.querySelectorAll('.product-card'));
+  const originalCount = originalCards.length;
 
   let currentIndex = 0;
+  let visibleCount = getVisibleCount();
   let autoplay;
 
-  /* ===== INFINITE CLONE ===== */
-  function setupInfinite() {
-    const clonesBefore = cards.slice(-visibleCount).map(card => card.cloneNode(true));
-    const clonesAfter = cards.slice(0, visibleCount).map(card => card.cloneNode(true));
+  /* ==== сколько видно ==== */
+  function getVisibleCount() {
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 2;
+    if (window.innerWidth <= 1024) return 3;
+    return 4;
+  }
 
-    clonesBefore.forEach(clone => track.prepend(clone));
-    clonesAfter.forEach(clone => track.appendChild(clone));
+  /* ==== пересборка infinite ==== */
+  function buildSlider() {
 
-    cards = Array.from(document.querySelectorAll('.product-card'));
+    visibleCount = getVisibleCount();
+    track.innerHTML = '';
+
+    const clonesBefore = originalCards
+      .slice(-visibleCount)
+      .map(card => card.cloneNode(true));
+
+    const clonesAfter = originalCards
+      .slice(0, visibleCount)
+      .map(card => card.cloneNode(true));
+
+    clonesBefore.forEach(card => track.appendChild(card));
+    originalCards.forEach(card => track.appendChild(card));
+    clonesAfter.forEach(card => track.appendChild(card));
+
     currentIndex = visibleCount;
-
     updateSlider(false);
   }
 
-  /* ===== CREATE DOTS ===== */
+  /* ==== ширина карточки ==== */
+  function getCardWidth() {
+    const card = track.querySelector('.product-card');
+    const gap = parseInt(getComputedStyle(track).gap);
+    return card.getBoundingClientRect().width + gap;
+  }
+
+  /* ==== движение ==== */
+  function updateSlider(animate = true) {
+    const width = getCardWidth();
+    track.style.transition = animate ? 'transform 0.6s ease' : 'none';
+    track.style.transform = `translateX(-${width * currentIndex}px)`;
+    updateDots();
+  }
+
+  function next() {
+    currentIndex++;
+    updateSlider();
+  }
+
+  function prev() {
+    currentIndex--;
+    updateSlider();
+  }
+
+  /* ==== фиксим infinite ==== */
+  track.addEventListener('transitionend', () => {
+
+    const total = track.querySelectorAll('.product-card').length;
+
+    if (currentIndex >= total - visibleCount) {
+      currentIndex = visibleCount;
+      updateSlider(false);
+    }
+
+    if (currentIndex < visibleCount) {
+      currentIndex = total - visibleCount * 2;
+      updateSlider(false);
+    }
+  });
+
+  /* ==== точки ==== */
   function createDots() {
+    dotsContainer.innerHTML = '';
+
     for (let i = 0; i < originalCount; i++) {
       const dot = document.createElement('button');
 
-      dot.addEventListener('click', function () {
+      dot.addEventListener('click', () => {
         currentIndex = i + visibleCount;
         updateSlider();
         resetAutoplay();
@@ -82,56 +137,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  /* ===== UPDATE DOTS ===== */
   function updateDots() {
-    const realIndex = (currentIndex - visibleCount + originalCount) % originalCount;
+    const real =
+      (currentIndex - visibleCount + originalCount) % originalCount;
+
     const dots = dotsContainer.querySelectorAll('button');
-
     dots.forEach(dot => dot.classList.remove('active'));
-    if (dots[realIndex]) dots[realIndex].classList.add('active');
+
+    if (dots[real]) dots[real].classList.add('active');
   }
 
-  /* ===== MOVE ===== */
-  function updateSlider(animate = true) {
-    track.style.transition = animate ? 'transform 0.5s ease' : 'none';
-    track.style.transform = `translateX(-${step * currentIndex}px)`;
-    updateDots();
-  }
-
-  function nextSlide() {
-    currentIndex++;
-    updateSlider();
-  }
-
-  function prevSlide() {
-    currentIndex--;
-    updateSlider();
-  }
-
-  /* ===== FIX LOOP ===== */
-  track.addEventListener('transitionend', function () {
-    if (currentIndex >= cards.length - visibleCount) {
-      currentIndex = visibleCount;
-      updateSlider(false);
-    }
-
-    if (currentIndex < visibleCount) {
-      currentIndex = cards.length - visibleCount * 2;
-      updateSlider(false);
-    }
-  });
-
-  /* ===== WHEEL ===== */
-  slider.addEventListener('wheel', function (e) {
+  /* ==== колесо ==== */
+  slider.addEventListener('wheel', (e) => {
     e.preventDefault();
-    if (e.deltaY > 0) nextSlide();
-    else prevSlide();
+    e.deltaY > 0 ? next() : prev();
     resetAutoplay();
   });
 
-  /* ===== AUTOPLAY ===== */
+  /* ==== autoplay ==== */
   function startAutoplay() {
-    autoplay = setInterval(nextSlide, 3000);
+    autoplay = setInterval(next, 3000);
   }
 
   function resetAutoplay() {
@@ -139,12 +164,18 @@ document.addEventListener('DOMContentLoaded', function () {
     startAutoplay();
   }
 
-  /* ===== INIT ===== */
-  setupInfinite();
+  /* ==== resize фикс ==== */
+  window.addEventListener('resize', () => {
+    buildSlider();
+  });
+
+  /* ==== INIT ==== */
+  buildSlider();
   createDots();
   startAutoplay();
 
 });
+
 
 /* =====плавная прокруткa===== */
 const button = document.getElementById('scrollButton');
@@ -152,4 +183,39 @@ const target = document.getElementById('targetSection');
 
 button.addEventListener('click', () => {
   target.scrollIntoView({ behavior: 'smooth' });
+});
+
+
+/* =====topSellers modal===== */
+document.addEventListener("DOMContentLoaded", function () {
+
+  const openBtn = document.getElementById("openModalBtn");
+  const modal1 = document.getElementById("modal1");
+  const modal2 = document.getElementById("modal2");
+  const close1 = document.getElementById("close1");
+  const close2 = document.getElementById("close2");
+  const form = document.getElementById("buyForm");
+
+  // Открыть модалку
+  openBtn.addEventListener("click", function () {
+    modal1.classList.add("active");
+  });
+
+  // Закрыть первую
+  close1.addEventListener("click", function () {
+    modal1.classList.remove("active");
+  });
+
+  // Закрыть вторую
+  close2.addEventListener("click", function () {
+    modal2.classList.remove("active");
+  });
+
+  // Submit → открыть вторую
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    modal1.classList.remove("active");
+    modal2.classList.add("active");
+  });
+
 });
