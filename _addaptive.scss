@@ -1,3 +1,38 @@
+@media (max-width: 1160px) {
+    main {
+        .topSellers {
+            &_container {
+                max-width: 704px;
+                margin: 0 auto;
+
+                &--example {
+                    &--chocolate {
+
+                        &-1,
+                        &-2,
+                        &-3 {
+                            width: 344px;
+                            height: 464px;
+                            margin: 0 auto;
+                        }
+                    }
+
+                    &--chocolate-3 {
+                        display: none;
+                    }
+                }
+
+                &--info {
+                    &--text {
+                        width: 100%;
+                        max-width: 306px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 1024px) {
     .header {
         &_container {
@@ -116,10 +151,12 @@
                 text-align: center;
                 text-transform: uppercase;
             }
-            &__container{
+
+            &__container {
                 max-width: 500px;
             }
-            &__scroll{
+
+            &__scroll {
                 max-width: 500px;
             }
         }
@@ -152,6 +189,25 @@
 
             &--grey {
                 display: none;
+            }
+        }
+
+        .topSellers {
+            &_container {
+                &--example {
+                    &--chocolate-3 {
+                        display: none;
+                    }
+
+                    &--chocolate {
+
+                        &-1,
+                        &-2,
+                        &-3 {
+                            width: 344px;
+                        }
+                    }
+                }
             }
         }
     }
