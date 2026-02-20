@@ -7,6 +7,8 @@
     <title>Simply Chocolate</title>
     <link rel="icon" href="./img/icon-chocolate.svg" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
+    <!-- Стили для выбора телефона -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css" />
 </head>
 
 <body>
@@ -404,33 +406,94 @@
                         the coffee bean called Cacao. Cacao has
                         been around for thousands of years and was first discovered by the Native American tribe called
                         the Mayans.</p>
-                    <div><button id="openModalBtn" class="topSellers_container--info--btn">Buy now</button></div>
+                    <div><button id="openOrder" class="topSellers_container--info--btn">Buy now</button></div>
                 </div>
             </div>
         </section>
-        <!-- Первая модалка -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <span class="close" id="closeModal1">&times;</span>
-                <h2>Buy Now</h2>
-                <form id="buyForm">
-                    <input type="text" placeholder="Name" required>
-                    <input type="email" placeholder="Email" required>
-                    <button type="submit">Submit</button>
+        <!-- ORDER MODAL -->
+        <div class="modal" id="orderModal">
+            <div class="modal__box modal__box--order">
+                <button class="modal__close" id="closeOrder">&times;</button>
+
+                <h2 class="modal__title">BUY NOW</h2>
+
+                <div class="products">
+                    <div class="product">
+                        <img src="img/choco1.png" alt="">
+                        <span>100 g</span>
+                    </div>
+                    <div class="product">
+                        <img src="img/choco2.png" alt="">
+                        <span>200 g</span>
+                    </div>
+                    <div class="product">
+                        <img src="img/choco3.png" alt="">
+                        <span>300 g</span>
+                    </div>
+                </div>
+
+                <form class="form">
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <div class="form-row">
+                            <input type="text" placeholder="Enter your name">
+                            <input type="text" placeholder="Enter your surname">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone number</label>
+                        <input id="phoneInput" type="tel">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Card number</label>
+                        <div class="card">
+                            <input type="text" id="cardInput" placeholder="XXXX XXXX XXXX XXXX">
+                            <img id="cardIcon" src="img/default-card.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Comment</label>
+                        <textarea placeholder="Enter text"></textarea>
+                    </div>
+
+                    <button type="button" class="submit-btn" id="submitOrder">
+                        Submit
+                    </button>
+
                 </form>
             </div>
         </div>
 
-        <!-- Вторая модалка -->
-        <div id="modal2" class="modal">
-            <div class="modal-content">
-                <span class="close" id="closeModal2">&times;</span>
-                <h2>Спасибо за заказ!</h2>
-                <p>Мы свяжемся с вами.</p>
+        <!-- SUCCESS MODAL -->
+        <div class="modal" id="successModal">
+            <div class="modal__box modal__box--success">
+                <button class="modal__close modal__close--white" id="closeSuccess">
+                    &times;
+                </button>
+
+                <img src="img/chocolate.png" class="success-img" alt="">
+
+                <h2>THANK YOU!</h2>
+                <p>
+                    We are glad that you ordered our chocolate and we are giving you
+                    a <strong>20% discount</strong> on all our products.
+                </p>
             </div>
         </div>
     </main>
+
     <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"></script>
 </body>
 
 </html>

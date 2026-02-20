@@ -187,35 +187,75 @@ button.addEventListener('click', () => {
 
 
 /* =====topSellers modal===== */
-document.addEventListener("DOMContentLoaded", function () {
+const orderModal = document.getElementById("orderModal");
+const successModal = document.getElementById("successModal");
 
-  const openBtn = document.getElementById("openModalBtn");
-  const modal1 = document.getElementById("modal1");
-  const modal2 = document.getElementById("modal2");
-  const close1 = document.getElementById("close1");
-  const close2 = document.getElementById("close2");
-  const form = document.getElementById("buyForm");
+document.getElementById("openOrder").onclick = () => {
+  orderModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+};
 
-  // Открыть модалку
-  openBtn.addEventListener("click", function () {
-    modal1.classList.add("active");
-  });
+document.getElementById("closeOrder").onclick = () => {
+  orderModal.classList.remove("active");
+  document.body.style.overflow = "";
+};
 
-  // Закрыть первую
-  close1.addEventListener("click", function () {
-    modal1.classList.remove("active");
-  });
+document.getElementById("submitOrder").onclick = () => {
+  orderModal.classList.remove("active");
+  successModal.classList.add("active");
+};
 
-  // Закрыть вторую
-  close2.addEventListener("click", function () {
-    modal2.classList.remove("active");
-  });
+document.getElementById("closeSuccess").onclick = () => {
+  successModal.classList.remove("active");
+  document.body.style.overflow = "";
+};
 
-  // Submit → открыть вторую
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    modal1.classList.remove("active");
-    modal2.classList.add("active");
-  });
+/* =====topSellers modal phone===== */
+const phoneInput = document.querySelector("#phoneInput");
 
+const iti = window.intlTelInput(phoneInput, {
+  initialCountry: "auto",
+  separateDialCode: true,
+  nationalMode: false,
+  autoPlaceholder: "aggressive",
+  preferredCountries: ["ua", "pl", "de", "us"],
+
+  geoIpLookup: function (callback) {
+    fetch("https://ipapi.co/json")
+      .then(res => res.json())
+      .then(data => callback(data.country_code))
+      .catch(() => callback("ua"));
+  },
+
+  utilsScript:
+    "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
+});
+
+
+/* =====topSellers modal card===== */
+const cardInput = document.getElementById("cardInput");
+const cardIcon = document.getElementById("cardIcon");
+
+cardInput.addEventListener("input", (e) => {
+
+  let value = e.target.value.replace(/\D/g, "");
+
+  // формат 1234 5678 9012 3456
+  value = value.replace(/(.{4})/g, "$1 ").trim();
+  e.target.value = value;
+
+  const raw = value.replace(/\s/g, "");
+
+  if (/^4/.test(raw)) {
+    cardIcon.src = "img/visa.png";
+  } 
+  else if (/^5[1-5]/.test(raw)) {
+    cardIcon.src = "img/mastercard.png";
+  } 
+  else if (/^3[47]/.test(raw)) {
+    cardIcon.src = "img/amex.png";
+  } 
+  else {
+    cardIcon.src = "img/default-card.png";
+  }
 });

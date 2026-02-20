@@ -116,6 +116,12 @@
                 text-align: center;
                 text-transform: uppercase;
             }
+            &__container{
+                max-width: 500px;
+            }
+            &__scroll{
+                max-width: 500px;
+            }
         }
 
         .product-card {
