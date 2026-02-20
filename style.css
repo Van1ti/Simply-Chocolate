@@ -829,71 +829,137 @@ main .modal.active {
   visibility: visible;
 }
 main .modal__box {
-  background: #fff;
-  border-radius: 20px;
-  padding: 40px;
+  background: #FAFAFA;
+  border-radius: 15px;
+  padding: 48px;
   width: 600px;
   position: relative;
   transform: scale(0.8);
   transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .modal.active main .modal__box {
   transform: scale(1);
 }
 main .modal__box--success {
   background: #fd9222;
-  color: #fff;
-  text-align: center;
-  width: 500px;
+  width: 516px;
+  height: 414px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 154px 44px 154px 163px;
 }
-main .modal__close {
+main .modal__box--success img {
   position: absolute;
-  top: 15px;
+  left: -1px;
+  bottom: -1px;
+}
+main .modal__box--success h2 {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -2%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+main .modal__box--success p {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -2%;
+  color: #FFFFFF;
+  width: 309px;
+}
+main .modal__box--success p span {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: -2%;
+}
+main .modal__close--svg {
+  position: absolute;
+  top: 20px;
   right: 20px;
+  background-color: #FD9222;
   border: none;
-  background: none;
-  font-size: 22px;
+  padding: 0;
   cursor: pointer;
 }
-main .modal__close--white {
-  color: #fff;
+main .modal__close--svg svg {
+  display: block;
+  background-color: #FD9222;
+  border: none;
 }
 main .modal__title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -3%;
   text-align: center;
-  margin-bottom: 25px;
+  text-transform: uppercase;
+  color: #111111;
+  margin-bottom: 32px;
 }
-main .products {
+main .modal__title span {
+  color: #FD9222;
+}
+main .modal-products {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
+  gap: 16px;
+  margin-bottom: 40px;
 }
-main .product {
-  background: #fafafa;
+main .modal-product {
+  background: #fff;
   border-radius: 15px;
   padding: 15px;
   text-align: center;
   cursor: pointer;
   transition: 0.2s;
+  border: 1px solid rgba(17, 17, 17, 0.1019607843);
 }
-main .product:hover {
+main .modal-product:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-main .product img {
-  width: 70px;
-}
-main .product span {
+main .modal-product span {
+  background-color: #FAFAFA;
   display: block;
+  border-radius: 100px;
+  border: 1px solid rgba(17, 17, 17, 0.1019607843);
   margin-top: 10px;
+  font-family: Montserrat;
+  font-weight: 600;
   font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #111111;
+  padding: 8px 27px;
 }
 main .form-group {
   margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 main .form-group label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 6px;
+  font-family: Montserrat;
   font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -2%;
+  color: #000000;
+}
+main .form-group input {
+  height: 66px;
 }
 main .form-row {
   display: flex;
@@ -901,6 +967,20 @@ main .form-row {
 }
 main .form-row input {
   flex: 1;
+  width: 246px;
+  height: 66px;
+}
+main .submit-btn {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+  background-color: #FD9222;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 100px;
 }
 main input,
 main textarea {
@@ -909,10 +989,21 @@ main textarea {
   border-radius: 10px;
   border: 1px solid #e0e0e0;
   font-size: 14px;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 18px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: -2%;
+  vertical-align: middle;
+  color: rgba(64, 64, 64, 0.3019607843);
 }
 main textarea {
   resize: none;
-  height: 80px;
+  height: 137px;
+}
+main .modal__success {
+  width: 516px;
 }
 main .card {
   position: relative;
