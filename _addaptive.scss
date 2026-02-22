@@ -161,8 +161,8 @@
             }
         }
 
-        .product-card {
-            flex: 0 0 calc((100% - 36px) / 3);
+        .products__slider {
+            width: 558px;
         }
 
         .howItsMade {
@@ -243,12 +243,99 @@
     }
 
     main {
+        .modal__box {
+            max-width: 311px;
+            padding: 32px 24px;
+        }
+
+        .modal__box {
+            max-width: 311px;
+            padding: 32px 24px;
+        }
+
+        .modal-products {
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
+        .slider {
+            position: relative;
+            height: 260px;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            background: #fff;
+            border-radius: 15px;
+            border: 1px solid #1111111A;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+            transform: scale(0.95);
+            transition: 0.4s ease;
+
+            img {
+                width: 150px;
+                margin-bottom: 24px;
+            }
+
+            span {
+                background: #FAFAFA;
+                border: 1px solid #1111111A;
+                border-radius: 100px;
+                padding: 8px 24px;
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+            &.active {
+                opacity: 1;
+                transform: scale(1);
+                z-index: 2;
+            }
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+
+            .dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                border: none;
+                background: #d9d9d9;
+                cursor: pointer;
+
+                &.active {
+                    width: 28px;
+                    border-radius: 20px;
+                    background: #FD9222;
+                }
+            }
+        }
+
+        .form-row {
+            flex-direction: column;
+
+            input {
+                width: 100%;
+            }
+        }
+
         .benefits_container {
             justify-content: center;
         }
 
-        .product-card {
-            flex: 0 0 calc((100% - 18px) / 2);
+        .products__slider {
+            width: 270px;
         }
 
         .start {
@@ -377,6 +464,33 @@
                 &--box {
                     max-width: 335px;
                     padding: 20px 14px;
+                }
+            }
+        }
+
+        .topSellers {
+            &_title {
+                margin-bottom: 32px;
+            }
+
+            &_container {
+                &--example {
+                    &--chocolate-2 {
+                        display: none;
+                    }
+                }
+
+                &--info {
+                    flex-direction: column;
+                    align-items: center;
+                    row-gap: 20px;
+
+                    &--chocolate-2 {
+                        display: block;
+                        width: 335px;
+                        height: 464px;
+                        margin-top: 12px;
+                    }
                 }
             }
         }

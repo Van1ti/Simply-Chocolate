@@ -635,9 +635,9 @@ main {
         }
 
         &__slider {
-            width: 100%;
-            max-width: 1136px;
             overflow: hidden;
+            margin: 0 auto;
+            width: 1134px; // 4 карточки
         }
 
         &__title {
@@ -667,7 +667,7 @@ main {
         &__track {
             display: flex;
             gap: 18px;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         &__dots {
@@ -695,7 +695,8 @@ main {
     }
 
     .product-card {
-        flex: 0 0 calc((100% - 54px) / 4); // 4 карточки (3 gap по 18)
+        flex-shrink: 0;
+        height: 364px;
         width: 100%;
         max-width: 270px;
         background: #fff;
@@ -800,6 +801,10 @@ main {
                 justify-content: space-between;
                 margin-top: 32px;
 
+                &--chocolate-2 {
+                    display: none;
+                }
+
                 &--text {
                     width: 100%;
                     max-width: 430px;
@@ -866,6 +871,8 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-height: 90vh; // 🔥 ограничение высоты
+        overflow-y: auto; // 🔥 вертикальный скролл
 
         .modal.active & {
             transform: scale(1);
