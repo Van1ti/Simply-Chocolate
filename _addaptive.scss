@@ -1,5 +1,30 @@
 @media (max-width: 1160px) {
     main {
+        .product {
+            &__title {
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 20px;
+                line-height: 24px;
+                letter-spacing: -3%;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            &__container {
+                max-width: 500px;
+            }
+
+            &__scroll {
+                max-width: 500px;
+            }
+        }
+
+        .products__slider {
+            width: 558px;
+        }
+
         .topSellers {
             &_container {
                 max-width: 704px;

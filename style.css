@@ -1079,8 +1079,129 @@ main .card img {
   transform: translateY(-50%);
   width: 40px;
 }
+main .loved {
+  width: 100%;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+main .loved_title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -3%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #111111;
+  margin-bottom: 50px;
+}
+main .loved_title span {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -3%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fd9222;
+}
+main .slider__container {
+  width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+main .slider__viewport {
+  overflow: hidden;
+  height: 242px;
+  margin: 0 auto;
+}
+main .slider__track {
+  display: flex;
+  gap: 18px;
+  transition: transform 0.5s ease;
+  margin: 0 auto;
+}
+main .slider__buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+main .slider__buttons button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  transition: 0.3s;
+}
+main .slider__buttons button.active {
+  width: 26px;
+  border-radius: 20px;
+  background: #FD9222;
+}
+main .card {
+  width: 360px;
+  height: 200px;
+  flex-shrink: 0;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(17, 17, 17, 0.1019607843);
+  border-radius: 15px;
+  position: relative;
+}
+main .card h3 {
+  margin-top: 56px;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #111111;
+  margin-bottom: 24px;
+}
+main .card p {
+  width: 312px;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -2%;
+  text-align: center;
+  color: rgba(17, 17, 17, 0.6980392157);
+  margin: 0 auto;
+}
+main .card img {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: -41px;
+  left: 140px;
+}
 
 @media (max-width: 1160px) {
+  main .product__title {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -3%;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  main .product__container {
+    max-width: 500px;
+  }
+  main .product__scroll {
+    max-width: 500px;
+  }
+  main .products__slider {
+    width: 558px;
+  }
   main .topSellers_container {
     max-width: 704px;
     margin: 0 auto;

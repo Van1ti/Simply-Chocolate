@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ===== autoplay ===== */
   function startAutoplay() {
-    autoplay = setInterval(next, 3000);
+    autoplay = setInterval(next, 4000);
   }
 
   function resetAutoplay() {
@@ -161,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
     e.deltaY > 0 ? next() : prev();
     resetAutoplay();
   });
+  
 
   /* ===== resize (только пересчёт позиции) ===== */
   window.addEventListener('resize', () => {
@@ -216,25 +217,193 @@ const total = slides.length;
 
 function showSlide(index) {
 
-    slides.forEach(slide => slide.classList.remove("active"));
-    dots.forEach(dot => dot.classList.remove("active"));
+  slides.forEach(slide => slide.classList.remove("active"));
+  dots.forEach(dot => dot.classList.remove("active"));
 
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
 
-    current = index;
+  current = index;
 }
 
 // Клик по точкам
 dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-        showSlide(index);
-    });
+  dot.addEventListener("click", () => {
+    showSlide(index);
+  });
 });
 
 // Автопрокрутка
 setInterval(() => {
-    let next = current + 1;
-    if (next >= total) next = 0;
-    showSlide(next);
+  let next = current + 1;
+  if (next >= total) next = 0;
+  showSlide(next);
 }, 4000);
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const track = document.querySelector('.slider__track');
+    const viewport = document.querySelector('.slider__viewport');
+    const buttonsContainer = document.querySelector('.slider__buttons');
+
+    const originalCards = Array.from(track.children);
+    const visibleCount = 3;
+    const originalCount = originalCards.length; // 6
+    const maxIndex = originalCount - visibleCount; // 3
+
+    const cardWidth = 270;
+    const gap = 18;
+    const step = cardWidth + gap;
+
+    let currentIndex = visibleCount;
+    let autoplay;
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+
+    /* ===== Infinite ===== */
+
+    const clonesBefore = originalCards
+        .slice(-visibleCount)
+        .map(card => card.cloneNode(true));
+
+    const clonesAfter = originalCards
+        .slice(0, visibleCount)
+        .map(card => card.cloneNode(true));
+
+    clonesBefore.forEach(card => track.prepend(card));
+    clonesAfter.forEach(card => track.append(card));
+
+    move(false);
+
+    /* ===== Кнопки ===== */
+
+    for (let i = 0; i <= maxIndex; i++) {
+
+        const btn = document.createElement('button');
+        if (i === 0) btn.classList.add('active');
+
+        btn.addEventListener('click', () => {
+            currentIndex = i + visibleCount;
+            move();
+            updateButtons();
+            resetAutoplay();
+        });
+
+        buttonsContainer.appendChild(btn);
+    }
+
+    function updateButtons() {
+
+        const realIndex =
+            (currentIndex - visibleCount + originalCount) % originalCount;
+
+        const buttons = buttonsContainer.querySelectorAll('button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        if (realIndex <= maxIndex) {
+            buttons[realIndex].classList.add('active');
+        }
+    }
+
+    /* ===== Move ===== */
+
+    function move(animate = true) {
+        track.style.transition = animate ? 'transform 0.5s ease' : 'none';
+        track.style.transform = `translateX(-${step * currentIndex}px)`;
+    }
+
+    function next() {
+        currentIndex++;
+        move();
+    }
+
+    function prev() {
+        currentIndex--;
+        move();
+    }
+
+    /* ===== Infinite Fix ===== */
+
+    track.addEventListener('transitionend', () => {
+
+        if (currentIndex >= originalCount + visibleCount) {
+            currentIndex = visibleCount;
+            move(false);
+        }
+
+        if (currentIndex < visibleCount) {
+            currentIndex = originalCount;
+            move(false);
+        }
+
+        updateButtons();
+    });
+
+    /* ===== Autoplay ===== */
+
+    function startAutoplay() {
+        autoplay = setInterval(next, 4000);
+    }
+
+    function resetAutoplay() {
+        clearInterval(autoplay);
+        startAutoplay();
+    }
+
+    viewport.addEventListener('mouseenter', () => clearInterval(autoplay));
+    viewport.addEventListener('mouseleave', startAutoplay);
+
+    /* ===== Wheel ===== */
+
+    viewport.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        e.deltaY > 0 ? next() : prev();
+        resetAutoplay();
+    });
+
+    /* ===== Drag ===== */
+
+    viewport.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX;
+        currentTranslate = -step * currentIndex;
+        track.style.transition = 'none';
+        viewport.style.cursor = 'grabbing';
+    });
+
+    viewport.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const diff = e.pageX - startX;
+        track.style.transform = `translateX(${currentTranslate + diff}px)`;
+    });
+
+    viewport.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        viewport.style.cursor = 'grab';
+
+        const diff = e.pageX - startX;
+
+        if (Math.abs(diff) > 50) {
+            diff < 0 ? next() : prev();
+        } else {
+            move();
+        }
+
+        resetAutoplay();
+    });
+
+    viewport.addEventListener('mouseleave', () => {
+        if (isDragging) {
+            isDragging = false;
+            move();
+            viewport.style.cursor = 'grab';
+        }
+    });
+
+    /* ===== INIT ===== */
+
+    startAutoplay();
+
+});
