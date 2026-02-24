@@ -1138,122 +1138,123 @@ main {
         }
     }
 
-    .loved {
-        width: 100%;
-        max-width: 1136px;
-        margin: 0 auto;
+    $container-width: 1136px;
+    $gap: 28px;
+    $transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 
-        &_title {
-            font-family: Montserrat;
-            font-weight: 600;
-            font-style: SemiBold;
-            font-size: 24px;
-            line-height: 28px;
-            letter-spacing: -3%;
-            text-align: center;
-            text-transform: uppercase;
-            color: #111111;
-            margin-bottom: 50px;
-
-            span {
-                font-family: Montserrat;
-                font-weight: 600;
-                font-style: SemiBold;
-                font-size: 24px;
-                line-height: 28px;
-                letter-spacing: -3%;
-                text-align: center;
-                text-transform: uppercase;
-                color: #fd9222;
-            }
-        }
-    }
-
-    .slider {
+    .reviews {
+        padding: 100px 0;
+        background-color: #FAFAFA;
+        font-family: sans-serif;
 
         &__container {
-            width: 1100px;
+            max-width: $container-width;
             margin: 0 auto;
-            text-align: center;
+            padding: 0 15px;
+            position: relative;
         }
 
         &__viewport {
-            overflow: hidden;
-            height: 242px;
-            margin: 0 auto;
+            overflow: hidden; // Прячем лишние карты
+            cursor: grab;
+
+            &:active {
+                cursor: grabbing;
+            }
         }
 
         &__track {
             display: flex;
-            gap: 18px;
-            transition: transform 0.5s ease;
-            margin: 0 auto;
+            gap: $gap;
+            transition: $transition;
+            padding-top: 50px; // Место для аватарок
         }
 
-        &__buttons {
-            margin-top: 30px;
+        &__card {
+            background: #fff;
+            border: 1px solid rgba(17, 17, 17, 0.1);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            // Расчет для 3-х карточек:
+            flex: 0 0 calc((100% - #{$gap} * 2) / 3);
+            box-sizing: border-box;
+
+            @media (max-width: 1024px) {
+                flex: 0 0 calc((100% - #{$gap}) / 2); // 2 карточки
+            }
+
+            @media (max-width: 650px) {
+                flex: 0 0 100%; // 1 карточка
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                position: absolute;
+                top: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 5px solid #FAFAFA;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin: 20px 0 10px;
+            }
+
+            p {
+                font-size: 14px;
+                color: rgba(17, 17, 17, 0.6);
+                line-height: 1.6;
+            }
+        }
+
+        &__pagination {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+            margin-top: 40px;
 
-            button {
-                width: 10px;
-                height: 10px;
+            .dot {
+                width: 12px;
+                height: 12px;
                 border-radius: 50%;
+                background: rgba(17, 17, 17, 0.1);
                 border: none;
-                background: #ccc;
                 cursor: pointer;
                 transition: 0.3s;
 
                 &.active {
-                    width: 26px;
-                    border-radius: 20px;
                     background: #FD9222;
+                    width: 28px;
+                    border-radius: 10px;
+                }
+            }
+        }
+
+        &__footer {
+            text-align: center;
+            margin-top: 40px;
+
+            .btn-review {
+                padding: 14px 40px;
+                border: 2px solid #FD9222;
+                border-radius: 30px;
+                background: transparent;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 0.3s;
+
+                &:hover {
+                    background: #FD9222;
+                    color: #fff;
                 }
             }
         }
     }
 
-    .card {
-        width: 360px;
-        height: 200px;
-        flex-shrink: 0;
-        background-color: #FFFFFF;
-        border: 1px solid #1111111A;
-        border-radius: 15px;
-        position: relative;
 
-        h3 {
-            margin-top: 56px;
-            font-family: Montserrat;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 24px;
-            letter-spacing: 0%;
-            text-align: center;
-            color: #111111;
-            margin-bottom: 24px;
-        }
-
-        p {
-            width: 312px;
-            font-family: Montserrat;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 18px;
-            letter-spacing: -2%;
-            text-align: center;
-            color: #111111B2;
-            margin: 0 auto;
-        }
-
-        img {
-            width: 80px;
-            height: 80px;
-            position: absolute;
-            top: -41px;
-            left: 140px;
-        }
-
-    }
 }

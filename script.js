@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
     e.deltaY > 0 ? next() : prev();
     resetAutoplay();
   });
-  
+
 
   /* ===== resize (только пересчёт позиции) ===== */
   window.addEventListener('resize', () => {
@@ -242,168 +242,300 @@ setInterval(() => {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    const track = document.querySelector('.slider__track');
-    const viewport = document.querySelector('.slider__viewport');
-    const buttonsContainer = document.querySelector('.slider__buttons');
+  const track = document.querySelector('.slider__track');
+  const viewport = document.querySelector('.slider__viewport');
+  const buttonsContainer = document.querySelector('.slider__buttons');
 
-    const originalCards = Array.from(track.children);
-    const visibleCount = 3;
-    const originalCount = originalCards.length; // 6
-    const maxIndex = originalCount - visibleCount; // 3
+  const originalCards = Array.from(track.children);
+  const visibleCount = 3;
+  const originalCount = originalCards.length; // 6
+  const maxIndex = originalCount - visibleCount; // 3
 
-    const cardWidth = 270;
-    const gap = 18;
-    const step = cardWidth + gap;
+  const cardWidth = 270;
+  const gap = 18;
+  const step = cardWidth + gap;
 
-    let currentIndex = visibleCount;
-    let autoplay;
-    let isDragging = false;
-    let startX = 0;
-    let currentTranslate = 0;
+  let currentIndex = visibleCount;
+  let autoplay;
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
 
-    /* ===== Infinite ===== */
+  /* ===== Infinite ===== */
 
-    const clonesBefore = originalCards
-        .slice(-visibleCount)
-        .map(card => card.cloneNode(true));
+  const clonesBefore = originalCards
+    .slice(-visibleCount)
+    .map(card => card.cloneNode(true));
 
-    const clonesAfter = originalCards
-        .slice(0, visibleCount)
-        .map(card => card.cloneNode(true));
+  const clonesAfter = originalCards
+    .slice(0, visibleCount)
+    .map(card => card.cloneNode(true));
 
-    clonesBefore.forEach(card => track.prepend(card));
-    clonesAfter.forEach(card => track.append(card));
+  clonesBefore.forEach(card => track.prepend(card));
+  clonesAfter.forEach(card => track.append(card));
 
-    move(false);
+  move(false);
 
-    /* ===== Кнопки ===== */
+  /* ===== Кнопки ===== */
 
-    for (let i = 0; i <= maxIndex; i++) {
+  for (let i = 0; i <= maxIndex; i++) {
 
-        const btn = document.createElement('button');
-        if (i === 0) btn.classList.add('active');
+    const btn = document.createElement('button');
+    if (i === 0) btn.classList.add('active');
 
-        btn.addEventListener('click', () => {
-            currentIndex = i + visibleCount;
-            move();
-            updateButtons();
-            resetAutoplay();
-        });
-
-        buttonsContainer.appendChild(btn);
-    }
-
-    function updateButtons() {
-
-        const realIndex =
-            (currentIndex - visibleCount + originalCount) % originalCount;
-
-        const buttons = buttonsContainer.querySelectorAll('button');
-        buttons.forEach(btn => btn.classList.remove('active'));
-
-        if (realIndex <= maxIndex) {
-            buttons[realIndex].classList.add('active');
-        }
-    }
-
-    /* ===== Move ===== */
-
-    function move(animate = true) {
-        track.style.transition = animate ? 'transform 0.5s ease' : 'none';
-        track.style.transform = `translateX(-${step * currentIndex}px)`;
-    }
-
-    function next() {
-        currentIndex++;
-        move();
-    }
-
-    function prev() {
-        currentIndex--;
-        move();
-    }
-
-    /* ===== Infinite Fix ===== */
-
-    track.addEventListener('transitionend', () => {
-
-        if (currentIndex >= originalCount + visibleCount) {
-            currentIndex = visibleCount;
-            move(false);
-        }
-
-        if (currentIndex < visibleCount) {
-            currentIndex = originalCount;
-            move(false);
-        }
-
-        updateButtons();
+    btn.addEventListener('click', () => {
+      currentIndex = i + visibleCount;
+      move();
+      updateButtons();
+      resetAutoplay();
     });
 
-    /* ===== Autoplay ===== */
+    buttonsContainer.appendChild(btn);
+  }
 
-    function startAutoplay() {
-        autoplay = setInterval(next, 4000);
+  function updateButtons() {
+
+    const realIndex =
+      (currentIndex - visibleCount + originalCount) % originalCount;
+
+    const buttons = buttonsContainer.querySelectorAll('button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    if (realIndex <= maxIndex) {
+      buttons[realIndex].classList.add('active');
+    }
+  }
+
+  /* ===== Move ===== */
+
+  function move(animate = true) {
+    track.style.transition = animate ? 'transform 0.5s ease' : 'none';
+    track.style.transform = `translateX(-${step * currentIndex}px)`;
+  }
+
+  function next() {
+    currentIndex++;
+    move();
+  }
+
+  function prev() {
+    currentIndex--;
+    move();
+  }
+
+  /* ===== Infinite Fix ===== */
+
+  track.addEventListener('transitionend', () => {
+
+    if (currentIndex >= originalCount + visibleCount) {
+      currentIndex = visibleCount;
+      move(false);
     }
 
-    function resetAutoplay() {
-        clearInterval(autoplay);
-        startAutoplay();
+    if (currentIndex < visibleCount) {
+      currentIndex = originalCount;
+      move(false);
     }
 
-    viewport.addEventListener('mouseenter', () => clearInterval(autoplay));
-    viewport.addEventListener('mouseleave', startAutoplay);
+    updateButtons();
+  });
 
-    /* ===== Wheel ===== */
+  /* ===== Autoplay ===== */
 
-    viewport.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        e.deltaY > 0 ? next() : prev();
-        resetAutoplay();
-    });
+  function startAutoplay() {
+    autoplay = setInterval(next, 4000);
+  }
 
-    /* ===== Drag ===== */
-
-    viewport.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.pageX;
-        currentTranslate = -step * currentIndex;
-        track.style.transition = 'none';
-        viewport.style.cursor = 'grabbing';
-    });
-
-    viewport.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const diff = e.pageX - startX;
-        track.style.transform = `translateX(${currentTranslate + diff}px)`;
-    });
-
-    viewport.addEventListener('mouseup', (e) => {
-        if (!isDragging) return;
-        isDragging = false;
-        viewport.style.cursor = 'grab';
-
-        const diff = e.pageX - startX;
-
-        if (Math.abs(diff) > 50) {
-            diff < 0 ? next() : prev();
-        } else {
-            move();
-        }
-
-        resetAutoplay();
-    });
-
-    viewport.addEventListener('mouseleave', () => {
-        if (isDragging) {
-            isDragging = false;
-            move();
-            viewport.style.cursor = 'grab';
-        }
-    });
-
-    /* ===== INIT ===== */
-
+  function resetAutoplay() {
+    clearInterval(autoplay);
     startAutoplay();
+  }
+
+  viewport.addEventListener('mouseenter', () => clearInterval(autoplay));
+  viewport.addEventListener('mouseleave', startAutoplay);
+
+  /* ===== Wheel ===== */
+
+  viewport.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    e.deltaY > 0 ? next() : prev();
+    resetAutoplay();
+  });
+
+  /* ===== Drag ===== */
+
+  viewport.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX;
+    currentTranslate = -step * currentIndex;
+    track.style.transition = 'none';
+    viewport.style.cursor = 'grabbing';
+  });
+
+  viewport.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const diff = e.pageX - startX;
+    track.style.transform = `translateX(${currentTranslate + diff}px)`;
+  });
+
+  viewport.addEventListener('mouseup', (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    viewport.style.cursor = 'grab';
+
+    const diff = e.pageX - startX;
+
+    if (Math.abs(diff) > 50) {
+      diff < 0 ? next() : prev();
+    } else {
+      move();
+    }
+
+    resetAutoplay();
+  });
+
+  viewport.addEventListener('mouseleave', () => {
+    if (isDragging) {
+      isDragging = false;
+      move();
+      viewport.style.cursor = 'grab';
+    }
+  });
+
+  /* ===== INIT ===== */
+
+  startAutoplay();
 
 });
+const track = document.getElementById('slider-track');
+const container = document.getElementById('slider-container');
+const dots = document.querySelectorAll('.dot');
+let cards = Array.from(track.children);
+
+let currentIndex = 0; // Текущий индекс (0-5)
+let isDragging = false;
+let startX, currentTranslate, prevTranslate;
+let animationID;
+let autoPlayTimer;
+
+// --- INFINITE LOGIC (Клонирование) ---
+// Клонируем первые 3 и последние 3 для бесшовного перехода
+const cloneFirst = cards.slice(0, 3).map(card => card.cloneNode(true));
+const cloneLast = cards.slice(-3).map(card => card.cloneNode(true));
+
+cloneFirst.forEach(clone => track.appendChild(clone));
+cloneLast.reverse().forEach(clone => track.prepend(clone));
+
+// Обновляем список после клонирования для расчетов
+const allCards = document.querySelectorAll('.reviews__card');
+
+// --- ФУНКЦИИ УПРАВЛЕНИЯ ---
+function getCardWidth() {
+  return allCards[0].offsetWidth + 28; // Ширина + gap
+}
+
+function updateSlider(withAnimation = true) {
+  const width = getCardWidth();
+  track.style.transition = withAnimation ? 'transform 0.5s ease-out' : 'none';
+  // Сдвиг на индекс + 3 (так как в начале 3 клона)
+  track.style.transform = `translateX(${- (currentIndex + 3) * width}px)`;
+  updateDots();
+}
+
+function updateDots() {
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === (currentIndex % 4));
+  });
+}
+
+function nextSlide() {
+  currentIndex++;
+  updateSlider();
+  checkBoundary();
+}
+
+function prevSlide() {
+  currentIndex--;
+  updateSlider();
+  checkBoundary();
+}
+
+function checkBoundary() {
+  track.addEventListener('transitionend', () => {
+    const width = getCardWidth();
+    if (currentIndex >= cards.length) {
+      currentIndex = 0;
+      updateSlider(false);
+    }
+    if (currentIndex < 0) {
+      currentIndex = cards.length - 1;
+      updateSlider(false);
+    }
+  }, { once: true });
+}
+
+// --- СОБЫТИЯ ---
+
+// 1. Пагинация (4 кнопки)
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    currentIndex = i;
+    updateSlider();
+    stopAutoPlay();
+    startAutoPlay();
+  });
+});
+
+// 2. Autoplay
+const startAutoPlay = () => autoPlayTimer = setInterval(nextSlide, 4000);
+const stopAutoPlay = () => clearInterval(autoPlayTimer);
+
+// 3. Wheel Scroll
+container.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  stopAutoPlay();
+  e.deltaY > 0 ? nextSlide() : prevSlide();
+  startAutoPlay();
+}, { passive: false });
+
+// 4. Drag & Swipe
+container.addEventListener('mousedown', dragStart);
+container.addEventListener('touchstart', dragStart);
+container.addEventListener('mousemove', dragMove);
+container.addEventListener('touchmove', dragMove);
+window.addEventListener('mouseup', dragEnd);
+window.addEventListener('touchend', dragEnd);
+
+function dragStart(e) {
+  isDragging = true;
+  startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+  stopAutoPlay();
+  track.style.transition = 'none';
+}
+
+function dragMove(e) {
+  if (!isDragging) return;
+  const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+  const walk = x - startX;
+  const width = getCardWidth();
+  track.style.transform = `translateX(${- (currentIndex + 3) * width + walk}px)`;
+}
+
+function dragEnd(e) {
+  if (!isDragging) return;
+  isDragging = false;
+  const width = getCardWidth();
+  const currentPos = parseInt(track.style.transform.replace('translateX(', ''));
+  const movedBy = currentPos + (currentIndex + 3) * width;
+
+  if (movedBy < -100) nextSlide();
+  else if (movedBy > 100) prevSlide();
+  else updateSlider();
+
+  startAutoPlay();
+}
+
+// Инициализация
+window.addEventListener('resize', () => updateSlider(false));
+updateSlider(false);
+startAutoPlay();

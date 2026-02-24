@@ -533,52 +533,63 @@
                 </div>
             </div>
         </div>
-        <section class="loved">
-            <h2 class="loved_title"><span>chocolate </span>is loved</h2>
-            <div class="slider">
-                <div class="slider__container">
-
-                    <div class="slider__viewport">
-                        <div class="slider__track">
-
-                            <div class="card">
-                                <img src="./img/victoria-chocolate.png" alt="victoria">
-                                <h3>Victoria Dobrzhanska</h3>
-                                <p>I love this chocolate bar. Perfect combination of light crispy wafer, covered in a thin layer chocolate.</p>
-                            </div>
-                            <div class="card">
-                                <img src="./img/nazar-chocolate.png" alt="nazar">
-                                <h3>Nazar Babenko</h3>
-                                <p>This chocolate confection is a delight! A delight! The wafer is light and crisp, the hazelnut cream is smooth, and the chocolate is good.</p>
-                            </div>
-                            <div class="card">
-                                <img src="./img/olena-chocolate.png" alt="olena">
-                                <h3>Olena Kampusch</h3>
-                                <p> Chocolate is a family favourite treat. Love the delicious smooth chocolate and the creaminess inside. The wafer is soft but crunchy.</p>
-                            </div>
-                            <div class="card">
-                                <img src="./img/natalia-chocolate.png" alt="natalia">
-                                <h3>Natalia Sus</h3>
-                                <p>The chocolate assortment was delicious. Both dark and milk chocolate pieces were smooth and just right on the sweetness level. </p>
-                            </div>
-                            <div class="card">
-                                <img src="./img/danilo-chocolate.png" alt="danilo">
-                                <h3>Danilo Nottingham</h3>
-                                <p>This is delicious. It so rich and flavorful you don’t need to use as many. I love topping an apple with almond butter and these chips for a snack.</p>
-                            </div>
-                            <div class="card">
-                                <img src="./img/irina-chocolate.png" alt="irina">
-                                <h3>Irina Tydnyuk</h3>
-                                <p>This is simply the best chocolate around, and I'm just thrilled to support a local company! Best local chocolate - world class :)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slider__buttons"></div>
-
-                </div>
+       <section class="reviews">
+    <div class="reviews__container" id="slider-container">
+        <!-- Обертка для захвата событий мыши и колеса -->
+        <div class="reviews__viewport">
+            <div class="reviews__track" id="slider-track">
+                <!-- Карточка 1 -->
+                <article class="reviews__card">
+                    <img src="https://i.ibb.co" alt="Victoria" class="avatar">
+                    <h3>Victoria Dobrzhanska</h3>
+                    <p>I love this chocolate bar. Perfect combination of light crispy wafer, covered in a thin layer chocolate.</p>
+                </article>
+                <!-- Карточка 2 -->
+                <article class="reviews__card">
+                    <img src="https://i.ibb.co" alt="Nazar" class="avatar">
+                    <h3>Nazar Babenko</h3>
+                    <p>This chocolate confection is a delight! A delight! The wafer is light and crisp, the hazelnut cream is smooth.</p>
+                </article>
+                <!-- Карточка 3 -->
+                <article class="reviews__card">
+                    <img src="https://i.ibb.co" alt="Olena" class="avatar">
+                    <h3>Olena Kampusch</h3>
+                    <p>Chocolate is a family favourite treat. Love the delicious smooth chocolate and the creaminess inside.</p>
+                </article>
+                <!-- Карточка 4 -->
+                <article class="reviews__card">
+                    <img src="https://i.ibb.co" alt="User 4" class="avatar">
+                    <h3>Alexander Petrov</h3>
+                    <p>Incredible taste! I've never tried anything like this before. The balance of sweetness is just perfect.</p>
+                </article>
+                <!-- Карточка 5 -->
+                <article class="reviews__card">
+                    <img src="https://i.ibb.co" alt="User 5" class="avatar">
+                    <h3>Marina Ivanova</h3>
+                    <p>The texture is amazing. You can feel the quality of the ingredients in every single bite. Highly recommend!</p>
+                </article>
+                <!-- Карточка 6 -->
+                <article class="reviews__card">
+                    <img src="https://i.ibb.co" alt="User 6" class="avatar">
+                    <h3>Ivan Fedorov</h3>
+                    <p>Fast delivery and even better taste. My kids love it, and it's become our weekly family tradition.</p>
+                </article>
             </div>
-        </section>
+        </div>
+
+        <!-- Пагинация -->
+        <div class="reviews__pagination">
+            <button class="dot active" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+            <button class="dot" data-index="3"></button>
+        </div>
+
+        <div class="reviews__footer">
+            <button class="btn-review">Leave a review</button>
+        </div>
+    </div>
+</section>
     </main>
 
     <script src="./script.js"></script>
