@@ -7,8 +7,6 @@
     <title>Simply Chocolate</title>
     <link rel="icon" href="./img/icon-chocolate.svg" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
-    <!-- Стили для выбора телефона -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css" />
 </head>
 
 <body>
@@ -533,65 +531,140 @@
                 </div>
             </div>
         </div>
-       <section class="reviews">
-    <div class="reviews__container" id="slider-container">
-        <!-- Обертка для захвата событий мыши и колеса -->
-        <div class="reviews__viewport">
-            <div class="reviews__track" id="slider-track">
-                <!-- Карточка 1 -->
-                <article class="reviews__card">
-                    <img src="https://i.ibb.co" alt="Victoria" class="avatar">
-                    <h3>Victoria Dobrzhanska</h3>
-                    <p>I love this chocolate bar. Perfect combination of light crispy wafer, covered in a thin layer chocolate.</p>
-                </article>
-                <!-- Карточка 2 -->
-                <article class="reviews__card">
-                    <img src="https://i.ibb.co" alt="Nazar" class="avatar">
-                    <h3>Nazar Babenko</h3>
-                    <p>This chocolate confection is a delight! A delight! The wafer is light and crisp, the hazelnut cream is smooth.</p>
-                </article>
-                <!-- Карточка 3 -->
-                <article class="reviews__card">
-                    <img src="https://i.ibb.co" alt="Olena" class="avatar">
-                    <h3>Olena Kampusch</h3>
-                    <p>Chocolate is a family favourite treat. Love the delicious smooth chocolate and the creaminess inside.</p>
-                </article>
-                <!-- Карточка 4 -->
-                <article class="reviews__card">
-                    <img src="https://i.ibb.co" alt="User 4" class="avatar">
-                    <h3>Alexander Petrov</h3>
-                    <p>Incredible taste! I've never tried anything like this before. The balance of sweetness is just perfect.</p>
-                </article>
-                <!-- Карточка 5 -->
-                <article class="reviews__card">
-                    <img src="https://i.ibb.co" alt="User 5" class="avatar">
-                    <h3>Marina Ivanova</h3>
-                    <p>The texture is amazing. You can feel the quality of the ingredients in every single bite. Highly recommend!</p>
-                </article>
-                <!-- Карточка 6 -->
-                <article class="reviews__card">
-                    <img src="https://i.ibb.co" alt="User 6" class="avatar">
-                    <h3>Ivan Fedorov</h3>
-                    <p>Fast delivery and even better taste. My kids love it, and it's become our weekly family tradition.</p>
-                </article>
+        <section class="reviews">
+            <h2><span>chocolate</span> is loved</h2>
+            <div class="reviews__container" id="slider-container">
+                <!-- Обертка для захвата событий мыши и колеса -->
+                <div class="reviews__viewport">
+                    <div class="reviews__track" id="slider-track">
+                        <!-- Карточка 1 -->
+                        <article class="reviews__card">
+                            <img src="./img/victoria-chocolate.png" alt="Victoria" class="avatar">
+                            <h3>Victoria Dobrzhanska</h3>
+                            <p>I love this chocolate bar. Perfect combination of light crispy wafer, covered in a thin
+                                layer chocolate.</p>
+                        </article>
+                        <!-- Карточка 2 -->
+                        <article class="reviews__card">
+                            <img src="./img/nazar-chocolate.png" alt="Nazar" class="avatar">
+                            <h3>Nazar Babenko</h3>
+                            <p>This chocolate confection is a delight! A delight! The wafer is light and crisp, the
+                                hazelnut cream is smooth.</p>
+                        </article>
+                        <!-- Карточка 3 -->
+                        <article class="reviews__card">
+                            <img src="./img/olena-chocolate.png" alt="Olena" class="avatar">
+                            <h3>Olena Kampusch</h3>
+                            <p>Chocolate is a family favourite treat. Love the delicious smooth chocolate and the
+                                creaminess inside.</p>
+                        </article>
+                        <!-- Карточка 4 -->
+                        <article class="reviews__card">
+                            <img src="./img/natalia-chocolate.png" alt="User 4" class="avatar">
+                            <h3>Natalia Sus</h3>
+                            <p>The chocolate assortment was delicious. Both dark and milk chocolate pieces were smooth
+                                and just right on the sweetness level. </p>
+                        </article>
+                        <!-- Карточка 5 -->
+                        <article class="reviews__card">
+                            <img src="./img/danilo-chocolate.png" alt="User 5" class="avatar">
+                            <h3>Danilo Nottingham</h3>
+                            <p>This is delicious. It so rich and flavorful you don’t need to use as many. I love topping
+                                an apple with almond butter and these chips for a snack.</p>
+                        </article>
+                        <!-- Карточка 6 -->
+                        <article class="reviews__card">
+                            <img src="./img/irina-chocolate.png" alt="User 6" class="avatar">
+                            <h3>Irina Tydnyuk</h3>
+                            <p>This is simply the best chocolate around, and I'm just thrilled to support a local
+                                company! Best local chocolate - world class :)</p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Пагинация -->
+                <div class="reviews__pagination">
+                    <button class="dot active" data-index="0"></button>
+                    <button class="dot active" data-index="1"></button>
+                    <button class="dot active" data-index="2"></button>
+                    <button class="dot active" data-index="3"></button>
+                </div>
+
+                <button class="review-launch" id="reviewLaunch">
+                    Leave a review
+                </button>
+                <div class="review-layer" id="reviewLayer">
+
+                    <!-- FORM CARD -->
+                    <div class="review-card review-card--form" id="reviewCardForm">
+                        <button class="review-card__exit" id="reviewExitForm">×</button>
+
+                        <h2 class="review-card__heading">
+                            LEAVE A REVIEW ABOUT
+                            <span>OUR CHOCOLATE</span>
+                        </h2>
+
+                        <form class="review-card__body" id="reviewForm">
+                            <input type="text" placeholder="Name" required>
+                            <input type="email" placeholder="Email" required>
+
+                            <div class="review-phone">
+                                <div class="review-phone__code"><img src="./img/ua-phone-number-chocolate.svg" alt="ua">
+                                    <p>+380</p>
+                                </div>
+                                <input type="tel" placeholder="Phone number">
+                            </div>
+
+                            <textarea placeholder="Enter text"></textarea>
+
+                            <button type="submit" class="review-submit">
+                                Send
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- SUCCESS CARD -->
+                    <div class="review-card review-card--done" id="reviewCardDone">
+                        <button class="review-card__exit review-card__exit--light" id="reviewExitDone">×</button>
+
+                        <div class="review-success">
+                            <img src="./img/modal-chocolate-bar.png" alt="Chocolate">
+                            <div class="review-success-info">
+                                <h3>THANK YOU<br>FOR YOUR FEEDBACK!</h3>
+                                <p>We are so happy to hear from you!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+        <section class="explore">
+            <div class="explore-container">
+                <h2 class="explore-container-title">exPLORE OUR NEW CHOCOLATE FIRST</h2>
+                <p class="explore-container-text">From the velvety texture to the rich and complex flavor, our New
+                    Chocolate is a true indulgence that will leave you craving more. Made with only the finest
+                    ingredients and handcrafted with the utmost care, each piece is a work of art that is sure to
+                    please.</p>
+                    <button class="explore-container-btn"  id="openModal">Subscribe</button>
+            </div>
+            
+        </section>
+    </main>
+<footer class="footer">
+    <div class="footer_top">
+        <h2 class="footer_top--title"> <span>Chocolate</span> a delicious cure for a bad day</h2>
+        <div class="footer_top--box">
+            <div class="footer_top--box--contact">
+                <h4 class="footer_top--box--contact--title">Contact us</h4>
+                <p class="footer_top--box--contact--info">+380 (68) 443-94-26</p>
+                <p class="footer_top--box--contact--info">simplychoc@gmail.com</p>
+            </div>
+            <div class="footer_top--box--icons">
+                
             </div>
         </div>
-
-        <!-- Пагинация -->
-        <div class="reviews__pagination">
-            <button class="dot active" data-index="0"></button>
-            <button class="dot" data-index="1"></button>
-            <button class="dot" data-index="2"></button>
-            <button class="dot" data-index="3"></button>
-        </div>
-
-        <div class="reviews__footer">
-            <button class="btn-review">Leave a review</button>
-        </div>
     </div>
-</section>
-    </main>
-
+</footer>
     <script src="./script.js"></script>
 </body>
 

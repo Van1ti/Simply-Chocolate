@@ -42,48 +42,52 @@ document.addEventListener('DOMContentLoaded', function () {
   const slider = document.querySelector('.products__slider');
   const dotsContainer = document.querySelector('.products__dots');
 
-  const originalCards = Array.from(track.children);
+  const originalCards = Array.from(document.querySelectorAll('.product-card'));
   const originalCount = originalCards.length;
 
   let currentIndex = 0;
+  let visibleCount = getVisibleCount();
   let autoplay;
 
-  /* ===== сколько видно ===== */
+  /* ==== сколько видно ==== */
   function getVisibleCount() {
-    if (window.innerWidth <= 600) return 1;
-    if (window.innerWidth <= 1024) return 2;
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 2;
+    if (window.innerWidth <= 1024) return 3;
     return 4;
   }
 
-  let visibleCount = getVisibleCount();
+  /* ==== пересборка infinite ==== */
+  function buildSlider() {
 
-  /* ===== создаём infinite ОДИН раз ===== */
-  function createClones() {
+    visibleCount = getVisibleCount();
+    track.innerHTML = '';
 
-    const before = originalCards
+    const clonesBefore = originalCards
       .slice(-visibleCount)
       .map(card => card.cloneNode(true));
 
-    const after = originalCards
+    const clonesAfter = originalCards
       .slice(0, visibleCount)
       .map(card => card.cloneNode(true));
 
-    before.forEach(card => track.prepend(card));
-    after.forEach(card => track.append(card));
+    clonesBefore.forEach(card => track.appendChild(card));
+    originalCards.forEach(card => track.appendChild(card));
+    clonesAfter.forEach(card => track.appendChild(card));
 
     currentIndex = visibleCount;
-    move(false);
+    updateSlider(false);
   }
 
-  /* ===== ширина карточки ===== */
+  /* ==== ширина карточки ==== */
   function getCardWidth() {
     const card = track.querySelector('.product-card');
     const gap = parseInt(getComputedStyle(track).gap);
     return card.getBoundingClientRect().width + gap;
   }
 
-  /* ===== движение ===== */
-  function move(animate = true) {
+  /* ==== движение ==== */
+  function updateSlider(animate = true) {
     const width = getCardWidth();
     track.style.transition = animate ? 'transform 0.6s ease' : 'none';
     track.style.transform = `translateX(-${width * currentIndex}px)`;
@@ -92,40 +96,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function next() {
     currentIndex++;
-    move();
+    updateSlider();
   }
 
   function prev() {
     currentIndex--;
-    move();
+    updateSlider();
   }
 
-  /* ===== фиксим infinite ===== */
+  /* ==== фиксим infinite ==== */
   track.addEventListener('transitionend', () => {
 
-    const total = track.children.length;
-    visibleCount = getVisibleCount();
+    const total = track.querySelectorAll('.product-card').length;
 
     if (currentIndex >= total - visibleCount) {
       currentIndex = visibleCount;
-      move(false);
+      updateSlider(false);
     }
 
     if (currentIndex < visibleCount) {
       currentIndex = total - visibleCount * 2;
-      move(false);
+      updateSlider(false);
     }
   });
 
-  /* ===== точки (всегда 8) ===== */
+  /* ==== точки ==== */
   function createDots() {
+    dotsContainer.innerHTML = '';
+
     for (let i = 0; i < originalCount; i++) {
       const dot = document.createElement('button');
 
       dot.addEventListener('click', () => {
-        visibleCount = getVisibleCount();
         currentIndex = i + visibleCount;
-        move();
+        updateSlider();
         resetAutoplay();
       });
 
@@ -134,8 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateDots() {
-    visibleCount = getVisibleCount();
-
     const real =
       (currentIndex - visibleCount + originalCount) % originalCount;
 
@@ -145,9 +147,16 @@ document.addEventListener('DOMContentLoaded', function () {
     if (dots[real]) dots[real].classList.add('active');
   }
 
-  /* ===== autoplay ===== */
+  /* ==== колесо ==== */
+  slider.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    e.deltaY > 0 ? next() : prev();
+    resetAutoplay();
+  });
+
+  /* ==== autoplay ==== */
   function startAutoplay() {
-    autoplay = setInterval(next, 4000);
+    autoplay = setInterval(next, 3000);
   }
 
   function resetAutoplay() {
@@ -155,26 +164,18 @@ document.addEventListener('DOMContentLoaded', function () {
     startAutoplay();
   }
 
-  /* ===== колесо ===== */
-  slider.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    e.deltaY > 0 ? next() : prev();
-    resetAutoplay();
-  });
-
-
-  /* ===== resize (только пересчёт позиции) ===== */
+  /* ==== resize фикс ==== */
   window.addEventListener('resize', () => {
-    visibleCount = getVisibleCount();
-    move(false);
+    buildSlider();
   });
 
-  /* ===== INIT ===== */
-  createClones();
+  /* ==== INIT ==== */
+  buildSlider();
   createDots();
   startAutoplay();
 
 });
+
 
 /* =====плавная прокруткa===== */
 const button = document.getElementById('scrollButton');
@@ -209,204 +210,6 @@ document.getElementById("closeSuccess").onclick = () => {
   document.body.style.overflow = "";
 };
 
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
-
-let current = 0;
-const total = slides.length;
-
-function showSlide(index) {
-
-  slides.forEach(slide => slide.classList.remove("active"));
-  dots.forEach(dot => dot.classList.remove("active"));
-
-  slides[index].classList.add("active");
-  dots[index].classList.add("active");
-
-  current = index;
-}
-
-// Клик по точкам
-dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    showSlide(index);
-  });
-});
-
-// Автопрокрутка
-setInterval(() => {
-  let next = current + 1;
-  if (next >= total) next = 0;
-  showSlide(next);
-}, 4000);
-
-document.addEventListener('DOMContentLoaded', function () {
-
-  const track = document.querySelector('.slider__track');
-  const viewport = document.querySelector('.slider__viewport');
-  const buttonsContainer = document.querySelector('.slider__buttons');
-
-  const originalCards = Array.from(track.children);
-  const visibleCount = 3;
-  const originalCount = originalCards.length; // 6
-  const maxIndex = originalCount - visibleCount; // 3
-
-  const cardWidth = 270;
-  const gap = 18;
-  const step = cardWidth + gap;
-
-  let currentIndex = visibleCount;
-  let autoplay;
-  let isDragging = false;
-  let startX = 0;
-  let currentTranslate = 0;
-
-  /* ===== Infinite ===== */
-
-  const clonesBefore = originalCards
-    .slice(-visibleCount)
-    .map(card => card.cloneNode(true));
-
-  const clonesAfter = originalCards
-    .slice(0, visibleCount)
-    .map(card => card.cloneNode(true));
-
-  clonesBefore.forEach(card => track.prepend(card));
-  clonesAfter.forEach(card => track.append(card));
-
-  move(false);
-
-  /* ===== Кнопки ===== */
-
-  for (let i = 0; i <= maxIndex; i++) {
-
-    const btn = document.createElement('button');
-    if (i === 0) btn.classList.add('active');
-
-    btn.addEventListener('click', () => {
-      currentIndex = i + visibleCount;
-      move();
-      updateButtons();
-      resetAutoplay();
-    });
-
-    buttonsContainer.appendChild(btn);
-  }
-
-  function updateButtons() {
-
-    const realIndex =
-      (currentIndex - visibleCount + originalCount) % originalCount;
-
-    const buttons = buttonsContainer.querySelectorAll('button');
-    buttons.forEach(btn => btn.classList.remove('active'));
-
-    if (realIndex <= maxIndex) {
-      buttons[realIndex].classList.add('active');
-    }
-  }
-
-  /* ===== Move ===== */
-
-  function move(animate = true) {
-    track.style.transition = animate ? 'transform 0.5s ease' : 'none';
-    track.style.transform = `translateX(-${step * currentIndex}px)`;
-  }
-
-  function next() {
-    currentIndex++;
-    move();
-  }
-
-  function prev() {
-    currentIndex--;
-    move();
-  }
-
-  /* ===== Infinite Fix ===== */
-
-  track.addEventListener('transitionend', () => {
-
-    if (currentIndex >= originalCount + visibleCount) {
-      currentIndex = visibleCount;
-      move(false);
-    }
-
-    if (currentIndex < visibleCount) {
-      currentIndex = originalCount;
-      move(false);
-    }
-
-    updateButtons();
-  });
-
-  /* ===== Autoplay ===== */
-
-  function startAutoplay() {
-    autoplay = setInterval(next, 4000);
-  }
-
-  function resetAutoplay() {
-    clearInterval(autoplay);
-    startAutoplay();
-  }
-
-  viewport.addEventListener('mouseenter', () => clearInterval(autoplay));
-  viewport.addEventListener('mouseleave', startAutoplay);
-
-  /* ===== Wheel ===== */
-
-  viewport.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    e.deltaY > 0 ? next() : prev();
-    resetAutoplay();
-  });
-
-  /* ===== Drag ===== */
-
-  viewport.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.pageX;
-    currentTranslate = -step * currentIndex;
-    track.style.transition = 'none';
-    viewport.style.cursor = 'grabbing';
-  });
-
-  viewport.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    const diff = e.pageX - startX;
-    track.style.transform = `translateX(${currentTranslate + diff}px)`;
-  });
-
-  viewport.addEventListener('mouseup', (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-    viewport.style.cursor = 'grab';
-
-    const diff = e.pageX - startX;
-
-    if (Math.abs(diff) > 50) {
-      diff < 0 ? next() : prev();
-    } else {
-      move();
-    }
-
-    resetAutoplay();
-  });
-
-  viewport.addEventListener('mouseleave', () => {
-    if (isDragging) {
-      isDragging = false;
-      move();
-      viewport.style.cursor = 'grab';
-    }
-  });
-
-  /* ===== INIT ===== */
-
-  startAutoplay();
-
-});
 const track = document.getElementById('slider-track');
 const container = document.getElementById('slider-container');
 const dots = document.querySelectorAll('.dot');
@@ -539,3 +342,46 @@ function dragEnd(e) {
 window.addEventListener('resize', () => updateSlider(false));
 updateSlider(false);
 startAutoPlay();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const layer = document.getElementById('reviewLayer');
+  const openBtn = document.getElementById('reviewLaunch');
+  const formCard = document.getElementById('reviewCardForm');
+  const doneCard = document.getElementById('reviewCardDone');
+  const form = document.getElementById('reviewForm');
+  const exitForm = document.getElementById('reviewExitForm');
+  const exitDone = document.getElementById('reviewExitDone');
+
+  function openReview() {
+    layer.classList.add('is-visible');
+    formCard.style.display = 'block';
+    doneCard.style.display = 'none';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeReview() {
+    layer.classList.remove('is-visible');
+    document.body.style.overflow = '';
+    form.reset();
+  }
+
+  openBtn.addEventListener('click', openReview);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formCard.style.display = 'none';
+    doneCard.style.display = 'block';
+  });
+
+  exitForm.addEventListener('click', closeReview);
+  exitDone.addEventListener('click', closeReview);
+
+  layer.addEventListener('click', (e) => {
+    if (e.target === layer) {
+      closeReview();
+    }
+  });
+
+});

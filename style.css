@@ -638,6 +638,7 @@ main .products__container {
   width: 100%;
   max-width: 1136px;
   margin: 0 auto;
+  overflow: hidden;
 }
 main .products__slider {
   overflow: hidden;
@@ -931,9 +932,35 @@ main .modal__title span {
   color: #FD9222;
 }
 main .modal-products {
-  display: flex;
   gap: 16px;
   margin-bottom: 40px;
+}
+main .slider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+main .slider .slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(17, 17, 17, 0.1019607843);
+  border-radius: 15px;
+  padding: 22px 20px 18px 20px;
+}
+main .slider .slide span {
+  margin-top: 15px;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #111111;
+  border: 1px solid rgba(17, 17, 17, 0.1019607843);
+  border-radius: 100px;
+  background-color: #FAFAFA;
+  padding: 8px 27.5px;
 }
 main .modal-product {
   background: #fff;
@@ -941,6 +968,7 @@ main .modal-product {
   padding: 22px 20px 18px 20px;
   text-align: center;
   cursor: pointer;
+  flex-shrink: 0;
   transition: 0.2s;
   border: 1px solid rgba(17, 17, 17, 0.1019607843);
 }
@@ -964,6 +992,9 @@ main .modal-product span {
 main .form {
   width: 100%;
   max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 main .form-group {
   width: 100%;
@@ -993,6 +1024,7 @@ main textarea.success {
 }
 main .form-group-input {
   width: 100%;
+  max-width: 513px;
   margin-bottom: 18px;
   display: flex;
   align-items: center;
@@ -1026,7 +1058,7 @@ main .form-group-input-code p {
 }
 main .form-row {
   display: flex;
-  gap: 10px;
+  gap: 16px;
 }
 main .form-row input {
   flex: 1;
@@ -1084,6 +1116,29 @@ main .reviews {
   background-color: #FAFAFA;
   font-family: sans-serif;
 }
+main .reviews h2 {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -3%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #111111;
+  margin-bottom: 50px;
+}
+main .reviews h2 span {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -3%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FD9222;
+}
 main .reviews__container {
   max-width: 1136px;
   margin: 0 auto;
@@ -1134,13 +1189,24 @@ main .reviews__card .avatar {
   border: 5px solid #FAFAFA;
 }
 main .reviews__card h3 {
+  font-family: Montserrat;
+  font-weight: 600;
   font-size: 18px;
-  margin: 20px 0 10px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 24px;
 }
 main .reviews__card p {
+  width: 312px;
+  font-family: Montserrat;
+  font-weight: 400;
   font-size: 14px;
-  color: rgba(17, 17, 17, 0.6);
-  line-height: 1.6;
+  line-height: 18px;
+  letter-spacing: -2%;
+  text-align: center;
+  color: rgba(17, 17, 17, 0.6980392157);
 }
 main .reviews__pagination {
   display: flex;
@@ -1166,21 +1232,227 @@ main .reviews__footer {
   text-align: center;
   margin-top: 40px;
 }
-main .reviews__footer .btn-review {
-  padding: 14px 40px;
-  border: 2px solid #FD9222;
-  border-radius: 30px;
-  background: transparent;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+main .review-layer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 1000;
 }
-main .reviews__footer .btn-review:hover {
+main .review-layer.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+main {
+  /* Карточка */
+}
+main .review-card {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 520px;
+  padding: 40px;
+  border-radius: 24px;
+  background: #fff;
+}
+main {
+  /* Success */
+}
+main .review-card--done {
+  display: none;
   background: #FD9222;
+  color: white;
+  position: relative;
+  width: 517px;
+  height: 414px;
+}
+main {
+  /* Крестик */
+}
+main .review-card__exit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f2f2f2;
+  cursor: pointer;
+}
+main .review-card__exit--light {
+  background: white;
+  color: #FD9222;
+}
+main {
+  /* Заголовок */
+}
+main .review-card__heading {
+  font-size: 24px;
+  font-weight: 600;
+}
+main .review-card__heading span {
+  color: #FD9222;
+}
+main {
+  /* Форма */
+}
+main .review-card__body {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+main .review-card__body input,
+main .review-card__body textarea {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  font-size: 14px;
+}
+main .review-card__body input:focus,
+main .review-card__body textarea:focus {
+  border-color: #FD9222;
+  outline: none;
+}
+main .review-card__body textarea {
+  height: 120px;
+  resize: none;
+}
+main {
+  /* Телефон */
+}
+main .review-phone {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+main .review-phone__code {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px;
+  border-right: 1px solid rgba(17, 17, 17, 0.1);
+  background: #fafafa;
+}
+main .review-phone__code img {
+  width: 20px;
+}
+main .review-phone__code p {
+  margin: 0;
+  font-weight: 600;
+}
+main .review-phone input {
+  border: none;
+  flex: 1;
+}
+main {
+  /* Кнопка */
+}
+main .review-submit {
+  width: 120px;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  background: #FD9222;
+  color: white;
+  cursor: pointer;
+}
+main {
+  /* Success контент */
+}
+main .review-success {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+main .review-success img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+main .review-success-info h3 {
+  margin: 0;
+}
+main .explore {
+  background-image: url(./img/Subcribe.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 72px 0;
+}
+main .explore-container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 467px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .explore-container-title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -3%;
+  text-align: center;
+  text-transform: uppercase;
   color: #fff;
+  width: 300px;
+  margin-bottom: 24px;
+}
+main .explore-container-text {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -2%;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #FFFFFF;
+}
+main .explore-container-btn {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+  padding: 14px 40px;
+  border: none;
+  background-color: #FD9222;
+  border-radius: 100px;
+  cursor: pointer;
 }
 
 @media (max-width: 1160px) {
+  main .topSellers_container {
+    max-width: 704px;
+    margin: 0 auto;
+  }
+  main .topSellers_container--example--chocolate-1, main .topSellers_container--example--chocolate-2, main .topSellers_container--example--chocolate-3 {
+    width: 344px;
+    height: 464px;
+    margin: 0 auto;
+  }
+  main .topSellers_container--example--chocolate-3 {
+    display: none;
+  }
+  main .topSellers_container--info--text {
+    width: 100%;
+    max-width: 306px;
+  }
+}
+@media (max-width: 1100px) {
   main .product__title {
     font-family: Montserrat;
     font-weight: 600;
@@ -1199,22 +1471,6 @@ main .reviews__footer .btn-review:hover {
   }
   main .products__slider {
     width: 558px;
-  }
-  main .topSellers_container {
-    max-width: 704px;
-    margin: 0 auto;
-  }
-  main .topSellers_container--example--chocolate-1, main .topSellers_container--example--chocolate-2, main .topSellers_container--example--chocolate-3 {
-    width: 344px;
-    height: 464px;
-    margin: 0 auto;
-  }
-  main .topSellers_container--example--chocolate-3 {
-    display: none;
-  }
-  main .topSellers_container--info--text {
-    width: 100%;
-    max-width: 306px;
   }
 }
 @media (max-width: 1024px) {
