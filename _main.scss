@@ -853,6 +853,8 @@ main {
         opacity: 0;
         visibility: hidden;
         transition: 0.3s;
+        z-index: 20;
+
 
         &.active {
             opacity: 1;
@@ -865,15 +867,40 @@ main {
         max-width: 600px;
         background: #FAFAFA;
         border-radius: 15px;
-        padding: 48px;
+        padding-top: 48px;
+        padding-bottom: 48px;
         position: relative;
         transform: scale(1);
         transition: 0.3s;
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-height: 90vh; // 🔥 ограничение высоты
-        overflow-y: auto; // 🔥 вертикальный скролл
+        overflow-y: auto;
+        padding-right: 6px;
+        text-align: left;
+
+        /* Chrome, Edge, Safari */
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #FFFFFF;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: orange;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: darkorange;
+            }
+        }
+
+        /* Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: orange #FFFFFF;
 
         .modal.active & {
             transform: scale(1);
@@ -1324,7 +1351,7 @@ main {
         opacity: 0;
         visibility: hidden;
         transition: 0.3s ease;
-        z-index: 1000;
+        z-index: 10;
 
         &.is-visible {
             opacity: 1;
@@ -1509,6 +1536,7 @@ main {
                 text-align: center;
                 margin-bottom: 24px;
                 color: #FFFFFF;
+                width: 320px;
             }
 
             &-btn {
@@ -1523,6 +1551,11 @@ main {
                 background-color: #FD9222;
                 border-radius: 100px;
                 cursor: pointer;
+            }
+
+            &-btn:hover {
+                color: #FD9222;
+                background-color: #FCF1E0;
             }
         }
     }

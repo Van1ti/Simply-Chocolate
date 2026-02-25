@@ -1,0 +1,110 @@
+.footer {
+    background-color: #1E1823;
+
+    &_top {
+        width: 100%;
+        max-width: 1136px;
+        margin: 0 auto;
+        padding-top: 50px;
+        padding-bottom: 62px;
+        border-bottom: 1px solid #FFFFFF1A;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &--title {
+            font-family: Montserrat;
+            font-weight: 500;
+            font-style: Medium;
+            font-size: 28px;
+            line-height: 34px;
+            letter-spacing: -2%;
+            color: #FFFFFF;
+            width: 300px;
+
+            span {
+                color: #FD9222;
+            }
+        }
+
+        &--box {
+            width: 100%;
+            max-width: 295px;
+            display: flex;
+            justify-content: space-between;
+
+            &--contact {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+
+                &--title {
+                    font-family: Montserrat;
+                    font-weight: 500;
+                    font-style: Medium;
+                    font-size: 14px;
+                    line-height: 18px;
+                    letter-spacing: 0%;
+                    text-align: center;
+                    color: #FFFFFF;
+                    margin-bottom: 10px;
+                }
+
+                &--info {
+                    font-family: Montserrat;
+                    font-weight: 400;
+                    font-style: Regular;
+                    font-size: 14px;
+                    line-height: 18px;
+                    letter-spacing: -2%;
+                    text-align: center;
+                    color: #FFFFFF;
+                }
+
+                &--info:hover {
+                    color: #FD9222;
+                    transition-duration: 0.3s;
+                }
+            }
+
+            &--icons {
+                width: 66px;
+                display: flex;
+                justify-content: space-between;
+
+                svg:hover {
+                    path {
+                        stroke: #FD9222;
+                        transition: 0.2s;
+                    }
+                }
+            }
+        }
+    }
+
+    &_bottom {
+        width: 100%;
+        max-width: 1136px;
+        margin: 0 auto;
+        display: flex;
+        gap: 24px;
+        padding: 24px 0 50px 0;
+
+        &--link {
+            font-family: Montserrat;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            letter-spacing: -2%;
+            vertical-align: middle;
+            color: #FFFFFF;
+
+        }
+
+        &--link:hover {
+            color: #FD9222;
+            transition-duration: 0.3s;
+        }
+    }
+}
