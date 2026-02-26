@@ -101,8 +101,12 @@
                             our finest ingredients for a moment
                             of pure delight!</h3>
                         <div class="start_container--box--info--buttons">
-                            <button class="start_container--box--info--buttons--btn">Buy now</button>
-                            <button class="start_container--box--info--buttons--btn--2">How it’s made</button>
+                            <button class="start_container--box--info--buttons--btn"
+                                onclick="document.getElementById('topsellers').scrollIntoView({behavior: 'smooth'})">Buy
+                                now</button>
+                            <button class="start_container--box--info--buttons--btn--2"
+                                onclick="document.getElementById('howItsMade').scrollIntoView({behavior: 'smooth'})">How
+                                it’s made</button>
                         </div>
                     </div>
                     <div id="scrollButton" class="start_container--box--scroll">
@@ -417,8 +421,7 @@
         <div class="modal" id="orderModal">
             <div class="modal__box modal__box--order">
                 <button class="modal__close" id="closeOrder">
-                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M21 7L7 21" stroke="#111111" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" />
                         <path d="M7 7L21 21" stroke="#111111" stroke-width="2" stroke-linecap="round"
@@ -590,12 +593,11 @@
 
                 <!-- Пагинация -->
                 <div class="reviews__pagination">
-                    <button class="dot active" data-index="0"></button>
-                    <button class="dot active" data-index="1"></button>
-                    <button class="dot active" data-index="2"></button>
-                    <button class="dot active" data-index="3"></button>
+                    <button class="point point--active"></button>
+                    <button class="point"></button>
+                    <button class="point"></button>
+                    <button class="point"></button>
                 </div>
-
                 <button class="review-launch" id="reviewLaunch">
                     Leave a review
                 </button>
@@ -651,9 +653,23 @@
                     Chocolate is a true indulgence that will leave you craving more. Made with only the finest
                     ingredients and handcrafted with the utmost care, each piece is a work of art that is sure to
                     please.</p>
-                <button class="explore-container-btn" id="openModal">Subscribe</button>
+                <button class="explore-container-btn" id="openModalBtn">Subscribe</button>
             </div>
-
+            <div class="subscribe-modal" id="subscribeModal">
+                <div class="subscribe-modal__content">
+                    <button class="subscribe-modal__close" id="closeModalBtn">&times;</button>
+                    <img src="./img/subscribe-modal.png" alt="subscribe-modal">
+                    <div class="subscribe-modal__box">
+                        <h2>Explore our <br>
+                            <span>new chocolate</span> first!
+                        </h2>
+                        <div class="subscribe-modal__box__send">
+                            <input type="email" placeholder="Enter your email">
+                            <button class="subscribe-modal__box__send__btn" >Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     <footer class="footer">
