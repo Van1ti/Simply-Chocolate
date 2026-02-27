@@ -850,33 +850,8 @@ main .modal__box {
   transition: 0.3s;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
   padding-right: 6px;
-  text-align: left;
-  /* Chrome, Edge, Safari */
-}
-main .modal__box::-webkit-scrollbar {
-  width: 8px;
-}
-main .modal__box::-webkit-scrollbar-track {
-  background: #FFFFFF;
-  border-radius: 10px;
-}
-main .modal__box::-webkit-scrollbar-thumb {
-  background-color: orange;
-  border-radius: 10px;
-}
-main .modal__box::-webkit-scrollbar-thumb:hover {
-  background-color: darkorange;
-}
-main .modal__box {
-  /* Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: orange #FFFFFF;
-}
-.modal.active main .modal__box {
-  transform: scale(1);
+  align-items: center;
 }
 main .modal__box--success {
   background: #fd9222;
@@ -1136,9 +1111,12 @@ main .card img {
   width: 40px;
 }
 main .reviews {
-  padding: 100px 0;
+  padding-bottom: 128px;
   background-color: #FAFAFA;
   font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 main .reviews h2 {
   font-family: Montserrat;
@@ -1164,7 +1142,7 @@ main .reviews h2 span {
   color: #FD9222;
 }
 main .reviews__container {
-  max-width: 1136px;
+  max-width: 1150px;
   margin: 0 auto;
   padding: 0 15px;
   position: relative;
@@ -1200,6 +1178,9 @@ main .reviews__card {
 @media (max-width: 650px) {
   main .reviews__card {
     flex: 0 0 100%;
+  }
+  main .reviews__card__card {
+    width: 360px;
   }
 }
 main .reviews__card .avatar {
@@ -1272,6 +1253,20 @@ main .review-layer {
 main .review-layer.is-visible {
   opacity: 1;
   visibility: visible;
+}
+main .review-launch {
+  width: 222px;
+  cursor: pointer;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #111111;
+  padding: 14px 40px;
+  border: 1px solid #FD9222;
+  background-color: #FAFAFA;
+  border-radius: 100px;
 }
 main {
   /* Карточка */
@@ -1446,7 +1441,6 @@ main .explore-container-text {
   text-align: center;
   margin-bottom: 24px;
   color: #FFFFFF;
-  width: 320px;
 }
 main .explore-container-btn {
   font-family: Montserrat;
@@ -1562,18 +1556,26 @@ main .subscribe-modal__close {
 .footer {
   background-color: #1E1823;
 }
-.footer_top {
+.footer_container {
   width: 100%;
   max-width: 1136px;
   margin: 0 auto;
+  padding: 0 15px;
+}
+.footer_container--top {
   padding-top: 50px;
   padding-bottom: 62px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1019607843);
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
-.footer_top--title {
+.footer_container--top--box {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+}
+.footer_container--top--box--title {
   font-family: Montserrat;
   font-weight: 500;
   font-style: Medium;
@@ -1581,24 +1583,19 @@ main .subscribe-modal__close {
   line-height: 34px;
   letter-spacing: -2%;
   color: #FFFFFF;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
 }
-.footer_top--title span {
+.footer_container--top--box--title span {
   color: #FD9222;
 }
-.footer_top--box {
-  width: 100%;
-  max-width: 295px;
-  display: flex;
-  justify-content: space-between;
-}
-.footer_top--box--contact {
+.footer_container--top--box--contact {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
 }
-.footer_top--box--contact--title {
+.footer_container--top--box--contact--title {
   font-family: Montserrat;
   font-weight: 500;
   font-style: Medium;
@@ -1609,7 +1606,7 @@ main .subscribe-modal__close {
   color: #FFFFFF;
   margin-bottom: 10px;
 }
-.footer_top--box--contact--info {
+.footer_container--top--box--contact--info {
   font-family: Montserrat;
   font-weight: 400;
   font-style: Regular;
@@ -1619,28 +1616,25 @@ main .subscribe-modal__close {
   text-align: center;
   color: #FFFFFF;
 }
-.footer_top--box--contact--info:hover {
+.footer_container--top--box--contact--info:hover {
   color: #FD9222;
   transition-duration: 0.3s;
 }
-.footer_top--box--icons {
+.footer_container--top--icons {
   width: 66px;
   display: flex;
   justify-content: space-between;
 }
-.footer_top--box--icons svg:hover path {
+.footer_container--top--icons svg:hover path {
   stroke: #FD9222;
   transition: 0.2s;
 }
-.footer_bottom {
-  width: 100%;
-  max-width: 1136px;
-  margin: 0 auto;
+.footer_container--bottom {
   display: flex;
   gap: 24px;
   padding: 24px 0 50px 0;
 }
-.footer_bottom--link {
+.footer_container--bottom--link {
   font-family: Montserrat;
   font-weight: 500;
   font-size: 14px;
@@ -1649,7 +1643,7 @@ main .subscribe-modal__close {
   vertical-align: middle;
   color: #FFFFFF;
 }
-.footer_bottom--link:hover {
+.footer_container--bottom--link:hover {
   color: #FD9222;
   transition-duration: 0.3s;
 }
@@ -1673,6 +1667,15 @@ main .subscribe-modal__close {
   }
 }
 @media (max-width: 1100px) {
+  main .benefits_container {
+    max-width: 704px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 50px;
+  }
+  main .benefits_container--line {
+    display: none;
+  }
   main .product__title {
     font-family: Montserrat;
     font-weight: 600;
@@ -1718,15 +1721,6 @@ main .subscribe-modal__close {
   }
   main .start_container--box {
     padding-top: 671px;
-  }
-  main .benefits_container {
-    max-width: 704px;
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 50px;
-  }
-  main .benefits_container--line {
-    display: none;
   }
   main .taste_container {
     width: 100%;
@@ -2023,29 +2017,29 @@ main .subscribe-modal__close {
     height: 464px;
     margin-top: 12px;
   }
-  .footer_top {
-    width: 335px;
+  main .explore-container-text {
+    width: 320px;
   }
-  .footer_top--title {
+  .footer_container--top--box--title {
     font-family: Montserrat;
     font-weight: 500;
     font-style: Medium;
     font-size: 24px;
     line-height: 28px;
     letter-spacing: -2%;
-    margin-right: 40px;
   }
-  .footer_top {
+  .footer_container--top--box {
     flex-direction: column;
     gap: 32px;
   }
-  .footer_top--box--contact {
-    margin-left: -20px;
-  }
-  .footer_bottom {
-    width: 335px;
+  .footer_container--bottom {
+    align-items: flex-start;
     flex-direction: column;
     gap: 18px;
-    margin: 0 auto;
+  }
+}
+@media (max-width: 425px) {
+  .footer_container--top {
+    align-items: flex-end;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -855,7 +855,6 @@ main {
         transition: 0.3s;
         z-index: 20;
 
-
         &.active {
             opacity: 1;
             visibility: visible;
@@ -874,37 +873,8 @@ main {
         transition: 0.3s;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        overflow-y: auto;
         padding-right: 6px;
-        text-align: left;
-
-        /* Chrome, Edge, Safari */
-        &::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        &::-webkit-scrollbar-track {
-            background: #FFFFFF;
-            border-radius: 10px;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: orange;
-            border-radius: 10px;
-
-            &:hover {
-                background-color: darkorange;
-            }
-        }
-
-        /* Firefox */
-        scrollbar-width: thin;
-        scrollbar-color: orange #FFFFFF;
-
-        .modal.active & {
-            transform: scale(1);
-        }
+        align-items: center;
     }
 
     .modal__box--success {
@@ -1201,14 +1171,17 @@ main {
         }
     }
 
-    $container-width: 1136px;
+    $container-width: 1150px;
     $gap: 28px;
     $transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 
     .reviews {
-        padding: 100px 0;
+        padding-bottom: 128px;
         background-color: #FAFAFA;
         font-family: sans-serif;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
 
         h2 {
             font-family: Montserrat;
@@ -1255,7 +1228,7 @@ main {
             display: flex;
             gap: $gap;
             transition: $transition;
-            padding-top: 50px; // Место для аватарок
+            padding-top: 50px;
         }
 
         &__card {
@@ -1275,6 +1248,10 @@ main {
 
             @media (max-width: 650px) {
                 flex: 0 0 100%; // 1 карточка
+
+                &__card {
+                    width: 360px;
+                }
             }
 
             .avatar {
@@ -1361,6 +1338,21 @@ main {
             opacity: 1;
             visibility: visible;
         }
+    }
+
+    .review-launch {
+        width: 222px;
+        cursor: pointer;
+        font-family: Montserrat;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #111111;
+        padding: 14px 40px;
+        border: 1px solid #FD9222;
+        background-color: #FAFAFA;
+        border-radius: 100px;
     }
 
     /* Карточка */
@@ -1540,7 +1532,7 @@ main {
                 text-align: center;
                 margin-bottom: 24px;
                 color: #FFFFFF;
-                width: 320px;
+                
             }
 
             &-btn {
