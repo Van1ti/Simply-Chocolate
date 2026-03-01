@@ -192,6 +192,106 @@ if (orderModal && successModal) {
   });
 }
 
+/* ======= REVIEW SLIDER ======= */
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("slider-track");
+  const viewport = document.querySelector(".reviews__viewport");
+  const pagination = document.getElementById("pagination");
+  const points = pagination.querySelectorAll(".point");
+
+  let cards = Array.from(track.children);
+  const gap = 28;
+  const cardWidth = 360 + gap; // ширина карточки + gap
+  const totalCards = cards.length;
+
+  let visibleCards = getVisibleCards();
+  let currentIndex = visibleCards;
+  let autoSlide;
+
+  // --- КЛОНИРУЕМ карточки для бесконечного эффекта ---
+  const firstClones = cards.slice(0, visibleCards).map(card => card.cloneNode(true));
+  const lastClones = cards.slice(-visibleCards).map(card => card.cloneNode(true));
+
+  firstClones.forEach(clone => track.appendChild(clone));
+  lastClones.reverse().forEach(clone => track.prepend(clone));
+
+  cards = Array.from(track.children);
+
+  updatePosition();
+
+  // --- АВТОСЛАЙД ---
+  function startAutoSlide() {
+    autoSlide = setInterval(() => {
+      moveToSlide(currentIndex + 1);
+    }, 3000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlide);
+  }
+
+  viewport.addEventListener("mouseenter", stopAutoSlide);
+  viewport.addEventListener("mouseleave", startAutoSlide);
+
+  // --- ПЕРЕМЕЩЕНИЕ ---
+  function moveToSlide(index) {
+    currentIndex = index;
+    track.style.transition = "transform 0.5s ease";
+    updatePosition();
+    updatePagination();
+  }
+
+  function updatePosition() {
+    const offset = -currentIndex * cardWidth;
+    track.style.transform = `translateX(${offset}px)`;
+  }
+
+  // --- БЕСКОНЕЧНЫЙ ЭФФЕКТ ---
+  track.addEventListener("transitionend", () => {
+    if (currentIndex >= totalCards + visibleCards) {
+      track.style.transition = "none";
+      currentIndex = visibleCards;
+      updatePosition();
+    }
+
+    if (currentIndex < visibleCards) {
+      track.style.transition = "none";
+      currentIndex = totalCards + visibleCards - 1;
+      updatePosition();
+    }
+  });
+
+  // --- ПАГИНАЦИЯ ---
+  function updatePagination() {
+    let realIndex = (currentIndex - visibleCards) % totalCards;
+    if (realIndex < 0) realIndex += totalCards;
+
+    points.forEach(p => p.classList.remove("point--active"));
+    points[realIndex].classList.add("point--active");
+  }
+
+  points.forEach(point => {
+    point.addEventListener("click", () => {
+      const slideIndex = parseInt(point.dataset.slide);
+      moveToSlide(slideIndex + visibleCards);
+    });
+  });
+
+  // --- АДАПТИВ ---
+  function getVisibleCards() {
+    if (window.innerWidth <= 650) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+  }
+
+  window.addEventListener("resize", () => {
+    visibleCards = getVisibleCards();
+    updatePosition();
+  });
+
+  startAutoSlide();
+});
+
 /* ======= REVIEW MODAL ======= */
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -243,9 +343,9 @@ document.addEventListener('DOMContentLoaded', () => {
 const openModalBtn = document.getElementById('openModalBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
 const modal = document.getElementById('subscribeModal');
-const submitBtn = modal.querySelector('button[type="submit"]') || 
-                  modal.querySelector('.subscribe-modal__box__send__btn') || 
-                  modal.querySelector('button:last-of-type');
+const submitBtn = modal.querySelector('button[type="submit"]') ||
+  modal.querySelector('.subscribe-modal__box__send__btn') ||
+  modal.querySelector('button:last-of-type');
 
 openModalBtn.addEventListener('click', () => {
   modal.classList.add('active');

@@ -97,7 +97,7 @@
                 <div class="start_container--grey"></div>
                 <div class="start_container--box">
                     <div class="start_container--box--info">
-                        <h3 class="start_container--box--info--title">Treat yourself or a loved one to
+                        <h3 class="start_container--box--info--title">Treat yourself or a loved one to <br>
                             our finest ingredients for a moment
                             of pure delight!</h3>
                         <div class="start_container--box--info--buttons">
@@ -418,90 +418,92 @@
             </div>
         </section>
         <!-- ORDER MODAL -->
-        <div class="modal" id="orderModal">
-            <div class="modal__box modal__box--order">
-                <button class="modal__close" id="closeOrder">
-                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21 7L7 21" stroke="#111111" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M7 7L21 21" stroke="#111111" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg></button>
+        <div class="background">
+            <div class="modal" id="orderModal">
+                <div class="modal__box modal__box--order">
+                    <button class="modal__close" id="closeOrder">
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 7L7 21" stroke="#111111" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M7 7L21 21" stroke="#111111" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg></button>
 
-                <h2 class="modal__title"><span>BUY</span> NOW</h2>
+                    <h2 class="modal__title"><span>BUY</span> NOW</h2>
 
-                <div class="modal-products">
+                    <div class="modal-products">
 
-                    <div class="slider" id="slider">
+                        <div class="slider" id="slider">
 
-                        <div class="slide active">
-                            <img src="./img/small-bar-chocolate.png" alt="">
-                            <span>100 g</span>
-                        </div>
-
-                        <div class="slide">
-                            <img src="./img/tower-chocolate.png" alt="">
-                            <span>200 g</span>
-                        </div>
-
-                        <div class="slide">
-                            <img src="./img/big-bar-chocolate.png" alt="">
-                            <span>300 g</span>
-                        </div>
-
-                    </div>
-
-                    <div class="dots">
-                        <span class="dot active" data-index="0"></span>
-                        <span class="dot" data-index="1"></span>
-                        <span class="dot" data-index="2"></span>
-                    </div>
-                </div>
-
-                <form class="form">
-
-                    <div class="form-group">
-                        <label>Personal information</label>
-                        <div class="form-row">
-                            <input type="text" placeholder="Name" required>
-                            <input type="text" placeholder="Surname" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" placeholder="Enter your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Phone number</label>
-                        <div class="form-group-input">
-                            <div class="form-group-input-code">
-                                <img src="./img/ua-phone-number-chocolate.svg" alt="ua">
-                                <p>+380</p>
+                            <div class="slide active">
+                                <img src="./img/small-bar-chocolate.png" alt="">
+                                <span>100 g</span>
                             </div>
-                            <input placeholder="Phone number" type="tel" required>
+
+                            <div class="slide">
+                                <img src="./img/tower-chocolate.png" alt="">
+                                <span>200 g</span>
+                            </div>
+
+                            <div class="slide">
+                                <img src="./img/big-bar-chocolate.png" alt="">
+                                <span>300 g</span>
+                            </div>
+
                         </div>
 
-                    </div>
-
-                    <div class="form-group">
-                        <label>Card number</label>
-                        <div class="card">
-                            <input type="text" id="cardInput" placeholder="XXXX XXXX XXXX XXXX" required>
+                        <div class="dots">
+                            <span class="dot active" data-index="0"></span>
+                            <span class="dot" data-index="1"></span>
+                            <span class="dot" data-index="2"></span>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Comment</label>
-                        <textarea placeholder="Enter text" required></textarea>
-                    </div>
+                    <form class="form">
 
-                    <button type="button" class="submit-btn" id="submitOrder">
-                        Submit
-                    </button>
+                        <div class="form-group">
+                            <label>Personal information</label>
+                            <div class="form-row">
+                                <input type="text" placeholder="Name" required>
+                                <input type="text" placeholder="Surname" required>
+                            </div>
+                        </div>
 
-                </form>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone number</label>
+                            <div class="form-group-input">
+                                <div class="form-group-input-code">
+                                    <img src="./img/ua-phone-number-chocolate.svg" alt="ua">
+                                    <p>+380</p>
+                                </div>
+                                <input placeholder="Phone number" type="tel" required>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Card number</label>
+                            <div class="card">
+                                <input type="text" id="cardInput" placeholder="XXXX XXXX XXXX XXXX" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Comment</label>
+                            <textarea placeholder="Enter text" required></textarea>
+                        </div>
+
+                        <button type="button" class="submit-btn" id="submitOrder">
+                            Submit
+                        </button>
+
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -592,11 +594,13 @@
                 </div>
 
                 <!-- Пагинация -->
-                <div class="reviews__pagination">
-                    <button class="point point--active"></button>
-                    <button class="point"></button>
-                    <button class="point"></button>
-                    <button class="point"></button>
+                <div class="reviews__pagination" id="pagination">
+                    <button class="point point--active" data-slide="0"></button>
+                    <button class="point" data-slide="1"></button>
+                    <button class="point" data-slide="2"></button>
+                    <button class="point" data-slide="3"></button>
+                    <button class="point" data-slide="4"></button>
+                    <button class="point" data-slide="5"></button>
                 </div>
                 <button class="reviews-launch" id="reviewLaunch">
                     Leave a review
