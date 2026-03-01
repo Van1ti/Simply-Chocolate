@@ -633,7 +633,7 @@ main .howItsMade--grey {
 }
 main .products {
   margin: 0 auto;
-  padding: 80px 0;
+  padding-bottom: 128px;
 }
 main .products__container {
   width: 100%;
@@ -825,40 +825,38 @@ main {
 main .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  z-index: 20;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.45);
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s;
-  z-index: 20;
+  transition: 0.3s ease;
 }
 main .modal.active {
   opacity: 1;
   visibility: visible;
 }
 main .modal__box {
+  position: relative;
   width: 100%;
   max-width: 600px;
-  background: #FAFAFA;
-  border-radius: 15px;
-  padding-top: 48px;
-  padding-bottom: 48px;
-  position: relative;
-  transform: scale(1);
-  transition: 0.3s;
   display: flex;
   flex-direction: column;
-  padding-right: 6px;
   align-items: center;
+  padding: 48px 6px 48px 0;
+  background: #FAFAFA;
+  border-radius: 15px;
+  transform: scale(1);
+  transition: 0.3s;
 }
 main .modal__box--success {
-  background: #fd9222;
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 154px 44px 154px 163px;
+  background: #FD9222;
 }
 main .modal__box--success img {
   position: absolute;
@@ -866,71 +864,62 @@ main .modal__box--success img {
   bottom: -1px;
 }
 main .modal__box--success h2 {
-  font-family: Montserrat;
-  font-weight: 600;
-  font-style: SemiBold;
-  font-size: 24px;
-  line-height: 28px;
-  letter-spacing: -2%;
+  margin-bottom: 8px;
+  font: 600 24px/28px "Montserrat", sans-serif;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: #FFFFFF;
-  margin-bottom: 8px;
 }
 main .modal__box--success p {
-  font-family: Montserrat;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: -2%;
-  color: #FFFFFF;
   width: 309px;
+  font: 400 18px/24px "Montserrat", sans-serif;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
 }
 main .modal__box--success p span {
-  font-family: Montserrat;
-  font-weight: 400;
   font-size: 24px;
-  line-height: 24px;
-  letter-spacing: -2%;
 }
 main .modal__close {
-  border: none;
-  background-color: none;
   position: absolute;
   right: 24px;
   top: 24px;
+  border: none;
+  background: #FAFAFA;
   font-size: 28px;
-  background-color: #FAFAFA;
+  cursor: pointer;
 }
 main .modal__close--svg {
   position: absolute;
   top: 24px;
   right: 24px;
-  background-color: #FD9222;
-  border: none;
   padding: 0;
+  background: #FD9222;
+  border: none;
   cursor: pointer;
 }
 main .modal__close--svg svg {
   display: block;
-  background-color: #FD9222;
-  border: none;
+  background: #FD9222;
 }
 main .modal__title {
-  font-family: Montserrat;
-  font-weight: 600;
-  font-style: SemiBold;
-  font-size: 24px;
-  line-height: 28px;
-  letter-spacing: -3%;
+  margin-bottom: 32px;
+  font: 600 24px/28px "Montserrat", sans-serif;
+  letter-spacing: -0.03em;
   text-align: center;
   text-transform: uppercase;
   color: #111111;
-  margin-bottom: 32px;
 }
 main .modal__title span {
   color: #FD9222;
 }
+main .modal__success {
+  width: 516px;
+}
+main {
+  /* PRODUCTS & SLIDER */
+}
 main .modal-products {
+  display: flex;
   gap: 16px;
   margin-bottom: 40px;
 }
@@ -943,50 +932,45 @@ main .slider .slide {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(17, 17, 17, 0.1019607843);
+  padding: 22px 20px 18px;
+  background: #FFFFFF;
+  border: 1px solid rgba(17, 17, 17, 0.1);
   border-radius: 15px;
-  padding: 22px 20px 18px 20px;
 }
 main .slider .slide span {
   margin-top: 15px;
-  font-family: Montserrat;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #111111;
-  border: 1px solid rgba(17, 17, 17, 0.1019607843);
-  border-radius: 100px;
-  background-color: #FAFAFA;
   padding: 8px 27.5px;
+  font: 600 14px/100% "Montserrat", sans-serif;
+  color: #111111;
+  background: #FAFAFA;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 100px;
 }
 main .modal-product {
-  background: #fff;
+  flex-shrink: 0;
+  padding: 22px 20px 18px;
+  background: #FFFFFF;
+  border: 1px solid rgba(17, 17, 17, 0.1);
   border-radius: 15px;
-  padding: 22px 20px 18px 20px;
   text-align: center;
   cursor: pointer;
-  flex-shrink: 0;
   transition: 0.2s;
-  border: 1px solid rgba(17, 17, 17, 0.1019607843);
 }
 main .modal-product:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 main .modal-product span {
-  background-color: #FAFAFA;
   display: block;
-  border-radius: 100px;
-  border: 1px solid rgba(17, 17, 17, 0.1019607843);
   margin-top: 10px;
-  font-family: Montserrat;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #111111;
   padding: 8px 27px;
+  font: 600 14px/100% "Montserrat", sans-serif;
+  color: #111111;
+  background: #FAFAFA;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 100px;
+}
+main {
+  /* FORM ELEMENTS */
 }
 main .form {
   width: 100%;
@@ -1003,23 +987,12 @@ main .form-group {
   gap: 8px;
 }
 main .form-group label {
-  font-family: Montserrat;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: -2%;
+  font: 500 14px/18px "Montserrat", sans-serif;
+  letter-spacing: -0.02em;
   color: #000000;
 }
 main .form-group input {
   height: 66px;
-}
-main input.error,
-main textarea.error {
-  border: 2px solid #e74c3c;
-}
-main input.success,
-main textarea.success {
-  border: 2px solid #2ecc71;
 }
 main .form-group-input {
   width: 100%;
@@ -1027,10 +1000,10 @@ main .form-group-input {
   margin-bottom: 18px;
   display: flex;
   align-items: center;
-  border: 1.5px solid rgba(17, 17, 17, 0.0509803922);
-  border-radius: 13px;
   gap: 8px;
   padding-left: 24px;
+  border: 1.5px solid rgba(17, 17, 17, 0.05);
+  border-radius: 13px;
 }
 main .form-group-input input {
   border: none;
@@ -1039,20 +1012,16 @@ main .form-group-input input {
 main .form-group-input-code {
   display: flex;
   align-items: center;
-  box-shadow: 2.72px 0px 0px 0px rgba(0, 0, 0, 0.1019607843);
   height: 32px;
+  box-shadow: 2.72px 0px 0px 0px rgba(0, 0, 0, 0.1);
 }
 main .form-group-input-code img {
   margin-right: 18px;
 }
 main .form-group-input-code p {
   padding-right: 32px;
-  font-family: Montserrat;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 100%;
-  letter-spacing: -2%;
-  vertical-align: middle;
+  font: 500 18px/100% "Montserrat", sans-serif;
+  letter-spacing: -0.02em;
   color: #000000;
 }
 main .form-row {
@@ -1064,41 +1033,50 @@ main .form-row input {
   width: 246px;
   height: 66px;
 }
-main .submit-btn {
-  font-family: Montserrat;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #FFFFFF;
-  background-color: #FD9222;
-  padding: 14px 40px;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
+main {
+  /* INPUTS & BUTTONS */
 }
 main input,
 main textarea {
   width: 100%;
   padding: 14px;
+  font: 400 18px/100% "Montserrat", sans-serif;
+  letter-spacing: -0.02em;
+  color: #404040;
+  background: #FAFAFA;
+  border: 1px solid #E0E0E0;
   border-radius: 10px;
-  border: 1px solid #e0e0e0;
-  font-size: 14px;
-  font-family: Montserrat;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
-  letter-spacing: -2%;
-  vertical-align: middle;
-  color: rgba(64, 64, 64, 0.3019607843);
-  background-color: #FAFAFA;
+}
+main input::-moz-placeholder, main textarea::-moz-placeholder {
+  color: rgba(64, 64, 64, 0.3);
+}
+main input::placeholder,
+main textarea::placeholder {
+  color: rgba(64, 64, 64, 0.3);
+}
+main input.error,
+main textarea.error {
+  border: 2px solid #E74C3C;
+}
+main input.success,
+main textarea.success {
+  border: 2px solid #2ECC71;
 }
 main textarea {
-  resize: none;
   height: 137px;
+  resize: none;
 }
-main .modal__success {
-  width: 516px;
+main .submit-btn {
+  padding: 14px 40px;
+  font: 600 14px/100% "Montserrat", sans-serif;
+  color: #FFFFFF;
+  background: #FD9222;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+main .submit-btn:hover {
+  background: rgb(252.7713004484, 133.5358744395, 8.7286995516);
 }
 main .card {
   position: relative;
@@ -1111,7 +1089,7 @@ main .card img {
   width: 40px;
 }
 main .reviews {
-  padding: 120px 16px;
+  padding-bottom: 128px;
   background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%);
   display: flex;
   flex-direction: column;
@@ -1123,7 +1101,7 @@ main .reviews h2 {
   font-size: 24px;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
   letter-spacing: -0.02em;
   color: #111;
 }
@@ -1137,9 +1115,6 @@ main .reviews__container {
   flex-direction: column;
   align-items: center;
 }
-main .reviews {
-  /* ===== SLIDER ===== */
-}
 main .reviews__viewport {
   width: 100%;
   overflow: hidden;
@@ -1151,11 +1126,7 @@ main .reviews__viewport:active {
 main .reviews__track {
   display: flex;
   gap: 28px;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   padding-top: 50px;
-}
-main .reviews {
-  /* ===== CARD ===== */
 }
 main .reviews__card {
   flex: 0 0 calc((100% - 28px * 2) / 3);
@@ -1163,18 +1134,20 @@ main .reviews__card {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(17, 17, 17, 0.06);
   border-radius: 20px;
-  padding: 40px 20px;
+  padding: 20px;
   text-align: center;
   position: relative;
   box-sizing: border-box;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  /* Premium hover */
 }
 main .reviews__card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 @media (max-width: 1024px) {
+  main .reviews__card__container {
+    max-width: 748px;
+  }
   main .reviews__card {
     flex: 0 0 calc((100% - 28px) / 2);
   }
@@ -1211,9 +1184,6 @@ main .reviews__card p {
   color: rgba(17, 17, 17, 0.65);
   margin: 0 auto;
 }
-main .reviews {
-  /* ===== PAGINATION ===== */
-}
 main .reviews__pagination {
   display: flex;
   justify-content: center;
@@ -1239,16 +1209,14 @@ main .reviews .point--active {
   background: linear-gradient(90deg, #FD9222, #FFB347);
   box-shadow: 0 4px 14px rgba(253, 146, 34, 0.4);
 }
-main .reviews {
-  /* ===== BUTTON ===== */
-}
 main .reviews .reviews-launch {
-  margin-top: 60px;
+  margin-top: 50px;
   padding: 14px 48px;
   border-radius: 100px;
   border: none;
-  background: linear-gradient(90deg, #FD9222, #FFB347);
-  color: #fff;
+  background-color: #FFFFFF;
+  border: 1px solid #FD9222;
+  color: #111111;
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -1257,7 +1225,9 @@ main .reviews .reviews-launch {
   box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
 main .reviews .reviews-launch:hover {
+  color: #fff;
   transform: translateY(-3px);
+  background: linear-gradient(90deg, #FD9222, #FFB347);
   box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .reviews .reviews-launch:active {
@@ -1277,23 +1247,6 @@ main .review-layer.is-visible {
   opacity: 1;
   visibility: visible;
 }
-main .review-launch {
-  width: 222px;
-  cursor: pointer;
-  font-family: Montserrat;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #111111;
-  padding: 14px 40px;
-  border: 1px solid #FD9222;
-  background-color: #FAFAFA;
-  border-radius: 100px;
-}
-main {
-  /* Карточка */
-}
 main .review-card {
   position: absolute;
   top: 100px;
@@ -1305,9 +1258,6 @@ main .review-card {
   border-radius: 24px;
   background: #fff;
 }
-main {
-  /* Success */
-}
 main .review-card--done {
   display: none;
   background: #FD9222;
@@ -1315,9 +1265,6 @@ main .review-card--done {
   position: relative;
   width: 517px;
   height: 414px;
-}
-main {
-  /* Крестик */
 }
 main .review-card__exit {
   position: absolute;
@@ -1327,25 +1274,25 @@ main .review-card__exit {
   height: 32px;
   border-radius: 50%;
   border: none;
-  background: #f2f2f2;
   cursor: pointer;
+  background-color: #FFFFFF;
 }
 main .review-card__exit--light {
   background: white;
   color: #FD9222;
 }
-main {
-  /* Заголовок */
-}
-main .review-card__heading {
-  font-size: 24px;
+main .review__heading {
+  font-family: Montserrat;
   font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -3%;
+  text-align: left;
+  justify-content: left;
 }
-main .review-card__heading span {
+main .review__heading span {
   color: #FD9222;
-}
-main {
-  /* Форма */
 }
 main .review-card__body {
   margin-top: 24px;
@@ -1369,15 +1316,20 @@ main .review-card__body textarea {
   height: 120px;
   resize: none;
 }
-main {
-  /* Телефон */
-}
 main .review-phone {
   display: flex;
   align-items: center;
   border: 1px solid rgba(17, 17, 17, 0.1);
   border-radius: 12px;
   overflow: hidden;
+}
+main .review-phone p {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: -2%;
+  vertical-align: middle;
 }
 main .review-phone__code {
   display: flex;
@@ -1398,20 +1350,19 @@ main .review-phone input {
   border: none;
   flex: 1;
 }
-main {
-  /* Кнопка */
-}
 main .review-submit {
   width: 120px;
   padding: 12px;
   border-radius: 30px;
   border: none;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
   background: #FD9222;
   color: white;
   cursor: pointer;
-}
-main {
-  /* Success контент */
 }
 main .review-success {
   display: flex;
@@ -1422,9 +1373,28 @@ main .review-success img {
   position: absolute;
   left: 0;
   bottom: 0;
+  border-bottom-left-radius: 20px;
+}
+main .review-success-info {
+  margin-top: 130px;
+  margin-left: 130px;
 }
 main .review-success-info h3 {
   margin: 0;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -2%;
+  text-transform: uppercase;
+}
+main .review-success-info p {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -2%;
 }
 main .explore {
   background-image: url(./img/Subcribe.png);
@@ -1699,6 +1669,9 @@ main .subscribe-modal__close {
   main .benefits_container--line {
     display: none;
   }
+  main .product {
+    padding: 0 15px;
+  }
   main .product__title {
     font-family: Montserrat;
     font-weight: 600;
@@ -1720,6 +1693,9 @@ main .subscribe-modal__close {
   }
 }
 @media (max-width: 1024px) {
+  .header {
+    padding-bottom: 24px;
+  }
   .header_container {
     max-width: 704px;
   }
@@ -1735,7 +1711,12 @@ main .subscribe-modal__close {
   .footer {
     padding: 0 15px;
   }
+  main .start {
+    padding: 0 15px;
+    padding-bottom: 50px;
+  }
   main .start_container {
+    padding-top: 0;
     max-width: 704px;
     background-image: url(./img/chocolate-laptop.png);
   }
@@ -1744,6 +1725,10 @@ main .subscribe-modal__close {
   }
   main .start_container--box {
     padding-top: 671px;
+  }
+  main .taste {
+    padding: 0 15px;
+    padding: 100px 0;
   }
   main .taste_container {
     width: 100%;
@@ -1779,6 +1764,10 @@ main .subscribe-modal__close {
   }
   main .taste_container--card--2, main .taste_container--card--3 {
     order: 2;
+  }
+  main .products {
+    padding: 0 15px;
+    padding-bottom: 100px;
   }
   main .product__title {
     font-family: Montserrat;
@@ -1818,11 +1807,26 @@ main .subscribe-modal__close {
   main .howItsMade--grey {
     display: none;
   }
+  main .topSellers {
+    padding: 0 15px;
+    padding-bottom: 100px;
+  }
   main .topSellers_container--example--chocolate-3 {
     display: none;
   }
   main .topSellers_container--example--chocolate-1, main .topSellers_container--example--chocolate-2, main .topSellers_container--example--chocolate-3 {
     width: 344px;
+  }
+  main .explore {
+    padding: 72px 15px 63px 15px;
+  }
+  main .explore-container-btn {
+    padding: 12px 28px;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
   }
 }
 @media (max-width: 768px) {
@@ -1926,10 +1930,11 @@ main .subscribe-modal__close {
   main .products__slider {
     width: 270px;
   }
+  main .start {
+    padding-bottom: 72px;
+  }
   main .start_container {
-    max-width: 335px;
     padding: 20px;
-    background-image: url(./img/chocolate-phonr.png);
     background-size: cover;
     background-position: center;
   }
@@ -1941,11 +1946,15 @@ main .subscribe-modal__close {
     gap: 32px;
   }
   main .start_container--box--info--title {
+    max-width: 350px;
     font-family: Montserrat;
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
     letter-spacing: -3%;
+  }
+  main .start_container--box--info--buttons {
+    max-width: 300px;
   }
   main .start_container--box--info--buttons--btn {
     padding: 12px 28px;
@@ -1966,6 +1975,9 @@ main .subscribe-modal__close {
   main .start_container--box--scroll svg {
     width: 28px;
     height: 28px;
+  }
+  main .benefits {
+    padding: 20px;
   }
   main .taste {
     padding: 72px 0;
@@ -1999,6 +2011,9 @@ main .subscribe-modal__close {
   main .taste_container--card--4 {
     order: 4;
   }
+  main .howItsMade {
+    padding-bottom: 72px;
+  }
   main .howItsMade_title {
     margin-bottom: 32px;
   }
@@ -2023,6 +2038,9 @@ main .subscribe-modal__close {
     max-width: 335px;
     padding: 20px 14px;
   }
+  main .topSellers {
+    padding-bottom: 72px;
+  }
   main .topSellers_title {
     margin-bottom: 32px;
   }
@@ -2033,12 +2051,28 @@ main .subscribe-modal__close {
     flex-direction: column;
     align-items: center;
     row-gap: 20px;
+    margin-top: 20px;
   }
   main .topSellers_container--info--chocolate-2 {
     display: block;
     width: 335px;
     height: 464px;
     margin-top: 12px;
+  }
+  main .products {
+    padding-bottom: 72px;
+  }
+  main .products__title {
+    margin-bottom: 32px;
+  }
+  main .reviews {
+    padding-bottom: 100px;
+  }
+  main .reviews h2 {
+    margin-bottom: 32px;
+  }
+  main .reviews .reviews-launch {
+    margin-top: 32px;
   }
   main .explore-container-text {
     width: 320px;
