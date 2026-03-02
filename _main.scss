@@ -853,7 +853,7 @@ main {
         }
     }
 
-    /* BACKDROP */
+
     .modal {
         position: fixed;
         inset: 0;
@@ -965,7 +965,7 @@ main {
         }
     }
 
-    /* PRODUCTS & SLIDER */
+
     .modal-products {
         display: flex;
         gap: 16px;
@@ -1028,7 +1028,6 @@ main {
         }
     }
 
-    /* FORM ELEMENTS */
     .form {
         width: 100%;
         max-width: 500px;
@@ -1100,8 +1099,7 @@ main {
             }
         }
     }
-
-    /* INPUTS & BUTTONS */
+    
     input,
     textarea {
         width: 100%;

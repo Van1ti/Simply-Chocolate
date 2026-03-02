@@ -828,9 +828,6 @@ main .topSellers_container--info--btn:hover {
   background: linear-gradient(90deg, #FCF1E0);
   box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
-main {
-  /* BACKDROP */
-}
 main .modal {
   position: fixed;
   inset: 0;
@@ -927,9 +924,6 @@ main .modal__title span {
 main .modal__success {
   width: 516px;
 }
-main {
-  /* PRODUCTS & SLIDER */
-}
 main .modal-products {
   display: flex;
   gap: 16px;
@@ -981,9 +975,6 @@ main .slider-dots button.active {
   main .slider-track {
     gap: 8px;
   }
-}
-main {
-  /* FORM ELEMENTS */
 }
 main .form {
   width: 100%;
@@ -1045,9 +1036,6 @@ main .form-row input {
   flex: 1;
   width: 246px;
   height: 66px;
-}
-main {
-  /* INPUTS & BUTTONS */
 }
 main input,
 main textarea {
@@ -1899,7 +1887,7 @@ main .subscribe-modal__close {
     vertical-align: middle;
   }
   main .modal__box--success {
-    padding: 0;
+    padding: 1000px;
   }
   main .modal__box--success--img1 {
     display: none;
