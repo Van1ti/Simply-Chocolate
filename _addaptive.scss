@@ -312,6 +312,52 @@
     }
 
     main {
+        .modal__box--success {
+            padding: 0;
+            &--img1 {
+                display: none;
+            }
+
+            &--img2 {
+                display: block;
+                position: absolute;
+                left: -1px;
+                bottom: -1px;
+            }
+        }
+
+        .modal__box--success--info {
+            margin-top: 84px;
+            margin-bottom: 68px;
+            h2 {
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 20px;
+                line-height: 24px;
+                letter-spacing: -2%;
+                text-transform: uppercase;
+            }
+
+            p {
+                font-family: Montserrat;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 16px;
+                letter-spacing: -2%;
+                width: 219px;
+
+                span {
+                    font-family: Montserrat;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 16px;
+                    letter-spacing: -2%;
+
+                }
+            }
+        }
+
         .modal__box {
             max-width: 311px;
             padding: 32px 24px;
@@ -320,6 +366,73 @@
         .modal__box {
             max-width: 311px;
             padding: 32px 24px;
+        }
+
+        input {
+            font-family: Montserrat;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 100%;
+            letter-spacing: -2%;
+            vertical-align: middle;
+        }
+
+        .form-group {
+            textarea {
+                height: 91px;
+            }
+
+            &-input {
+                padding-left: 18px;
+
+                input {
+                    font-family: Montserrat;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 100%;
+                    letter-spacing: -2%;
+                    vertical-align: middle;
+                    padding-left: 14px;
+                }
+
+                &-code {
+
+                    img {
+                        margin-right: 8px;
+                        width: 24px;
+                        height: 18px;
+                    }
+
+                    p {
+                        padding-right: 8px;
+                        font-family: Montserrat;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 100%;
+                        letter-spacing: -2%;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+
+        .submit-btn {
+            padding: 12px 28px;
+            font-family: Montserrat;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            margin-right: 154px;
+        }
+
+        .modal__box--success {
+            height: 350px;
+            width: 311px;
+
+            img {
+                transform: -124px;
+            }
         }
 
         .modal-products {
@@ -632,7 +745,86 @@
     }
 }
 
+/* ===== MOBILE SLIDER PRO ===== */
+@media (max-width: 768px) {
+
+    .slider {
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .slider-track {
+        display: flex;
+        gap: 16px;
+        transition: transform 0.4s ease;
+    }
+
+    .slide {
+        flex: 0 0 75%;
+        /* ширина 75% экрана */
+        max-width: 75%;
+        opacity: 0.4;
+        transform: scale(0.85);
+        transition: 0.4s ease;
+    }
+
+    .slide.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 580px) {
+    main {
+        .subscribe-modal {
+            h2 {
+                font-family: Montserrat;
+                font-weight: 600;
+                font-style: SemiBold;
+                font-size: 20px;
+                line-height: 24px;
+                letter-spacing: -3%;
+                text-transform: uppercase;
+            }
+        }
+
+
+
+        .subscribe-modal__box__send {
+            width: 263px;
+            border: 1px solid #1111111A;
+            border-radius: 100px;
+
+            input {
+                border: none;
+                padding: 14px 0px 14px 18px;
+                width: 163px;
+                font-family: Montserrat;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 100%;
+                letter-spacing: -2%;
+                vertical-align: middle;
+
+            }
+
+            &__btn {
+                right: 0;
+                font-family: Montserrat;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 100%;
+                letter-spacing: 0%;
+                text-align: center;
+                padding: 14px 22px;
+            }
+        }
+
+    }
+}
+
 @media(max-width:425px) {
+
     .footer {
         &_container {
             &--top {

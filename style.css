@@ -186,17 +186,23 @@ main .start_container--box--info--buttons {
   justify-content: space-between;
 }
 main .start_container--box--info--buttons--btn {
-  font-family: Montserrat;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #FFFFFF;
   background-color: #FD9222;
-  border: none;
+  border: 1px solid #FD9222;
+  color: #FFFFFF;
   border-radius: 100px;
   padding: 14px 40px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
+}
+main .start_container--box--info--buttons--btn:hover {
+  color: #FD9222;
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #FCF1E0);
+  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .start_container--box--info--buttons--btn--2 {
   font-family: Montserrat;
@@ -209,16 +215,13 @@ main .start_container--box--info--buttons--btn--2 {
   padding: 14px 40px;
   border: 1px solid #FFFFFF;
   background: none;
-}
-main .start_container--box--info--buttons--btn:hover {
-  background-color: #FCF1E0;
-  transition-duration: 0.3s;
-  color: #FD9222;
+  box-shadow: 0 3px 10px #FFFFFF;
 }
 main .start_container--box--info--buttons--btn--2:hover {
   border: 1px solid #FD9222;
   transition-duration: 0.3s;
   color: #FD9222;
+  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .start_container--box--scroll {
   width: 100%;
@@ -743,6 +746,11 @@ main .product-card button {
   line-height: 100%;
   letter-spacing: 0%;
   cursor: pointer;
+  box-shadow: 0 8px 25px grey;
+}
+main .product-card button:hover {
+  transition-duration: 0.3s;
+  box-shadow: 0 8px 25px orange;
 }
 main .topSellers {
   width: 100%;
@@ -778,7 +786,8 @@ main .topSellers_container--example {
   gap: 16px;
 }
 main .topSellers_container--example--chocolate--1, main .topSellers_container--example--chocolate--2, main .topSellers_container--example--chocolate--3 {
-  width: 368px;
+  width: 100%;
+  max-width: 368px;
   height: 464px;
 }
 main .topSellers_container--info {
@@ -801,23 +810,23 @@ main .topSellers_container--info--text {
   color: #111111;
 }
 main .topSellers_container--info--btn {
-  font-family: Montserrat;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #FFFFFF;
-  padding: 14px 40px;
-  border: none;
-  border-radius: 100px;
   background-color: #FD9222;
+  border: 1px solid #FD9222;
+  color: #FFFFFF;
+  border-radius: 100px;
+  padding: 14px 40px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   cursor: pointer;
-  animation: infinite;
-  transition-duration: 0.3s;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
 main .topSellers_container--info--btn:hover {
   color: #FD9222;
-  background-color: #FCF1E0;
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #FCF1E0);
+  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main {
   /* BACKDROP */
@@ -858,10 +867,13 @@ main .modal__box--success {
   padding: 154px 44px 154px 163px;
   background: #FD9222;
 }
-main .modal__box--success img {
+main .modal__box--success--img1 {
   position: absolute;
   left: -1px;
   bottom: -1px;
+}
+main .modal__box--success--img2 {
+  display: none;
 }
 main .modal__box--success h2 {
   margin-bottom: 8px;
@@ -924,50 +936,51 @@ main .modal-products {
   margin-bottom: 40px;
 }
 main .slider {
+  overflow: hidden;
+  position: relative;
+}
+main .slider-track {
   display: flex;
-  align-items: center;
   gap: 16px;
+  transition: transform 0.6s ease;
 }
-main .slider .slide {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 22px 20px 18px;
-  background: #FFFFFF;
-  border: 1px solid rgba(17, 17, 17, 0.1);
-  border-radius: 15px;
-}
-main .slider .slide span {
-  margin-top: 15px;
-  padding: 8px 27.5px;
-  font: 600 14px/100% "Montserrat", sans-serif;
-  color: #111111;
-  background: #FAFAFA;
-  border: 1px solid rgba(17, 17, 17, 0.1);
-  border-radius: 100px;
-}
-main .modal-product {
-  flex-shrink: 0;
-  padding: 22px 20px 18px;
-  background: #FFFFFF;
-  border: 1px solid rgba(17, 17, 17, 0.1);
+main .slide {
+  flex: 0 0 auto;
+  width: 250px;
+  background: #fff;
   border-radius: 15px;
   text-align: center;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+main .slide img {
+  width: 100%;
+  border-radius: 10px;
+}
+main .slider-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+main .slider-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  margin: 0 5px;
   cursor: pointer;
-  transition: 0.2s;
 }
-main .modal-product:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+main .slider-dots button.active {
+  background: #FD9222;
 }
-main .modal-product span {
-  display: block;
-  margin-top: 10px;
-  padding: 8px 27px;
-  font: 600 14px/100% "Montserrat", sans-serif;
-  color: #111111;
-  background: #FAFAFA;
-  border: 1px solid rgba(17, 17, 17, 0.1);
-  border-radius: 100px;
+@media (max-width: 480px) {
+  main .slide {
+    width: 80%;
+  }
+  main .slider-track {
+    gap: 8px;
+  }
 }
 main {
   /* FORM ELEMENTS */
@@ -1067,16 +1080,24 @@ main textarea {
   resize: none;
 }
 main .submit-btn {
-  padding: 14px 40px;
-  font: 600 14px/100% "Montserrat", sans-serif;
+  background-color: #FD9222;
+  border: 1px solid #FD9222;
   color: #FFFFFF;
-  background: #FD9222;
-  border: none;
   border-radius: 100px;
+  padding: 14px 40px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
+  margin-right: 375px;
 }
 main .submit-btn:hover {
-  background: rgb(252.7713004484, 133.5358744395, 8.7286995516);
+  color: #FD9222;
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #FCF1E0);
+  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .card {
   position: relative;
@@ -1088,7 +1109,19 @@ main .card img {
   transform: translateY(-50%);
   width: 40px;
 }
+main .modal__box--order {
+  max-height: 90vh;
+  overflow-y: auto;
+  /* скрыть скроллбар */
+  scrollbar-width: none;
+  /* Firefox */
+}
+main .modal__box--order::-webkit-scrollbar {
+  display: none;
+  /* Chrome */
+}
 main .reviews {
+  padding: 0 15px;
   padding-bottom: 128px;
   background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%);
   display: flex;
@@ -1129,6 +1162,7 @@ main .reviews__track {
   padding-top: 50px;
 }
 main .reviews__card {
+  width: 360px;
   flex: 0 0 calc((100% - 28px * 2) / 3);
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
@@ -1146,13 +1180,16 @@ main .reviews__card:hover {
 }
 @media (max-width: 1024px) {
   main .reviews__card__container {
-    max-width: 748px;
+    max-width: 704px;
   }
   main .reviews__card {
     flex: 0 0 calc((100% - 28px) / 2);
   }
 }
-@media (max-width: 650px) {
+@media (max-width: 784px) {
+  main .reviews__card__container {
+    max-width: 350px;
+  }
   main .reviews__card {
     flex: 0 0 100%;
   }
@@ -1351,18 +1388,23 @@ main .review-phone input {
   flex: 1;
 }
 main .review-submit {
-  width: 120px;
-  padding: 12px;
-  border-radius: 30px;
-  border: none;
-  font-family: Montserrat;
+  background-color: #FD9222;
+  border: 1px solid #FD9222;
+  color: #FFFFFF;
+  border-radius: 100px;
+  padding: 14px 40px;
+  font-family: Montserrat, sans-serif;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  background: #FD9222;
-  color: white;
+  letter-spacing: 0.03em;
   cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
+}
+main .review-submit:hover {
+  color: #FD9222;
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #FCF1E0);
+  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .review-success {
   display: flex;
@@ -1436,22 +1478,23 @@ main .explore-container-text {
   color: #FFFFFF;
 }
 main .explore-container-btn {
-  font-family: Montserrat;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #FFFFFF;
-  padding: 14px 40px;
-  border: none;
   background-color: #FD9222;
+  border: 1px solid #FD9222;
+  color: #FFFFFF;
   border-radius: 100px;
+  padding: 14px 40px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
 main .explore-container-btn:hover {
   color: #FD9222;
-  background-color: #FCF1E0;
-  transition-duration: 0.3s;
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #FCF1E0);
+  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .subscribe-modal {
   position: fixed;
@@ -1465,7 +1508,6 @@ main .subscribe-modal {
   align-items: center;
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
-  border-radius: 15px;
 }
 main .subscribe-modal.active {
   display: flex;
@@ -1479,6 +1521,9 @@ main .subscribe-modal__content {
   text-align: center;
 }
 main .subscribe-modal__content img {
+  width: 100%;
+  max-width: 538px;
+  height: 169px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -1519,21 +1564,23 @@ main .subscribe-modal__box__send input {
   padding: 15px 145px 15px 24px;
 }
 main .subscribe-modal__box__send__btn {
-  font-family: Montserrat;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #FFFFFF;
   background-color: #FD9222;
-  padding: 16px 42px;
-  border: none;
+  border: 1px solid #FD9222;
+  color: #FFFFFF;
   border-radius: 100px;
+  padding: 14px 42px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
 main .subscribe-modal__box__send__btn:hover {
   color: #FD9222;
-  background-color: #FCF1E0;
-  transition-duration: 0.3s;
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #FCF1E0);
+  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .subscribe-modal__close {
   position: absolute;
@@ -1851,6 +1898,46 @@ main .subscribe-modal__close {
     letter-spacing: -2%;
     vertical-align: middle;
   }
+  main .modal__box--success {
+    padding: 0;
+  }
+  main .modal__box--success--img1 {
+    display: none;
+  }
+  main .modal__box--success--img2 {
+    display: block;
+    position: absolute;
+    left: -1px;
+    bottom: -1px;
+  }
+  main .modal__box--success--info {
+    margin-top: 84px;
+    margin-bottom: 68px;
+  }
+  main .modal__box--success--info h2 {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -2%;
+    text-transform: uppercase;
+  }
+  main .modal__box--success--info p {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -2%;
+    width: 219px;
+  }
+  main .modal__box--success--info p span {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -2%;
+  }
   main .modal__box {
     max-width: 311px;
     padding: 32px 24px;
@@ -1858,6 +1945,59 @@ main .subscribe-modal__close {
   main .modal__box {
     max-width: 311px;
     padding: 32px 24px;
+  }
+  main input {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    vertical-align: middle;
+  }
+  main .form-group textarea {
+    height: 91px;
+  }
+  main .form-group-input {
+    padding-left: 18px;
+  }
+  main .form-group-input input {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    vertical-align: middle;
+    padding-left: 14px;
+  }
+  main .form-group-input-code img {
+    margin-right: 8px;
+    width: 24px;
+    height: 18px;
+  }
+  main .form-group-input-code p {
+    padding-right: 8px;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    vertical-align: middle;
+  }
+  main .submit-btn {
+    padding: 12px 28px;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-right: 154px;
+  }
+  main .modal__box--success {
+    height: 350px;
+    width: 311px;
+  }
+  main .modal__box--success img {
+    transform: -124px;
   }
   main .modal-products {
     width: 100%;
@@ -2093,6 +2233,67 @@ main .subscribe-modal__close {
     align-items: flex-start;
     flex-direction: column;
     gap: 18px;
+  }
+}
+/* ===== MOBILE SLIDER PRO ===== */
+@media (max-width: 768px) {
+  .slider {
+    overflow: hidden;
+    width: 100%;
+  }
+  .slider-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.4s ease;
+  }
+  .slide {
+    flex: 0 0 75%;
+    /* ширина 75% экрана */
+    max-width: 75%;
+    opacity: 0.4;
+    transform: scale(0.85);
+    transition: 0.4s ease;
+  }
+  .slide.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (max-width: 580px) {
+  main .subscribe-modal h2 {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -3%;
+    text-transform: uppercase;
+  }
+  main .subscribe-modal__box__send {
+    width: 263px;
+    border: 1px solid rgba(17, 17, 17, 0.1019607843);
+    border-radius: 100px;
+  }
+  main .subscribe-modal__box__send input {
+    border: none;
+    padding: 14px 0px 14px 18px;
+    width: 163px;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    vertical-align: middle;
+  }
+  main .subscribe-modal__box__send__btn {
+    right: 0;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    padding: 14px 22px;
   }
 }
 @media (max-width: 425px) {

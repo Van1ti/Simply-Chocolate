@@ -337,8 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
-
 /* ======= subscribe modal ======= */
 const openModalBtn = document.getElementById('openModalBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
@@ -365,3 +363,4 @@ modal.addEventListener('click', (e) => {
     modal.classList.remove('active');
   }
 });
+
