@@ -828,7 +828,10 @@
     .footer {
         &_container {
             &--top {
-                align-items: flex-end;
+                align-items: center;
+                &--icons{
+                    margin-top: 35px;
+                }
             }
         }
     }

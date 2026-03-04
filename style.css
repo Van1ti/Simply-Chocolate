@@ -187,7 +187,6 @@ main .start_container--box--info--buttons {
 }
 main .start_container--box--info--buttons--btn {
   background-color: #FD9222;
-  border: 1px solid #FD9222;
   color: #FFFFFF;
   border-radius: 100px;
   padding: 14px 40px;
@@ -196,13 +195,10 @@ main .start_container--box--info--buttons--btn {
   letter-spacing: 0.03em;
   cursor: pointer;
   transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
 main .start_container--box--info--buttons--btn:hover {
   color: #FD9222;
-  transform: translateY(-3px);
-  background: linear-gradient(90deg, #FCF1E0);
-  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
+  background-color: #FCF1E0;
 }
 main .start_container--box--info--buttons--btn--2 {
   font-family: Montserrat;
@@ -215,13 +211,11 @@ main .start_container--box--info--buttons--btn--2 {
   padding: 14px 40px;
   border: 1px solid #FFFFFF;
   background: none;
-  box-shadow: 0 3px 10px #FFFFFF;
 }
 main .start_container--box--info--buttons--btn--2:hover {
   border: 1px solid #FD9222;
   transition-duration: 0.3s;
   color: #FD9222;
-  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .start_container--box--scroll {
   width: 100%;
@@ -746,11 +740,9 @@ main .product-card button {
   line-height: 100%;
   letter-spacing: 0%;
   cursor: pointer;
-  box-shadow: 0 8px 25px grey;
 }
 main .product-card button:hover {
   transition-duration: 0.3s;
-  box-shadow: 0 8px 25px orange;
 }
 main .topSellers {
   width: 100%;
@@ -811,7 +803,6 @@ main .topSellers_container--info--text {
 }
 main .topSellers_container--info--btn {
   background-color: #FD9222;
-  border: 1px solid #FD9222;
   color: #FFFFFF;
   border-radius: 100px;
   padding: 14px 40px;
@@ -819,14 +810,13 @@ main .topSellers_container--info--btn {
   font-weight: 600;
   letter-spacing: 0.03em;
   cursor: pointer;
+  border: none;
   transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
 main .topSellers_container--info--btn:hover {
   color: #FD9222;
   transform: translateY(-3px);
   background: linear-gradient(90deg, #FCF1E0);
-  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .modal {
   position: fixed;
@@ -1109,25 +1099,36 @@ main .modal__box--order::-webkit-scrollbar {
   /* Chrome */
 }
 main .reviews {
-  padding: 0 15px;
-  padding-bottom: 128px;
+  padding: 0 15px 128px;
   background: linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+main .reviews input {
+  height: 66px;
+}
+main .reviews textarea {
+  height: 137px;
+}
+main .reviews {
+  /* ===== TITLE ===== */
 }
 main .reviews h2 {
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 24px;
   text-transform: uppercase;
-  text-align: center;
   margin-bottom: 50px;
   letter-spacing: -0.02em;
   color: #111;
+  margin-bottom: 40px;
 }
 main .reviews h2 span {
   color: #FD9222;
+}
+main .reviews {
+  /* ===== CONTAINER ===== */
 }
 main .reviews__container {
   width: 100%;
@@ -1135,6 +1136,19 @@ main .reviews__container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media (max-width: 1024px) {
+  main .reviews__container {
+    max-width: 704px;
+  }
+}
+@media (max-width: 784px) {
+  main .reviews__container {
+    max-width: 350px;
+  }
+}
+main .reviews {
+  /* ===== SLIDER ===== */
 }
 main .reviews__viewport {
   width: 100%;
@@ -1150,8 +1164,7 @@ main .reviews__track {
   padding-top: 50px;
 }
 main .reviews__card {
-  width: 360px;
-  flex: 0 0 calc((100% - 28px * 2) / 3);
+  flex: 0 0 calc((100% - 56px) / 3);
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(17, 17, 17, 0.06);
@@ -1167,17 +1180,11 @@ main .reviews__card:hover {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 @media (max-width: 1024px) {
-  main .reviews__card__container {
-    max-width: 704px;
-  }
   main .reviews__card {
     flex: 0 0 calc((100% - 28px) / 2);
   }
 }
 @media (max-width: 784px) {
-  main .reviews__card__container {
-    max-width: 350px;
-  }
   main .reviews__card {
     flex: 0 0 100%;
   }
@@ -1209,6 +1216,9 @@ main .reviews__card p {
   color: rgba(17, 17, 17, 0.65);
   margin: 0 auto;
 }
+main .reviews {
+  /* ===== PAGINATION ===== */
+}
 main .reviews__pagination {
   display: flex;
   justify-content: center;
@@ -1234,29 +1244,31 @@ main .reviews .point--active {
   background: linear-gradient(90deg, #FD9222, #FFB347);
   box-shadow: 0 4px 14px rgba(253, 146, 34, 0.4);
 }
-main .reviews .reviews-launch {
+main .reviews {
+  /* ===== BUTTON ===== */
+}
+main .reviews-launch {
   margin-top: 50px;
   padding: 14px 48px;
   border-radius: 100px;
-  border: none;
-  background-color: #FFFFFF;
   border: 1px solid #FD9222;
-  color: #111111;
+  background: #FFFFFF;
+  color: #111;
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   letter-spacing: 0.03em;
   cursor: pointer;
   transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
-main .reviews .reviews-launch:hover {
+main .reviews-launch:hover {
   color: #fff;
-  transform: translateY(-3px);
-  background: linear-gradient(90deg, #FD9222, #FFB347);
-  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
+  background: #FD9222;
 }
-main .reviews .reviews-launch:active {
+main .reviews-launch:active {
   transform: scale(0.97);
+}
+main {
+  /* ================= MODAL ================= */
 }
 main .review-layer {
   position: fixed;
@@ -1272,6 +1284,9 @@ main .review-layer.is-visible {
   opacity: 1;
   visibility: visible;
 }
+main .review__heading {
+  margin-bottom: 40px;
+}
 main .review-card {
   position: absolute;
   top: 100px;
@@ -1279,6 +1294,7 @@ main .review-card {
   transform: translateX(-50%);
   width: 95%;
   max-width: 520px;
+  height: 631px;
   padding: 40px;
   border-radius: 24px;
   background: #fff;
@@ -1286,10 +1302,10 @@ main .review-card {
 main .review-card--done {
   display: none;
   background: #FD9222;
-  color: white;
-  position: relative;
+  color: #fff;
   width: 517px;
   height: 414px;
+  position: relative;
 }
 main .review-card__exit {
   position: absolute;
@@ -1300,27 +1316,13 @@ main .review-card__exit {
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background-color: #FFFFFF;
+  background: #FFFFFF;
 }
 main .review-card__exit--light {
-  background: white;
-  color: #FD9222;
-}
-main .review__heading {
-  font-family: Montserrat;
-  font-weight: 600;
-  font-style: SemiBold;
-  font-size: 24px;
-  line-height: 28px;
-  letter-spacing: -3%;
-  text-align: left;
-  justify-content: left;
-}
-main .review__heading span {
   color: #FD9222;
 }
 main .review-card__body {
-  margin-top: 24px;
+  margin-top: 19px;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -1341,20 +1343,18 @@ main .review-card__body textarea {
   height: 120px;
   resize: none;
 }
+main .review-card--form {
+  background-color: #FAFAFA;
+}
+main {
+  /* ===== PHONE INPUT ===== */
+}
 main .review-phone {
   display: flex;
   align-items: center;
   border: 1px solid rgba(17, 17, 17, 0.1);
   border-radius: 12px;
   overflow: hidden;
-}
-main .review-phone p {
-  font-family: Montserrat;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 100%;
-  letter-spacing: -2%;
-  vertical-align: middle;
 }
 main .review-phone__code {
   display: flex;
@@ -1370,14 +1370,21 @@ main .review-phone__code img {
 main .review-phone__code p {
   margin: 0;
   font-weight: 600;
+  font-family: Montserrat, sans-serif;
 }
 main .review-phone input {
   border: none;
   flex: 1;
+  font-family: Montserrat, sans-serif;
+}
+main {
+  /* ===== SUBMIT ===== */
 }
 main .review-submit {
-  background-color: #FD9222;
-  border: 1px solid #FD9222;
+  width: 117px;
+  margin-right: 320px;
+  background: #FD9222;
+  border: none;
   color: #FFFFFF;
   border-radius: 100px;
   padding: 14px 40px;
@@ -1386,45 +1393,13 @@ main .review-submit {
   letter-spacing: 0.03em;
   cursor: pointer;
   transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
 main .review-submit:hover {
   color: #FD9222;
-  transform: translateY(-3px);
-  background: linear-gradient(90deg, #FCF1E0);
-  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
+  background: #FCF1E0;
 }
-main .review-success {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-main .review-success img {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  border-bottom-left-radius: 20px;
-}
-main .review-success-info {
-  margin-top: 130px;
-  margin-left: 130px;
-}
-main .review-success-info h3 {
-  margin: 0;
-  font-family: Montserrat;
-  font-weight: 600;
-  font-style: SemiBold;
-  font-size: 24px;
-  line-height: 28px;
-  letter-spacing: -2%;
-  text-transform: uppercase;
-}
-main .review-success-info p {
-  font-family: Montserrat;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: -2%;
+main {
+  /* ===== EXPLORE===== */
 }
 main .explore {
   background-image: url(./img/Subcribe.png);
@@ -1467,7 +1442,7 @@ main .explore-container-text {
 }
 main .explore-container-btn {
   background-color: #FD9222;
-  border: 1px solid #FD9222;
+  border: none;
   color: #FFFFFF;
   border-radius: 100px;
   padding: 14px 40px;
@@ -1476,13 +1451,11 @@ main .explore-container-btn {
   letter-spacing: 0.03em;
   cursor: pointer;
   transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
 main .explore-container-btn:hover {
   color: #FD9222;
   transform: translateY(-3px);
   background: linear-gradient(90deg, #FCF1E0);
-  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .subscribe-modal {
   position: fixed;
@@ -1517,6 +1490,8 @@ main .subscribe-modal__content img {
 }
 main .subscribe-modal__box {
   padding: 40px;
+  background-color: #FAFAFA;
+  border-radius: 100px;
 }
 main .subscribe-modal__box h2 {
   font-family: Montserrat;
@@ -1553,7 +1528,7 @@ main .subscribe-modal__box__send input {
 }
 main .subscribe-modal__box__send__btn {
   background-color: #FD9222;
-  border: 1px solid #FD9222;
+  border: none;
   color: #FFFFFF;
   border-radius: 100px;
   padding: 14px 42px;
@@ -1562,13 +1537,11 @@ main .subscribe-modal__box__send__btn {
   letter-spacing: 0.03em;
   cursor: pointer;
   transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(253, 146, 34, 0.3);
 }
 main .subscribe-modal__box__send__btn:hover {
   color: #FD9222;
   transform: translateY(-3px);
   background: linear-gradient(90deg, #FCF1E0);
-  box-shadow: 0 15px 40px rgba(253, 146, 34, 0.4);
 }
 main .subscribe-modal__close {
   position: absolute;
@@ -2286,6 +2259,9 @@ main .subscribe-modal__close {
 }
 @media (max-width: 425px) {
   .footer_container--top {
-    align-items: flex-end;
+    align-items: center;
+  }
+  .footer_container--top--icons {
+    margin-top: 35px;
   }
 }/*# sourceMappingURL=style.css.map */
