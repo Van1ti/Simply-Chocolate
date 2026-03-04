@@ -312,8 +312,14 @@
     }
 
     main {
+        .modal {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
         .modal__box--success {
-        padding: 1000px;
+            padding: 1000px;
+
             &--img1 {
                 display: none;
             }
@@ -327,8 +333,9 @@
         }
 
         .modal__box--success--info {
-            margin-top: 84px;
-            margin-bottom: 68px;
+            margin-top: 72px;
+            margin-left: 44px;
+
             h2 {
                 font-family: Montserrat;
                 font-weight: 600;
@@ -359,12 +366,7 @@
         }
 
         .modal__box {
-            max-width: 311px;
-            padding: 32px 24px;
-        }
 
-        .modal__box {
-            max-width: 311px;
             padding: 32px 24px;
         }
 
@@ -435,74 +437,6 @@
             }
         }
 
-        .modal-products {
-            width: 100%;
-            margin-bottom: 24px;
-        }
-
-        .slider {
-            position: relative;
-            height: 260px;
-        }
-
-        .slide {
-            position: absolute;
-            inset: 0;
-            background: #fff;
-            border-radius: 15px;
-            border: 1px solid #1111111A;
-            padding: 32px 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            opacity: 0;
-            transform: scale(0.95);
-            transition: 0.4s ease;
-
-            img {
-                width: 150px;
-                margin-bottom: 24px;
-            }
-
-            span {
-                background: #FAFAFA;
-                border: 1px solid #1111111A;
-                border-radius: 100px;
-                padding: 8px 24px;
-                font-weight: 600;
-                font-size: 14px;
-            }
-
-            &.active {
-                opacity: 1;
-                transform: scale(1);
-                z-index: 2;
-            }
-        }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 16px;
-
-            .dot {
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                border: none;
-                background: #d9d9d9;
-                cursor: pointer;
-
-                &.active {
-                    width: 28px;
-                    border-radius: 20px;
-                    background: #FD9222;
-                }
-            }
-        }
 
         .form-row {
             flex-direction: column;
@@ -510,10 +444,6 @@
             input {
                 width: 100%;
             }
-        }
-
-        .benefits_container {
-            justify-content: center;
         }
 
         .products__slider {
@@ -581,6 +511,7 @@
 
         .benefits {
             padding: 20px;
+            margin: 0 auto;
         }
 
         .taste {
@@ -673,6 +604,10 @@
                 }
 
                 &--info {
+                    &--text {
+                        margin-right: 29px;
+                    }
+
                     flex-direction: column;
                     align-items: center;
                     row-gap: 20px;
@@ -745,34 +680,6 @@
     }
 }
 
-/* ===== MOBILE SLIDER PRO ===== */
-@media (max-width: 768px) {
-
-    .slider {
-        overflow: hidden;
-        width: 100%;
-    }
-
-    .slider-track {
-        display: flex;
-        gap: 16px;
-        transition: transform 0.4s ease;
-    }
-
-    .slide {
-        flex: 0 0 75%;
-        /* ширина 75% экрана */
-        max-width: 75%;
-        opacity: 0.4;
-        transform: scale(0.85);
-        transition: 0.4s ease;
-    }
-
-    .slide.active {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
 
 @media (max-width: 580px) {
     main {
@@ -819,7 +726,6 @@
                 padding: 14px 22px;
             }
         }
-
     }
 }
 
@@ -829,7 +735,8 @@
         &_container {
             &--top {
                 align-items: center;
-                &--icons{
+
+                &--icons {
                     margin-top: 35px;
                 }
             }

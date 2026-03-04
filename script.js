@@ -364,3 +364,93 @@ modal.addEventListener('click', (e) => {
   }
 });
 
+
+
+
+
+const track = document.querySelector('.slider-track');
+const dotsContainer = document.querySelector('.slider-dots');
+let slides = Array.from(track.children);
+const gap = 18;
+let index = slides.length; // Начинаем с середины (после клонов)
+let isTransitioning = false;
+
+// 1. Клонируем элементы для бесконечности (подход "Сэндвич")
+const startClones = slides.map(s => s.cloneNode(true));
+const endClones = slides.map(s => s.cloneNode(true));
+
+startClones.forEach(clone => track.prepend(clone));
+endClones.forEach(clone => track.append(clone));
+
+const allSlides = track.querySelectorAll('.slide');
+
+// 2. Создаем точки
+slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.onclick = () => {
+        if (isTransitioning) return;
+        index = i + slides.length;
+        move();
+    };
+    dotsContainer.appendChild(dot);
+});
+
+function move() {
+    isTransitioning = true;
+    const itemWidth = allSlides[0].offsetWidth + gap;
+    track.style.transition = "transform 0.5s ease-in-out";
+    track.style.transform = `translateX(${-index * itemWidth}px)`;
+    updateDots();
+}
+
+function updateDots() {
+    const dots = dotsContainer.querySelectorAll('button');
+    dots.forEach(d => d.classList.remove('active'));
+    // Вычисляем индекс точки через остаток от деления
+    let activeDot = (index - slides.length) % slides.length;
+    if (activeDot < 0) activeDot = slides.length + activeDot;
+    dots[activeDot].classList.add('active');
+}
+
+// 3. Магия бесконечности: перескок без анимации
+track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    const itemWidth = allSlides[0].offsetWidth + gap;
+
+    if (index >= slides.length * 2) {
+        track.style.transition = "none";
+        index = slides.length;
+        track.style.transform = `translateX(${-index * itemWidth}px)`;
+    }
+    if (index < slides.length) {
+        track.style.transition = "none";
+        index = slides.length * 2 - 1;
+        track.style.transform = `translateX(${-index * itemWidth}px)`;
+    }
+});
+
+// 4. Автоскролл
+let timer = setInterval(() => {
+    index++;
+    move();
+}, 3000);
+
+// Остановить при наведении (опционально)
+track.onmouseenter = () => clearInterval(timer);
+track.onmouseleave = () => timer = setInterval(() => { index++; move(); }, 3000);
+
+// Первоначальное позиционирование
+window.addEventListener('load', () => {
+    const itemWidth = allSlides[0].offsetWidth + gap;
+    track.style.transition = "none";
+    track.style.transform = `translateX(${-index * itemWidth}px)`;
+});
+
+// Обработка клика по карточке
+allSlides.forEach(slide => {
+    slide.querySelector('.slide-card').onclick = (e) => {
+        console.log("Выбрана карточка:", slide.querySelector('p').innerText);
+        // Здесь можно открывать форму или добавлять в корзину
+    };
+});

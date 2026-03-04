@@ -847,13 +847,13 @@ main {
     .modal {
         position: fixed;
         inset: 0;
-        z-index: 20;
         display: flex;
         justify-content: center;
         align-items: center;
         background: rgba(0, 0, 0, 0.45);
         opacity: 0;
         visibility: hidden;
+        z-index: 20;
         transition: 0.3s ease;
 
         &.active {
@@ -956,66 +956,43 @@ main {
         }
     }
 
-
-    .modal-products {
-        display: flex;
-        gap: 16px;
-        margin-bottom: 40px;
-    }
-
     .slider {
+        width: 231px;
         overflow: hidden;
-        position: relative;
-    }
-
-    .slider-track {
-        display: flex;
-        gap: 16px;
-        transition: transform 0.6s ease;
-    }
-
-    .slide {
-        flex: 0 0 auto;
-        width: 250px;
-        background: #fff;
-        border-radius: 15px;
-        text-align: center;
-        padding: 20px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    }
-
-    .slide img {
-        width: 100%;
-        border-radius: 10px;
-    }
-
-    .slider-dots {
-        display: flex;
-        justify-content: center;
-        margin-top: 16px;
-    }
-
-    .slider-dots button {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        border: none;
-        background: #ccc;
-        margin: 0 5px;
-        cursor: pointer;
-    }
-
-    .slider-dots button.active {
-        background: #FD9222;
-    }
-
-    @media (max-width: 480px) {
-        .slide {
-            width: 80%;
-        }
 
         .slider-track {
-            gap: 8px;
+            display: flex;
+            gap: 18px;
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+
+        .slide {
+            flex-shrink: 0;
+            width: 160px; // Планшет
+
+            @media (max-width: 767px) {
+                width: 231px; // Телефон
+            }
+
+            .slide-card {
+                width: 100%;
+                background: #fff;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 15px;
+                padding: 20px;
+                cursor: pointer;
+                transition: scale 0.2s;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                &:active {
+                    scale: 0.98;
+                }
+
+                // Эффект нажатия
+            }
         }
     }
 
@@ -1174,12 +1151,15 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-input{
-    height: 66px;
-}
-textarea{
-    height: 137px;
-}
+
+        input {
+            height: 66px;
+        }
+
+        textarea {
+            height: 137px;
+        }
+
         /* ===== TITLE ===== */
         h2 {
             font-family: Montserrat, sans-serif;
@@ -1357,9 +1337,11 @@ textarea{
             visibility: visible;
         }
     }
-.review__heading{
-    margin-bottom: 40px;
-}
+
+    .review__heading {
+        margin-bottom: 40px;
+    }
+
     .review-card {
         position: absolute;
         top: 100px;
@@ -1468,7 +1450,7 @@ textarea{
         width: 117px;
         margin-right: 320px;
         background: #FD9222;
-        border:none;
+        border: none;
         color: #FFFFFF;
         border-radius: 100px;
         padding: 14px 40px;
@@ -1483,6 +1465,7 @@ textarea{
             background: #FCF1E0;
         }
     }
+
     /* ===== EXPLORE===== */
     .explore {
         background-image: url(./img/Subcribe.png);
