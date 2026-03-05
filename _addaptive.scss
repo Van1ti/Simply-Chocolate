@@ -12,8 +12,9 @@
                         &-1,
                         &-2,
                         &-3 {
-                            width: 344px;
-                            height: 464px;
+                            width: 100%;
+                            max-width: 344px;
+                            height: auto;
                             margin: 0 auto;
                         }
                     }
@@ -219,14 +220,12 @@
             padding-bottom: 100px;
 
             &_container {
+                display: flex;
+                align-items: center;
                 flex-direction: column;
                 row-gap: 20px;
 
                 &--video {
-                    img {
-                        width: 614px;
-                    }
-
                     svg {
                         left: 285px;
                     }
@@ -254,11 +253,9 @@
 
                     &--chocolate {
 
-                        &-1,
-                        &-2,
-                        &-3 {
-                            width: 344px;
-                        }
+                    &-1{
+                        height: 464px;
+                    }
                     }
                 }
             }
@@ -553,6 +550,7 @@
         }
 
         .howItsMade {
+            padding: 0 15px;
             padding-bottom: 72px;
 
             &_title {
@@ -563,27 +561,7 @@
                 flex-direction: column;
                 row-gap: 20px;
 
-                &--video {
-                    &--laptop {
-                        display: none;
-                    }
-
-                    &--phone {
-                        display: block;
-
-                        img {
-                            width: 335px;
-                        }
-
-                        svg {
-                            top: 233px;
-                            left: 150px;
-                        }
-                    }
-                }
-
                 &--box {
-                    max-width: 335px;
                     padding: 20px 14px;
                 }
             }
@@ -692,6 +670,29 @@
                 line-height: 24px;
                 letter-spacing: -3%;
                 text-transform: uppercase;
+            }
+        }
+
+        .howItsMade {
+            &_container {
+                &--video {
+                   &--laptop{
+                    display: none;
+                   }
+                        &--phone {
+                            display: block;
+
+                            img {
+                                max-width: 335px;
+                            }
+
+                            svg {
+                                top: 233px;
+                                left: 150px;
+                            }
+                        }
+                    
+                }
             }
         }
 
