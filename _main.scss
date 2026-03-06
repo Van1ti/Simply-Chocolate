@@ -890,10 +890,12 @@ main {
                     position: absolute;
                     left: -1px;
                     bottom: -1px;
+                    border-bottom-left-radius: 15px;
                 }
 
                 &--img2 {
                     display: none;
+                    border-bottom-left-radius: 15px;
                 }
 
                 h2 {
@@ -962,43 +964,83 @@ main {
     }
 
     .slider {
-        width: 231px;
+        width: 100%;
+        max-width: 558px;
+        /* 3 карточки + gap */
         overflow: hidden;
+    }
 
-        .slider-track {
-            display: flex;
-            gap: 18px;
-            transition: transform 0.5s ease;
-            will-change: transform;
+    .slider-track {
+        display: flex;
+        gap: 18px;
+        transition: transform 0.5s ease;
+    }
+
+    .slide {
+        flex-shrink: 0;
+        width: 160px;
+    }
+
+    .slide-card {
+        width: 100%;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 14px;
+    }
+
+    .slider-dots button {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: none;
+        background: #ccc;
+    }
+
+    .slider-dots button.active {
+        background: #FD9222;
+    }
+
+    /*  MOBILE */
+    @media (max-width:767px) {
+
+        .slider {
+            width: 231px;
         }
 
         .slide {
-            flex-shrink: 0;
-            width: 160px; // Планшет
-
-            @media (max-width: 767px) {
-                width: 231px; // Телефон
-            }
-
-            .slide-card {
-                width: 100%;
-                background: #fff;
-                border: 1px solid rgba(0, 0, 0, 0.1);
-                border-radius: 15px;
-                padding: 20px;
-                cursor: pointer;
-                transition: scale 0.2s;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                &:active {
-                    scale: 0.98;
-                }
-
-                // Эффект нажатия
-            }
+            width: 231px;
         }
+
+    }
+
+    /*  DESKTOP */
+    @media (min-width:768px) {
+
+        .slider {
+            overflow: visible;
+        }
+
+        .slider-track {
+            transform: none !important;
+            transition: none !important;
+        }
+
+        .slider-dots {
+            display: none;
+        }
+
     }
 
     .form {
@@ -1141,6 +1183,7 @@ main {
         scrollbar-width: none;
         /* Firefox */
     }
+
 
     .modal__box--order::-webkit-scrollbar {
         display: none;
@@ -1343,25 +1386,16 @@ main {
     }
 
     .review-card {
+        padding: 0 15px;
         position: absolute;
-        top: 100px;
+        top: 35px;
         left: 50%;
         transform: translateX(-50%);
         width: 95%;
         max-width: 520px;
-        height: 631px;
         padding: 40px;
         border-radius: 24px;
         background: #fff;
-
-        &--done {
-            display: none;
-            background: #FD9222;
-            color: #fff;
-            width: 517px;
-            height: 414px;
-            position: relative;
-        }
 
         &__exit {
             position: absolute;
@@ -1372,7 +1406,7 @@ main {
             border-radius: 50%;
             border: none;
             cursor: pointer;
-            background: #FFFFFF;
+            background: #FAFAFA;
 
             &--light {
                 color: #FD9222;
@@ -1409,55 +1443,135 @@ main {
         }
     }
 
+    .feedback-success {
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 520px;
+        border-radius: 24px;
+        background: #FD9222;
+        display: none;
+        padding: 163px 49px 163px 170px;
+        margin: 0 auto;
+    }
+
+    /* Кнопка закрытия */
+
+    .feedback-success__close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        width: 32px;
+        height: 32px;
+
+        border: none;
+        border-radius: 50%;
+
+        background: white;
+        color: #FD9222;
+
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    /* Контент */
+
+    .feedback-success__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+
+    /* Картинка */
+
+    .feedback-success__image {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 20;
+        border-bottom-left-radius: 15px;
+    }
+
+    /* Текст */
+    .feedback-success__content {
+
+        &__title {
+            font-family: Montserrat;
+            font-weight: 600;
+            font-style: SemiBold;
+            font-size: 24px;
+            line-height: 28px;
+            letter-spacing: -2%;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+
+        &__text {
+            font-family: Montserrat;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: -2%;
+            color: #FFFFFF;
+        }
+
+    }
+
+
     /* ===== PHONE INPUT ===== */
 
     .review-group {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
 
-            label {
-                font: 500 14px/18px 'Montserrat', sans-serif;
+        gap: 8px;
+
+        label {
+            font: 500 14px/18px 'Montserrat', sans-serif;
+            letter-spacing: -0.02em;
+            color: #000000;
+        }
+    }
+
+    .review-group-input {
+        width: 100%;
+        max-width: 513px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-left: 24px;
+        border: 1.5px solid rgba(17, 17, 17, 0.05);
+        border-radius: 13px;
+
+        input {
+            border: none;
+            padding-left: 20px;
+        }
+
+        &-code {
+            display: flex;
+            align-items: center;
+            height: 32px;
+            box-shadow: 2.72px 0px 0px 0px rgba(0, 0, 0, 0.1);
+
+            img {
+                margin-right: 18px;
+            }
+
+            p {
+                padding-right: 32px;
+                font: 500 18px/100% 'Montserrat', sans-serif;
                 letter-spacing: -0.02em;
                 color: #000000;
             }
         }
+    }
 
-        .review-group-input {
-            width: 100%;
-            max-width: 513px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding-left: 24px;
-            border: 1.5px solid rgba(17, 17, 17, 0.05);
-            border-radius: 13px;
-
-            input {
-                border: none;
-                padding-left: 20px;
-            }
-
-            &-code {
-                display: flex;
-                align-items: center;
-                height: 32px;
-                box-shadow: 2.72px 0px 0px 0px rgba(0, 0, 0, 0.1);
-
-                img {
-                    margin-right: 18px;
-                }
-
-                p {
-                    padding-right: 32px;
-                    font: 500 18px/100% 'Montserrat', sans-serif;
-                    letter-spacing: -0.02em;
-                    color: #000000;
-                }
-            }
-        }
-    
 
     /* ===== SUBMIT ===== */
 
@@ -1478,41 +1592,6 @@ main {
         &:hover {
             color: #FD9222;
             background: #FCF1E0;
-        }
-    }
-
-    .review-success {
-        width: 100%;
-        max-width: 516px;
-        padding: 0 15px;
-        position: relative;
-
-        img {
-            position: absolute;
-            left: -40px;
-
-        }
-
-        &-info {
-            h3 {
-                font-family: Montserrat;
-                font-weight: 600;
-                font-style: SemiBold;
-                font-size: 24px;
-                line-height: 28px;
-                letter-spacing: -2%;
-                text-transform: uppercase;
-                color: #FFFFFF;
-            }
-
-            p {
-                font-family: Montserrat;
-                font-weight: 400;
-                font-size: 18px;
-                color: #FFFFFF;
-                line-height: 24px;
-                letter-spacing: -2%;
-            }
         }
     }
 

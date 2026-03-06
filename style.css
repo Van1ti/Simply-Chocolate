@@ -863,9 +863,11 @@ main .modal__box--success--img1 {
   position: absolute;
   left: -1px;
   bottom: -1px;
+  border-bottom-left-radius: 15px;
 }
 main .modal__box--success--img2 {
   display: none;
+  border-bottom-left-radius: 15px;
 }
 main .modal__box--success h2 {
   margin-bottom: 8px;
@@ -920,38 +922,72 @@ main .modal__success {
   width: 516px;
 }
 main .slider {
-  width: 231px;
+  width: 100%;
+  max-width: 558px;
+  /* 3 карточки + gap */
   overflow: hidden;
 }
-main .slider .slider-track {
+main .slider-track {
   display: flex;
   gap: 18px;
   transition: transform 0.5s ease;
-  will-change: transform;
 }
-main .slider .slide {
+main .slide {
   flex-shrink: 0;
   width: 160px;
 }
-@media (max-width: 767px) {
-  main .slider .slide {
-    width: 231px;
-  }
-}
-main .slider .slide .slide-card {
+main .slide-card {
   width: 100%;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   padding: 20px;
   cursor: pointer;
-  transition: scale 0.2s;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-main .slider .slide .slide-card:active {
-  scale: 0.98;
+main .slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+main .slider-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+}
+main .slider-dots button.active {
+  background: #FD9222;
+}
+main {
+  /*  MOBILE */
+}
+@media (max-width: 767px) {
+  main .slider {
+    width: 231px;
+  }
+  main .slide {
+    width: 231px;
+  }
+}
+main {
+  /*  DESKTOP */
+}
+@media (min-width: 768px) {
+  main .slider {
+    overflow: visible;
+  }
+  main .slider-track {
+    transform: none !important;
+    transition: none !important;
+  }
+  main .slider-dots {
+    display: none;
+  }
 }
 main .form {
   width: 100%;
@@ -1264,24 +1300,16 @@ main .review__heading {
   margin-bottom: 40px;
 }
 main .review-card {
+  padding: 0 15px;
   position: absolute;
-  top: 100px;
+  top: 35px;
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
   max-width: 520px;
-  height: 631px;
   padding: 40px;
   border-radius: 24px;
   background: #fff;
-}
-main .review-card--done {
-  display: none;
-  background: #FD9222;
-  color: #fff;
-  width: 517px;
-  height: 414px;
-  position: relative;
 }
 main .review-card__exit {
   position: absolute;
@@ -1292,7 +1320,7 @@ main .review-card__exit {
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background: #FFFFFF;
+  background: #FAFAFA;
 }
 main .review-card__exit--light {
   color: #FD9222;
@@ -1321,6 +1349,75 @@ main .review-card__body textarea {
 }
 main .review-card--form {
   background-color: #FAFAFA;
+}
+main .feedback-success {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 520px;
+  border-radius: 24px;
+  background: #FD9222;
+  display: none;
+  padding: 163px 49px 163px 170px;
+  margin: 0 auto;
+}
+main {
+  /* Кнопка закрытия */
+}
+main .feedback-success__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #FD9222;
+  font-size: 18px;
+  cursor: pointer;
+}
+main {
+  /* Контент */
+}
+main .feedback-success__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+main {
+  /* Картинка */
+}
+main .feedback-success__image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  border-bottom-left-radius: 15px;
+}
+main {
+  /* Текст */
+}
+main .feedback-success__content__title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -2%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+main .feedback-success__content__text {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -2%;
+  color: #FFFFFF;
 }
 main {
   /* ===== PHONE INPUT ===== */
@@ -1385,34 +1482,6 @@ main .review-submit {
 main .review-submit:hover {
   color: #FD9222;
   background: #FCF1E0;
-}
-main .review-success {
-  width: 100%;
-  max-width: 516px;
-  padding: 0 15px;
-  position: relative;
-}
-main .review-success img {
-  position: absolute;
-  left: -40px;
-}
-main .review-success-info h3 {
-  font-family: Montserrat;
-  font-weight: 600;
-  font-style: SemiBold;
-  font-size: 24px;
-  line-height: 28px;
-  letter-spacing: -2%;
-  text-transform: uppercase;
-  color: #FFFFFF;
-}
-main .review-success-info p {
-  font-family: Montserrat;
-  font-weight: 400;
-  font-size: 18px;
-  color: #FFFFFF;
-  line-height: 24px;
-  letter-spacing: -2%;
 }
 main {
   /* ===== EXPLORE===== */
@@ -1855,10 +1924,9 @@ main .subscribe-modal__close {
 }
 @media (max-width: 768px) {
   .header {
+    padding: 0 15px;
     padding-bottom: 14px;
-  }
-  .header_container {
-    max-width: 335px;
+    padding-top: 20px;
   }
   .menu-overlay {
     width: 220px;
@@ -2100,7 +2168,8 @@ main .subscribe-modal__close {
   }
   main .topSellers_container--info--chocolate-2 {
     display: block;
-    width: 335px;
+    width: 100%;
+    max-width: 335px;
     height: 464px;
     margin-top: 12px;
   }

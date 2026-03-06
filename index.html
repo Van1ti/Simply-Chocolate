@@ -614,7 +614,7 @@
                             <input type="text" placeholder="Name" required>
                             <input type="email" placeholder="Email" required>
 
-                          
+
                             <div class="review-group">
                                 <div class="review-group-input">
                                     <div class="review-group-input-code">
@@ -635,18 +635,26 @@
                     </div>
 
                     <!-- SUCCESS CARD -->
-                    <div class="review-card review-card--done" id="reviewCardDone">
-                        <button class="review-card__exit review-card__exit--light" id="reviewExitDone">×</button>
+                    <div class="feedback-success" id="feedbackSuccess">
 
-                        <div class="review-success">
-                            <img src="./img/modal-chocolate-bar.png" alt="Chocolate">
-                            <div class="review-success-info">
-                                <h3>THANK YOU<br>FOR YOUR FEEDBACK!</h3>
-                                <p>We are so happy to hear from you!</p>
+                        <button class="feedback-success__close" id="feedbackSuccessClose">×</button>
+
+                        <div class="feedback-success__wrapper">
+
+                            <img class="feedback-success__image" src="./img/modal-chocolate-bar.png" alt="Chocolate">
+
+                            <div class="feedback-success__content">
+                                <h3 class="feedback-success__content__title">
+                                    THANK YOU <br> FOR YOUR FEEDBACK!
+                                </h3>
+
+                                <p class="feedback-success__content__text">
+                                    We are so happy to hear from you!
+                                </p>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
         </section>
         <section class="explore">

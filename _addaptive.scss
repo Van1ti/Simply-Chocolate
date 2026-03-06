@@ -253,9 +253,9 @@
 
                     &--chocolate {
 
-                    &-1{
-                        height: 464px;
-                    }
+                        &-1 {
+                            height: 464px;
+                        }
                     }
                 }
             }
@@ -281,12 +281,9 @@
 
 @media (max-width:768px) {
     .header {
+        padding: 0 15px;
         padding-bottom: 14px;
-
-        &_container {
-            max-width: 335px;
-        }
-
+        padding-top: 20px;
     }
 
     .menu-overlay {
@@ -593,7 +590,8 @@
 
                     &--chocolate-2 {
                         display: block;
-                        width: 335px;
+                        width: 100%;
+                        max-width: 335px;
                         height: 464px;
                         margin-top: 12px;
                     }
@@ -676,22 +674,23 @@
         .howItsMade {
             &_container {
                 &--video {
-                   &--laptop{
-                    display: none;
-                   }
-                        &--phone {
-                            display: block;
+                    &--laptop {
+                        display: none;
+                    }
 
-                            img {
-                                max-width: 335px;
-                            }
+                    &--phone {
+                        display: block;
 
-                            svg {
-                                top: 233px;
-                                left: 150px;
-                            }
+                        img {
+                            max-width: 335px;
                         }
-                    
+
+                        svg {
+                            top: 233px;
+                            left: 150px;
+                        }
+                    }
+
                 }
             }
         }
